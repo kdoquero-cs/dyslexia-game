@@ -1,9 +1,9 @@
 <template>
   <section>
     <div>
-        Image
+        <img src="@/assets/avatars/Animal3.svg" alt="" srcset="">
     </div>
-    <div>
+    <div class="form-container" >
       <h1>Hello I'm Niska</h1>
       <form action="">
         <div class="form">
@@ -40,7 +40,7 @@ export default defineComponent({
   setup() {
     const showAge = ref(false);
     const title = computed(() => (showAge.value ? "birthday" : "name"));
-
+    const allowGoNext = computed(()=> showAge.value && store.user.value.name && store.user.value.years && store.user.value.months);
     const inputName = (event) => {
       store.setName(event.detail.value);
     };
@@ -52,7 +52,7 @@ export default defineComponent({
         store.setMonths(event.detail.value)
     };
     const toogleShowAge = () => {
-      if (showAge.value && store.user.value.name && store.user.value.years && store.user.value.months) {
+      if (allowGoNext.value) {
         router.push({ path: "/start" });
       }
       showAge.value = !showAge.value;
@@ -72,6 +72,9 @@ export default defineComponent({
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+img {
+    max-width: 350px;
+}
 section {
     display: flex;
     width: 100%;
@@ -99,5 +102,10 @@ csm-input {
 .next-container {
     display: flex;
     justify-content: flex-end;
+}
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 </style>
