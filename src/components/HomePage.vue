@@ -31,12 +31,10 @@
 
 <script>
 import { computed, defineComponent, ref} from "@vue/composition-api";
-import { useRouter} from 'vue-router';
 export default defineComponent({
   props: {},
   setup() {
     const name = ref("");
-    const router = useRouter();
     const showAge = ref(false);
     const title = computed(() => (showAge.value ? "birthday" : "name"));
     const  goToPlay = () => {
