@@ -1,21 +1,64 @@
 <template>
   <section>
+    <div>
+      <h1>Hello I'm Niska</h1>
+      <form action="">
+        <div class="form">
+          <label for="name">What's your {{ title }}</label>
+          <input
+            v-if="!showAge"
+            v-model="name"
+            :ref="name"
+            title="name"
+            type="text"
+          />
+          <div v-if="showAge">
+            <label for="age"></label>
+            <input title="years" type="text" /><input
+              title="months"
+              type="text"
+            />
+          </div>
+          <p>{{ name }}</p>
+        </div>
+      </form>
       <div>
-          <h1>Hello I'm Niska</h1>
-          
+          <button @click="toogleShowAge">Next</button>
       </div>
+    </div>
   </section>
 </template>
 
 <script>
-import { defineComponent, ref, toRefs, PropType } from '@vue/composition-api';
+import { computed, defineComponent, ref} from "@vue/composition-api";
+import { useRouter} from 'vue-router';
 export default defineComponent({
-  props: {
-  },
-  setup(props) {
+  props: {},
+  setup() {
+    const name = ref("");
+    const router = useRouter();
+    const showAge = ref(false);
+    const title = computed(() => (showAge.value ? "birthday" : "name"));
+    const  goToPlay = () => {
+      router.push({
+        name: 'Play',
+        query: {
+          ...route.query,
+        },
+      })
+    }
+    const toogleShowAge = () => {
+      showAge.value = !showAge.value;
+      if (showAge.value) {
+          goToPlay();
+      }
+    };
     
-
     return {
+      showAge,
+      name,
+      toogleShowAge,
+      title,
     };
   },
 });
@@ -23,18 +66,12 @@ export default defineComponent({
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+input {
+    margin: 5px;
 }
 </style>
