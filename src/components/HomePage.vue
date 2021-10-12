@@ -37,13 +37,9 @@ export default defineComponent({
     const name = ref("");
     const showAge = ref(false);
     const title = computed(() => (showAge.value ? "birthday" : "name"));
+    
     const  goToPlay = () => {
-      router.push({
-        name: 'Play',
-        query: {
-          ...route.query,
-        },
-      })
+     
     }
     const toogleShowAge = () => {
       showAge.value = !showAge.value;

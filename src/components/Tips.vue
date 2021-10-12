@@ -2,9 +2,12 @@
   <section>
    <div class="container">
      <div>IMAGE</div>
-     <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique adipisci dignissimos fugit, nobis magnam quae illo ducimus iste numquam voluptatem. Tenetur neque eos facilis cupiditate, ex iste blanditiis deleniti doloribus.</div>
+     <div>
+       <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique adipisci dignissimos fugit, nobis magnam quae illo ducimus iste numquam voluptatem. Tenetur neque eos facilis cupiditate, ex iste blanditiis deleniti doloribus.</div>
+        <button>Let's play</button>
+     </div>
    </div>
-   <button>Let's play</button>
+   
   </section>
 </template>
 
