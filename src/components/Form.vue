@@ -25,7 +25,7 @@
         </div>
       </form>
       <div class="next-container">
-          <csm-button @csmClick="toogleShowAge" primary>Next</csm-button>
+          <csm-button @csmClick="toggleShowAge" primary>Next</csm-button>
       </div>
     </div>
   </section>
@@ -45,7 +45,7 @@ export default defineComponent({
     const companion = ref(companionFromHook);
 
     const showAge = ref(false);
-    const title = computed(() => (showAge.value ? "birthday" : "name"));
+    const title = computed(() => (showAge.value ? "age" : "name"));
     const allowGoNext = computed(()=> showAge.value && store.user.value.name && store.user.value.years && store.user.value.months);
     const inputName = (event) => {
       store.setName(event.detail.value);
@@ -57,16 +57,16 @@ export default defineComponent({
     const inputMonths = (event) => {
         store.setMonths(event.detail.value)
     };
-    const toogleShowAge = () => {
+    const toggleShowAge = () => {
       if (allowGoNext.value) {
-        router.push({ path: "/start" });
+        router.push({ path: "/gamelist" });
       }
       showAge.value = !showAge.value;
     };
 
     return {
       showAge,
-      toogleShowAge,
+      toggleShowAge,
       title,
       inputName,
       inputYears,
@@ -78,11 +78,8 @@ export default defineComponent({
 });
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .main-container {
-  height: 100%;
-  width: 100%;
   display: flex;
   align-items: center;
 }

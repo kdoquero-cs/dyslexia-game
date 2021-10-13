@@ -1,4 +1,7 @@
 <template>
+
+  <!-- THIS PAGE IS DISABLED -->
+
   <section>
    <div class="container">
      <div>IMAGE</div>
@@ -7,7 +10,7 @@
         <csm-button @csmClick="goToGameList">Let's Play</csm-button>
      </div>
    </div>
-   
+
   </section>
 </template>
 
@@ -17,7 +20,7 @@ import router from "@/router";
 export default defineComponent({
   props: {},
   setup() {
-    const goToGameList = () => 
+    const goToGameList = () =>
       router.push({ path: "/gamelist" });
     return {
       goToGameList
@@ -31,7 +34,7 @@ export default defineComponent({
 .container {
   display: flex;
   width: 100%;
-  
+
 }
 .container > div {
   width: 50%;

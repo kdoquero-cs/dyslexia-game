@@ -29,11 +29,6 @@ export default new Router({
       component: Form
     },
     {
-      path: '/start',
-      name: 'Play',
-      component: Tips
-    },
-    {
       path: '/DragAndDrop',
       name: 'DragAndDrop',
       component: DragAndDrop

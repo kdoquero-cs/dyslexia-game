@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="main-container">
     <fieldset class="main-form">
       <legend>
         <h1 class="main-title">Before anything, choose your companion</h1>
@@ -56,9 +56,8 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  height: 100%;
-  padding: 5% 10%;
+.main-container {
+  padding: var(--nazca-app-padding);
 }
 
 .main-form {
