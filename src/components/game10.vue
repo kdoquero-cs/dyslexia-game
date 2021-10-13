@@ -24,6 +24,7 @@ export default defineComponent({
     watch(isRecording,currentRecording => {
       start.value = currentRecording
     })
+    
     return {
       toogleVoice,
       start,
