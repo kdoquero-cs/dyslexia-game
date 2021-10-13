@@ -1,19 +1,19 @@
 <template>
-  <section>
+  <section class="page4">
     <div>
       <h1>Page 4</h1>
-      <div class="column" v-for="(game, index) in games" :key="index">
-        {{ game.name }}
+      <div>Text</div>
+      <div class="page4__container">
+        <div class="page4__item" v-for="(game, index) in games" :key="index">
+          {{ game.name }}
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import {
-  defineComponent,
-  ref,
-} from "@vue/composition-api";
+import { defineComponent, ref } from "@vue/composition-api";
 
 function setup(props) {
   const games = ref([
@@ -24,7 +24,7 @@ function setup(props) {
     { id: 5, name: "game5" },
     { id: 6, name: "game6" },
     { id: 7, name: "game7" },
-    { id: 8, name: "game8" },
+    { id: 8, name: "game8" }
   ]);
   return { games };
 }
@@ -37,19 +37,15 @@ export default defineComponent({
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1,
-h2 {
-  font-weight: normal;
+.page4__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.page4__item {
+  min-width: 30%;
+  height: 100px;
+  border: 1px solid black;
+  margin: 1%;
 }
 </style>
