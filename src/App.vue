@@ -7,7 +7,7 @@
 <script>
 import Vue from 'vue';
 import CompositionApi from '@vue/composition-api';
-
+import "./style.css"
 Vue.use(CompositionApi);
 
 export default {
