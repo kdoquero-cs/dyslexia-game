@@ -7,22 +7,22 @@
 
       <div class="companion-wrapper">
         <label for="PhoenixInput" class="companion-btn">
-          <input id="PhoenixInput" name="avatar" type="radio" class="radio sr-only" />
+          <input id="PhoenixInput" name="avatar" type="radio" class="radio sr-only" :checked="selected === 0" v-on:input="selected = 0" />
           <img src="@/assets/avatars/Animal1.svg" alt="Phoenix" class="companion-img" />
         </label>
 
         <label for="UnicornInput" class="companion-btn">
-          <input id="UnicornInput" name="avatar" type="radio" class="radio sr-only" />
+          <input id="UnicornInput" name="avatar" type="radio" class="radio sr-only" :checked="selected === 1" v-on:input="selected = 1" />
           <img src="@/assets/avatars/Animal2.svg" alt="Unicorn" class="companion-img" />
         </label>
 
         <label for="FoxInput" class="companion-btn">
-          <input id="FoxInput" name="avatar" type="radio" class="radio sr-only" />
+          <input id="FoxInput" name="avatar" type="radio" class="radio sr-only" :checked="selected === 2" v-on:input="selected = 2" />
           <img src="@/assets/avatars/Animal3.svg" alt="Fox" class="companion-img" />
         </label>
 
         <label for="DragonInput" class="companion-btn">
-          <input id="DragonInput" name="avatar" type="radio" class="radio sr-only" />
+          <input id="DragonInput" name="avatar" type="radio" class="radio sr-only" :checked="selected === 3" v-on:input="selected = 3" />
           <img src="@/assets/avatars/Animal4.svg" alt="Dragon" class="companion-img" />
         </label>
       </div>
@@ -35,16 +35,21 @@
 <script>
 import router from "@/router";
 import { ref } from "@vue/composition-api";
+import { useCompanion } from "../composables/useCompanion";
+
 export default {
   name: "CompagnionChoice",
   setup() {
-    const selected = ref("");
+    const companionHook = useCompanion.getInstance();
+    const selected = ref(0);
     const goToForm = () => {
+      companionHook.setCompanion(selected.value);
       router.push({ path: "/form" })
     }
 
     return {
-      goToForm
+      selected,
+      goToForm,
     }
   }
 };
@@ -72,7 +77,7 @@ export default {
   margin-bottom: 1em;
   padding: var(--spacing-sp-3);
   font-size: 2em;
-  border-radius: 16px;
+  border-radius: var(--nazca-rect-radius);
   background-color: var(--colors-gray-lighter-40);
 }
 
