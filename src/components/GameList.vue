@@ -17,7 +17,7 @@
         </span>
       </li>
 
-      <router-link to="/end-game" class="link" style="grid-row: row-3 / span 1; grid-column: col-5 / span 2;">
+      <router-link to="/portal" class="link" style="grid-row: row-3 / span 1; grid-column: col-5 / span 2;">
         <li class="game-item game-item--locked" style="background-image: url('/static/backgrounds/end-portal.jpg');">
           <span class="lock-btn">
             <csm-icon name="lock" size-xl class="lock-btn-icon"></csm-icon>

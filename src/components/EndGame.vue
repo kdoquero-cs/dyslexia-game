@@ -19,6 +19,8 @@
         </div>
       </div>
     </section>
+
+    <audio src="/static/music/Credits.mp4" autoplay="true"></audio>
   </section>
 </template>
 

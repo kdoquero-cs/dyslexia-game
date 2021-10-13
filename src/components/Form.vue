@@ -24,7 +24,7 @@
           </div>
         </div>
       </form>
-      <div class="next-container"><
+      <div class="next-container">
           <csm-button @csmClick="toggleShowAge" primary>Next</csm-button>
       </div>
     </div>

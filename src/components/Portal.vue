@@ -8,11 +8,14 @@
       </article>
       <img :class="companionClass" :src="companion.path" />
     </aside>
+
     <div class="jewels-container">
       <div :class="getJewelClass(index)" v-for="(jewel, index) in new Array(7).fill(undefined)" :key="index">
         <img :class="{ jewel: true, hidden: stepIndex < 1, yeet: stepIndex === 2 }" src="@/assets/jewel.png" alt="A jewel that looks like a shiny diamond!"/>
       </div>
     </div>
+
+    <audio src="/static/music/Credits.mp4" autoplay="true"></audio>
   </section>
 </template>
 
