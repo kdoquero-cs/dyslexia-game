@@ -21,6 +21,7 @@ export function useSpeechRecognition(state) {
         transcript.value = event.results[0][0].transcript;
     };
 
+    
     recognition.onend = () => {
         isRecording.value = false;
     };
