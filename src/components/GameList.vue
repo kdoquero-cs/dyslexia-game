@@ -16,7 +16,17 @@
           <csm-icon name="play" size-xl class="play-btn-icon" />
         </span>
       </li>
+
+      <router-link to="/end-game" class="link" style="grid-row: row-3 / span 1; grid-column: col-5 / span 2;">
+        <li class="game-item game-item--locked" style="background-image: url('/static/backgrounds/end-portal.jpg');">
+          <span class="lock-btn">
+            <csm-icon name="lock" size-xl class="lock-btn-icon"></csm-icon>
+          </span>
+        </li>
+      </router-link>
     </ul>
+
+    <audio src="/static/music/Page1a4.mp4" autoplay="true"></audio>
   </section>
 </template>
 
@@ -34,7 +44,7 @@ function setup(props) {
     { id: 5, name: "Oral spelling", style: "grid-row: row-2 / span 1; grid-column: col-4 / span 2; background-image: url('/static/backgrounds/oral-spelling.png');" },
     { id: 6, name: "Memory span", style: "grid-row: row-3 / span 1; grid-column: col-1 / span 2; background-image: url('/static/backgrounds/memory-span.jpg');" },
     { id: 7, name: "game7", style: "grid-row: row-3 / span 1; grid-column: col-3 / span 2; background-image: url('/static/backgrounds/test-7.jpg');" },
-    { id: 8, name: "End game", style: "grid-row: row-3 / span 1; grid-column: col-5 / span 2; background-image: url('/static/backgrounds/end-portal.jpg');" }
+    // { id: 8, name: "End game", style: "grid-row: row-3 / span 1; grid-column: col-5 / span 2; background-image: url('/static/backgrounds/end-portal.jpg');" }
   ]);
 
   return {

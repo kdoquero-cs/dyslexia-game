@@ -2,7 +2,6 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Form from '@/components/Form';
 import CompanionChoice from '@/components/CompanionChoice';
-import EndJewelPortal from '@/components/EndJewelPortal';
 import Game10 from '@/components/Game10';
 import GameAssessment from '@/components/GameAssessment';
 import ParentsInfo from '@/components/ParentsInfo';
@@ -11,6 +10,7 @@ import Tips from '@/components/Tips';
 import DragAndDrop from '@/components/DragAndDrop';
 import GameList from '@/components/GameList';
 import Welcome from "@/components/Welcome";
+import Portal from '@/components/Portal';
 
 Vue.use(Router)
 
@@ -37,11 +37,6 @@ export default new Router({
       component: GameList
     },
     {
-      path: '/endJewelPortal',
-      name: 'EndJewelPortal',
-      component: EndJewelPortal
-    },
-    {
       path: '/companion',
       name: 'CompanionChoice',
       component: CompanionChoice
@@ -60,6 +55,11 @@ export default new Router({
       path: "/parentsInfo",
       name:"ParentsInfo",
       component: ParentsInfo
+    },
+    {
+      path: "/portal",
+      name:"Portal",
+      component: Portal
     }
   ]
 })
