@@ -2,10 +2,11 @@
   <fragment>
     <canvas ref="canvas" class="animated-background"></canvas>
     <section class="content">
-      <h1>Welcome to Nazka's adventure</h1>
-      <csm-button>
-        <router-link to="/compagnion">Press start</router-link>
-      </csm-button>
+      <h1 class="title">Welcome to Nazka's adventure</h1>
+
+      <router-link to="/compagnion" class="link">
+        <csm-button primary>Press start</csm-button>
+      </router-link>
     </section>
   </fragment>
 </template>
@@ -30,7 +31,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-html, body, #app, .animated-background, .content  {
+.animated-background, .content  {
   height: 100%;
   width: 100%;
 }
@@ -44,5 +45,16 @@ html, body, #app, .animated-background, .content  {
   align-items: center;
   flex-flow: column;
   z-index: 1;
+}
+
+.title {
+  font-size: 3.33em;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  color: var(--colors-text-white-base);
+}
+
+.link {
+  text-decoration: none;
 }
 </style>

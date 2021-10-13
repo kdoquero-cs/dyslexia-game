@@ -16,11 +16,20 @@ export default {
 </script>
 
 <style>
+html, body, #app {
+  height: 100%;
+  width: 100%;
+}
+
 #app {
   font-family: Luciole, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  overflow: hidden;
+
+  background-color: var(--colors-dataviz-purple-darker-30);
+  background-image: radial-gradient(ellipse at bottom, var(--colors-dataviz-purple-darker-20), var(--colors-dataviz-purple-darker-30));
 }
 </style>
