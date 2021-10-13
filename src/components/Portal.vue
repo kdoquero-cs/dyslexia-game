@@ -18,6 +18,7 @@
 
 <script>
 import { defineComponent, onMounted, ref, computed } from '@vue/composition-api';
+import router from "@/router";
 import { useCompanion } from "../composables/useCompanion";
 
 function setup() {
@@ -57,6 +58,12 @@ function setup() {
     incrementStep: () => {
       stepIndex.value = stepIndex.value + 1;
       activeStep.value = steps.value[stepIndex.value];
+
+      if (stepIndex.value === 2) {
+        setTimeout(() => {
+          router.push({ path: "/end-game" });
+        }, 5000)
+      }
     },
     getJewelClass: (index) => {
       return index % 7 === 0

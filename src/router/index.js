@@ -11,6 +11,7 @@ import DragAndDrop from '@/components/DragAndDrop';
 import GameList from '@/components/GameList';
 import Welcome from "@/components/Welcome";
 import Portal from '@/components/Portal';
+import EndGame from '@/components/EndGame';
 
 Vue.use(Router)
 
@@ -60,6 +61,11 @@ export default new Router({
       path: "/portal",
       name:"Portal",
       component: Portal
-    }
+    },
+    {
+      path: "/end-game",
+      name:"EndGame",
+      component: EndGame
+    },
   ]
 })
