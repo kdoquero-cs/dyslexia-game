@@ -34,7 +34,7 @@
 </template>
 <script>
 export default {
-  name: "DragAndDrop2",
+  name: "DragAndDrop",
   data() {
     return {
       origin: ["apple", "orange", "grape"],
