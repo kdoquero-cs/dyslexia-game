@@ -18,7 +18,7 @@ export default defineComponent({
   props: {},
   setup() {
     const goToGameList = () => 
-      router.push({ path: "/" });
+      router.push({ path: "/gamelist" });
     return {
       goToGameList
     };
