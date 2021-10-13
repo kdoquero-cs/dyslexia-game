@@ -3,8 +3,12 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import Fragment from 'vue-fragment';
 
+Vue.use(Fragment.Plugin);
 Vue.config.productionTip = false
+
+Vue.config.ignoredElements = [/csm-\w*/];
 
 /* eslint-disable no-new */
 new Vue({

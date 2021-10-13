@@ -4,7 +4,7 @@
         <img src="@/assets/avatars/Animal3.svg" alt="" srcset="">
     </div>
     <div class="form-container" >
-      <h1>Hello I'm Niska</h1>
+      <h1>Hello I'm Nazca</h1>
       <form action="">
         <div class="form">
             <h3>What's your {{ title }}</h3>
