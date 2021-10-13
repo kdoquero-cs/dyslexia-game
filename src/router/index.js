@@ -1,13 +1,11 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Form from '@/components/Form';
-import CompagnionChoice from '@/components/CompagnionChoice';
+import CompanionChoice from '@/components/CompanionChoice';
 import EndJewelPortal from '@/components/EndJewelPortal';
 import Game10 from '@/components/Game10';
 import GameAssessment from '@/components/GameAssessment';
 import ParentsInfo from '@/components/ParentsInfo';
-
-
 
 import Tips from '@/components/Tips';
 import DragAndDrop from '@/components/DragAndDrop';
@@ -44,9 +42,9 @@ export default new Router({
       component: EndJewelPortal
     },
     {
-      path: '/compagnion',
-      name: 'CompagnionChoice',
-      component:CompagnionChoice
+      path: '/companion',
+      name: 'CompanionChoice',
+      component: CompanionChoice
     },
     {
       path: '/game10',

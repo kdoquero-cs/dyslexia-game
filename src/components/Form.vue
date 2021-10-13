@@ -24,10 +24,12 @@
           </div>
         </div>
       </form>
-      <div class="next-container">
+      <div class="next-container"><
           <csm-button @csmClick="toggleShowAge" primary>Next</csm-button>
       </div>
     </div>
+
+    <audio src="/static/music/MainMenu.mp4" autoplay="true"></audio>
   </section>
 </template>
 

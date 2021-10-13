@@ -4,10 +4,12 @@
     <section class="content">
       <h1 class="title">Welcome to Nazka's adventure</h1>
 
-      <router-link to="/compagnion" class="link">
+      <router-link to="/companion" class="link">
         <csm-button primary>Press start</csm-button>
       </router-link>
     </section>
+
+    <audio src="/static/music/MainMenu.mp4" autoplay="true"></audio>
   </fragment>
 </template>
 
@@ -17,6 +19,7 @@ import { AnimatedBackground } from "../composables/animated-background";
 
 function setup() {
   const canvas = ref(null);
+  const isMuted = ref(false);
   let animatedBackground = new AnimatedBackground();
 
   onMounted(() => {
@@ -56,5 +59,13 @@ export default defineComponent({
 
 .link {
   text-decoration: none;
+}
+
+.mute-music {
+  position: absolute;
+  top: 2em;
+  right: 2em;
+  color: var(--colors-text-white-base);
+  cursor: pointer;
 }
 </style>

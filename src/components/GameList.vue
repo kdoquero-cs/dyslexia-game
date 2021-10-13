@@ -11,44 +11,9 @@
       <img class="companion" :src="companion.path" />
     </aside>
     <ul class="game-list">
-      <li class="game-item" style="grid-row: row-1 / span 1; grid-column: col-1 / span 2">
+      <li class="game-item" v-for="(game, index) in games" :key="index" :style="game.style">
         <span class="play-btn">
-          <csm-icon name="play" size-xl class="play-btn-icon"></csm-icon>
-        </span>
-      </li>
-      <li class="game-item" style="grid-row: row-1 / span 1; grid-column: col-3 / span 2">
-        <span class="play-btn">
-          <csm-icon name="play" size-xl class="play-btn-icon"></csm-icon>
-        </span>
-      </li>
-      <li class="game-item" style="grid-row: row-1 / span 1; grid-column: col-5 / span 2">
-        <span class="play-btn">
-          <csm-icon name="play" size-xl class="play-btn-icon"></csm-icon>
-        </span>
-      </li>
-      <li class="game-item" style="grid-row: row-2 / span 1; grid-column: col-2 / span 2">
-        <span class="play-btn">
-          <csm-icon name="play" size-xl class="play-btn-icon"></csm-icon>
-        </span>
-      </li>
-      <li class="game-item" style="grid-row: row-2 / span 1; grid-column: col-4 / span 2">
-        <span class="play-btn">
-          <csm-icon name="play" size-xl class="play-btn-icon"></csm-icon>
-        </span>
-      </li>
-      <li class="game-item" style="grid-row: row-3 / span 1; grid-column: col-1 / span 2">
-        <span class="play-btn">
-          <csm-icon name="play" size-xl class="play-btn-icon"></csm-icon>
-        </span>
-      </li>
-      <li class="game-item" style="grid-row: row-3 / span 1; grid-column: col-3 / span 2">
-        <span class="play-btn">
-          <csm-icon name="play" size-xl class="play-btn-icon"></csm-icon>
-        </span>
-      </li>
-      <li class="game-item game-item--locked" style="grid-row: row-3 / span 1; grid-column: col-5 / span 2">
-        <span class="lock-btn">
-          <csm-icon name="lock" size-xl class="lock-btn-icon"></csm-icon>
+          <csm-icon name="play" size-xl class="play-btn-icon" />
         </span>
       </li>
     </ul>
@@ -62,14 +27,14 @@ import { useCompanion } from "../composables/useCompanion";
 function setup(props) {
   const companion = ref(useCompanion.getInstance().companion);
   const games = ref([
-    { id: 1, name: "Words recognition" },
-    { id: 2, name: "game2" },
-    { id: 3, name: "game3" },
-    { id: 4, name: "game4" },
-    { id: 5, name: "game5" },
-    { id: 6, name: "game6" },
-    { id: 7, name: "game7" },
-    { id: 8, name: "game8" }
+    { id: 1, name: "Words recognition", style: "grid-row: row-1 / span 1; grid-column: col-1 / span 2; background-image: url('/static/backgrounds/word-recognition.jpg');" },
+    { id: 2, name: "Syllable recognition", style: "grid-row: row-1 / span 1; grid-column: col-3 / span 2; background-image: url('/static/backgrounds/syllable-recognition.jpg');" },
+    { id: 3, name: "Visual attention", style: "grid-row: row-1 / span 1; grid-column: col-5 / span 2; background-image: url('/static/backgrounds/visual-attention.jpg');" },
+    { id: 4, name: "Auditory comprehension", style: "grid-row: row-2 / span 1; grid-column: col-2 / span 2; background-image: url('/static/backgrounds/auditory-comprehension.jpg');" },
+    { id: 5, name: "Oral spelling", style: "grid-row: row-2 / span 1; grid-column: col-4 / span 2; background-image: url('/static/backgrounds/oral-spelling.png');" },
+    { id: 6, name: "Memory span", style: "grid-row: row-3 / span 1; grid-column: col-1 / span 2; background-image: url('/static/backgrounds/memory-span.jpg');" },
+    { id: 7, name: "game7", style: "grid-row: row-3 / span 1; grid-column: col-3 / span 2; background-image: url('/static/backgrounds/test-7.jpg');" },
+    { id: 8, name: "End game", style: "grid-row: row-3 / span 1; grid-column: col-5 / span 2; background-image: url('/static/backgrounds/end-portal.jpg');" }
   ]);
 
   return {
@@ -91,6 +56,7 @@ export default defineComponent({
   background-image: url('/static/backgrounds/game-selection.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
   box-shadow: inset 6666px 6666px rgba(255, 255, 255, 0.2);
 }
 
@@ -113,6 +79,7 @@ export default defineComponent({
   bottom: 10em;
   left: -2em;
   width: 75%;
+  user-select: none;
 }
 
 .game-list {
@@ -132,9 +99,12 @@ export default defineComponent({
   align-items: center;
   height: 20vh;
   border-radius: var(--nazca-rect-radius);
-  border: 3px solid var(--colors-gray-lighter-40);
+  border: 3px solid var(--nazca-rect-color);
   cursor: pointer;
-  transition: transform .2s ease-in-out;
+  transition: transform .2s ease-in-out, border-color .1s, ease-in-out;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .play-btn {
@@ -145,7 +115,7 @@ export default defineComponent({
   height: 52px;
   background-color: var(--nazca-rect-color);
   border-radius: 50%;
-  transition: box-shadow .2s ease-in-out;
+  transition: box-shadow .2s ease-in-out, transform .2s ease-in-out, background-color .1s ease-in-out;
 }
 
 .game-item--locked {
@@ -157,12 +127,22 @@ export default defineComponent({
   transform: scale(1.1);
 }
 
+.game-item:active {
+  border-color: var(--colors-gray-base);
+}
+
 .game-item:hover .play-btn {
+  transform: scale(1.1);
   box-shadow: var(--shadows-sh-30);
+}
+
+.game-item:active .play-btn {
+  box-shadow: var(--shadows-sh-30);
+  background-color: var(--colors-gray-base);
 }
 
 .lock-btn-icon {
   color: var(--colors-text-white-base);
-  transform: scale(1.33);
+  transform: scale(1.5, 1.33);
 }
 </style>
