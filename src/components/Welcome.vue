@@ -4,7 +4,7 @@
     <section class="content">
       <h1>Welcome to Nazka's adventure</h1>
       <csm-button>
-        <router-link to="/home">Press start</router-link>
+        <router-link to="/compagnion">Press start</router-link>
       </csm-button>
     </section>
   </fragment>

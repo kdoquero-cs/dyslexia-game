@@ -1,0 +1,32 @@
+import { watch } from "@vue/composition-api";
+
+export function useSpeechRecognition(state) {
+    const SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+const recognition = new SpeechRecognition();
+            
+// This runs when the speech recognition service starts
+recognition.onstart = function() {
+    console.log("We are listening. Try speaking into the microphone.");
+};
+
+recognition.onspeechend = function() {
+    // when user is done speaking
+    recognition.stop();
+}
+              
+// This runs when the speech recognition service returns result
+recognition.onresult = function(event) {
+    var transcript = event.results[0][0].transcript;
+    var confidence = event.results[0][0].confidence;
+};
+  
+watch(state, currentState => {
+    console.log(currentState);
+    if (currentState) {
+        recognition.start();
+    }
+  });
+// start recognition
+
+
+}

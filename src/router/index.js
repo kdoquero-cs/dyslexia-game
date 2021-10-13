@@ -1,6 +1,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import HomePage from '@/components/HomePage';
+import Form from '@/components/Form';
+import CompagnionChoice from '@/components/CompagnionChoice';
+import EndJewelPortal from '@/components/EndJewelPortal';
+
 import Tips from '@/components/Tips';
 import DragAndDrop from '@/components/DragAndDrop';
 import GameList from '@/components/GameList';
@@ -16,9 +19,9 @@ export default new Router({
       component: Welcome
     },
     {
-      path: '/home',
-      name: 'HomePage',
-      component: HomePage
+      path: '/form',
+      name: 'Form',
+      component: Form
     },
     {
       path: '/start',
@@ -35,5 +38,15 @@ export default new Router({
       name: 'gamelist',
       component: GameList
     },
+    {
+      path: '/endJewelPortal',
+      name: 'EndJewelPortal',
+      component: EndJewelPortal
+    },
+    {
+      path: '/compagnion',
+      name: 'CompagnionChoice',
+      component:CompagnionChoice
+    }
   ]
 })
