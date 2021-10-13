@@ -1,22 +1,34 @@
 <template>
   <section>
-   <div class="container">
-     <div>IMAGE</div>
-     <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique adipisci dignissimos fugit, nobis magnam quae illo ducimus iste numquam voluptatem. Tenetur neque eos facilis cupiditate, ex iste blanditiis deleniti doloribus.</div>
-   </div>
-   <button>Let's play</button>
+    <div class="container">
+    </div>
+    <csm-button :icon='!isRecording ? "play" : "square-filled"' @csmClick="toogleVoice">
+      {{ !isRecording ? "Start" : "stop" }}</csm-button
+    >
   </section>
 </template>
 
 <script>
-import { defineComponent } from "@vue/composition-api";
-
+import { defineComponent, ref, watch } from "@vue/composition-api";
+import { useSpeechRecognition } from "../composables/useSpeechRecon";
 export default defineComponent({
   props: {},
   setup() {
-    
+    const start = ref(false);
+    const { transcript, isRecording } = useSpeechRecognition(start);
+    const toogleVoice = () => {
+      if (!isRecording.value) {
+          start.value = !start.value;
+      }
+    };
+    watch(isRecording,currentRecording => {
+      start.value = currentRecording
+    })
     return {
-      
+      toogleVoice,
+      start,
+      isRecording,
+      transcript
     };
   },
 });
@@ -27,7 +39,6 @@ export default defineComponent({
 .container {
   display: flex;
   width: 100%;
-  
 }
 .container > div {
   width: 50%;
