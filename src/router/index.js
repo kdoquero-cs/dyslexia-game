@@ -5,6 +5,8 @@ import CompanionChoice from '@/components/CompanionChoice';
 import Game10 from '@/components/Game10';
 import GameAssessment from '@/components/GameAssessment';
 import ParentsInfo from '@/components/ParentsInfo';
+import OralSpelling from '@/components/OralSpelling';
+
 
 import Tips from '@/components/Tips';
 import DragAndDrop from '@/components/DragAndDrop';
@@ -45,27 +47,31 @@ export default new Router({
     {
       path: '/game10',
       name: 'Game10',
-      component:Game10
+      component: Game10
     },
     {
       path: "/gameAssessment",
-      name:"GameAssessment",
+      name: "GameAssessment",
       component: GameAssessment
     },
     {
       path: "/parentsInfo",
-      name:"ParentsInfo",
+      name: "ParentsInfo",
       component: ParentsInfo
     },
     {
       path: "/portal",
-      name:"Portal",
+      name: "Portal",
       component: Portal
     },
     {
       path: "/end-game",
-      name:"EndGame",
+      name: "EndGame",
       component: EndGame
-    },
+    }, {
+      path: "/oralSpelling",
+      name: "OralSpelling",
+      component: OralSpelling
+    }
   ]
 })

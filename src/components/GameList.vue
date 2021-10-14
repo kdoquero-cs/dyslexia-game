@@ -11,7 +11,7 @@
       <img class="companion" :src="companion.path" />
     </aside>
     <ul class="game-list">
-      <li class="game-item" v-for="(game, index) in games" :key="index" :style="game.style">
+      <li class="game-item" v-for="(game, index) in games" :key="index" :style="game.style" @click="goToGame(game)">
         <span class="play-btn">
           <csm-icon name="play" size-xl class="play-btn-icon" />
         </span>
@@ -33,23 +33,28 @@
 <script>
 import { defineComponent, ref } from "@vue/composition-api";
 import { useCompanion } from "../composables/useCompanion";
+import router from "@/router";
 
 function setup(props) {
   const companion = ref(useCompanion.getInstance().companion);
   const games = ref([
-    { id: 1, name: "Words recognition", style: "grid-row: row-1 / span 1; grid-column: col-1 / span 2; background-image: url('/static/backgrounds/word-recognition.jpg');" },
-    { id: 2, name: "Syllable recognition", style: "grid-row: row-1 / span 1; grid-column: col-3 / span 2; background-image: url('/static/backgrounds/syllable-recognition.jpg');" },
-    { id: 3, name: "Visual attention", style: "grid-row: row-1 / span 1; grid-column: col-5 / span 2; background-image: url('/static/backgrounds/visual-attention.jpg');" },
-    { id: 4, name: "Auditory comprehension", style: "grid-row: row-2 / span 1; grid-column: col-2 / span 2; background-image: url('/static/backgrounds/auditory-comprehension.jpg');" },
-    { id: 5, name: "Oral spelling", style: "grid-row: row-2 / span 1; grid-column: col-4 / span 2; background-image: url('/static/backgrounds/oral-spelling.png');" },
-    { id: 6, name: "Memory span", style: "grid-row: row-3 / span 1; grid-column: col-1 / span 2; background-image: url('/static/backgrounds/memory-span.jpg');" },
-    { id: 7, name: "game7", style: "grid-row: row-3 / span 1; grid-column: col-3 / span 2; background-image: url('/static/backgrounds/test-7.jpg');" },
-    // { id: 8, name: "End game", style: "grid-row: row-3 / span 1; grid-column: col-5 / span 2; background-image: url('/static/backgrounds/end-portal.jpg');" }
+    { id: 1, name: "Words recognition", style: "grid-row: row-1 / span 1; grid-column: col-1 / span 2; background-image: url('/static/backgrounds/word-recognition.jpg');" ,path:""},
+    { id: 2, name: "Syllable recognition", style: "grid-row: row-1 / span 1; grid-column: col-3 / span 2; background-image: url('/static/backgrounds/syllable-recognition.jpg');",path:"" },
+    { id: 3, name: "Visual attention", style: "grid-row: row-1 / span 1; grid-column: col-5 / span 2; background-image: url('/static/backgrounds/visual-attention.jpg');",path:"" },
+    { id: 4, name: "Auditory comprehension", style: "grid-row: row-2 / span 1; grid-column: col-2 / span 2; background-image: url('/static/backgrounds/auditory-comprehension.jpg');",path:"" },
+    { id: 5, name: "Oral spelling", style: "grid-row: row-2 / span 1; grid-column: col-4 / span 2; background-image: url('/static/backgrounds/oral-spelling.png');",path:"/oralSpelling" },
+    { id: 6, name: "Memory span", style: "grid-row: row-3 / span 1; grid-column: col-1 / span 2; background-image: url('/static/backgrounds/memory-span.jpg');",path:"" },
+    { id: 7, name: "game7", style: "grid-row: row-3 / span 1; grid-column: col-3 / span 2; background-image: url('/static/backgrounds/test-7.jpg');",path:"" },
+    //{ id: 8, name: "End game", style: "grid-row: row-3 / span 1; grid-column: col-5 / span 2; background-image: url('/static/backgrounds/end-portal.jpg');",path:"" }
   ]);
+  const goToGame = (game) => {
+    router.push({ path: game.path });
+  }
 
   return {
     games,
     companion,
+    goToGame
   };
 }
 

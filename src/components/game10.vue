@@ -12,7 +12,8 @@
 import { defineComponent, ref, watch } from "@vue/composition-api";
 import { useSpeechRecognition } from "../composables/useSpeechRecon";
 export default defineComponent({
-  props: {},
+  props: {
+  },
   setup() {
     const start = ref(false);
     const { transcript, isRecording } = useSpeechRecognition(start);
