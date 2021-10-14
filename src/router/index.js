@@ -8,7 +8,7 @@ import ParentsInfo from '@/components/ParentsInfo';
 import OralSpelling from '@/components/OralSpelling';
 
 
-import Tips from '@/components/Tips';
+import MemorySpan from '@/components/MemorySpan';
 import DragAndDrop from '@/components/DragAndDrop';
 import GameList from '@/components/GameList';
 import Welcome from "@/components/Welcome";
@@ -81,6 +81,11 @@ export default new Router({
       path: "/oralSpelling",
       name: "OralSpelling",
       component: OralSpelling
+    },
+    {
+      path: "/memorySpan",
+      name: "MemorySpan",
+      component: MemorySpan
     }
   ]
 })

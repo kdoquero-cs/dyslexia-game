@@ -43,7 +43,7 @@ function setup(props) {
     { id: 3, name: "Visual attention", style: `grid-row: row-1 / span 1; grid-column: col-5 / span 2; background-image: url(${require('@/assets/backgrounds/visual-attention.jpg')});`, path:"" },
     { id: 4, name: "Auditory comprehension", style: `grid-row: row-2 / span 1; grid-column: col-2 / span 2; background-image: url(${require('@/assets/backgrounds/auditory-comprehension.jpg')});`, path:"" },
     { id: 5, name: "Oral spelling", style: `grid-row: row-2 / span 1; grid-column: col-4 / span 2; background-image: url(${require('@/assets/backgrounds/oral-spelling.png')});`, path:"/oralSpelling" },
-    { id: 6, name: "Memory span", style: `grid-row: row-3 / span 1; grid-column: col-1 / span 2; background-image: url(${require('@/assets/backgrounds/memory-span.jpg')});`, path:"" },
+    { id: 6, name: "Memory span", style: `grid-row: row-3 / span 1; grid-column: col-1 / span 2; background-image: url(${require('@/assets/backgrounds/memory-span.jpg')});`, path:"/memorySpan" },
     { id: 7, name: "game7", style: `grid-row: row-3 / span 1; grid-column: col-3 / span 2; background-image: url(${require('@/assets/backgrounds/test-7.jpg')});`, path:"" },
   ]);
   const goToGame = (game) => {

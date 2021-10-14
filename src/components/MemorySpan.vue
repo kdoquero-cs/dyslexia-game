@@ -39,7 +39,7 @@
           />
         </div>
       </div>
-      <button class="next" @click="nextWord">NEXT WORD</button>
+      <button class="next" @click="nextWord">NEXT</button>
     </div>
     <csm-pill @csmClick="goToGameList" class="next-button">I'm done!</csm-pill>
   </section>
@@ -62,17 +62,11 @@ export default defineComponent({
       companionHook.companion.value || companionHook.companionList[0];
     const companion = ref(companionFromHook);
     const values = ref([
-      "Word",
-      "Cow",
-      "Dog",
-      "paper",
-      "have",
-      "like",
-      "home",
-      "dad",
-      "little",
-      "goat",
-      "this",
+      "1",
+      "1 2",
+      "1 2 3",
+      "1 2 3 4",
+      "1 2 3 4",
     ]);
     const count = ref(0);
     const result = ref([]);
@@ -107,13 +101,12 @@ export default defineComponent({
       startRecon.value = currentRecording;
     });
     watch(transcript, (currentTranscript) => {
-      if (currentTranscript && currentTranscript.includes(currentWord.value)) {
+      if (currentTranscript.toLowerCase() && currentTranscript.includes(currentWord.value.toLowerCase())) {
         result.value.push({
           word: currentWord.value,
           speech: transcript.value,
         });
         ++score.value;
-        console.log("score", score.value);
       }
     });
     return {
@@ -133,7 +126,7 @@ export default defineComponent({
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .container {
-  background: url("/static/backgrounds/oral-spelling.png") no-repeat;
+  background: url("/static/backgrounds/memory-span.jpg") no-repeat;
   background-size: cover;
   background-position: center;
   display: flex;
