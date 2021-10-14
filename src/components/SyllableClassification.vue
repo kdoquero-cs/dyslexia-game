@@ -9,7 +9,6 @@
       >Back</csm-button
     > -->
     <csm-pill @csmClick="goToGameList" class="next-button">I'm done!</csm-pill>
-    <img src="./../../static/avatars/Animal1.svg" alt="Animal" />
 
     <div class="instruction">
       <div class="panel">
@@ -19,12 +18,19 @@
           <p>There are baskets!</p>
           <button type="button" @click="playInstruction()">
               <div class="button_text">
-                <img src="./../../static/icons/Sound icon.png" alt="" />
+                <img src="@/assets/icons/Sound icon.png" alt="" />
                 <span class="listen"
                   ><span class="sr-only">Listen to the</span>Instructions</span
                 >
               </div>
             </button>
+
+          <img
+              class="companion"
+              v-if="companion"
+              :src="companion.path"
+              :alt="companion.name"
+          />
           <!-- <csm-button
             icon="play"
             iconPosition="left"
@@ -54,7 +60,7 @@
     <div class="basket_container">
       <div id="target" class="basket_column">
         <div @dragover.prevent @drop="drop">
-          <img src="./../../static/icons/basket.svg" alt="basket" />
+          <img src="@/assets/icons/basket.svg" alt="basket" />
           <!-- <div class="draggable" v-for="t of words.target1" :key="t">
             {{ t }}
           </div> -->
@@ -69,7 +75,7 @@
       </div> -->
       <div id="target3" class="basket_column">
         <div @dragover.prevent @drop="drop2">
-          <img src="./../../static/icons/basket.svg" alt="basket" />
+          <img src="@/assets/icons/basket.svg" alt="basket" />
           <!-- <div class="draggable" v-for="t of words.target3" :key="t">
             {{ t }}
           </div> -->
@@ -84,10 +90,12 @@
 import { defineComponent, ref } from "@vue/composition-api";
 import router from "@/router";
 import well from "./../../static/voices/WhatAMess.mp3";
+import { useCompanion } from "../composables/useCompanion";
 
 const setup = props => {
   const goToGameList = () => router.push({ path: "/gamelist" });
   const result = ref(null);
+  const companion = ref(useCompanion.getInstance().companion);
 
   const game2Solution = ref([
     {
@@ -215,7 +223,8 @@ const setup = props => {
     result,
     goToGameList,
     game2Solution,
-    playInstruction
+    playInstruction,
+    companion,
   };
 };
 
@@ -227,7 +236,7 @@ export default defineComponent({
 </script>
 <style scoped>
 .game2 {
-  background: url("./../../static/backgrounds/syllable-classification.jpg")
+  background: url("~@/assets/backgrounds/syllable-classification.jpg")
     no-repeat center center fixed;
   background-color: antiquewhite;
   -webkit-background-size: cover;
@@ -255,13 +264,13 @@ export default defineComponent({
   align-items: flex-start;
 }
 
-.game2 > img {
-  position: absolute;
-  left: -275px;
-  bottom: -380px;
-  z-index: 1;
-  width: 580px;
-}
+/*.game2 > img {*/
+/*  position: absolute;*/
+/*  left: -275px;*/
+/*  bottom: -380px;*/
+/*  z-index: 1;*/
+/*  width: 580px;*/
+/*}*/
 
 /* .instruction button {
   background: none;
@@ -380,5 +389,14 @@ csm-pill {
   cursor: pointer;
   outline: inherit;
   width: 50px;
+}
+
+.companion {
+  position: absolute;
+  bottom: -8em;
+  left: 0;
+  width: 200px;
+  user-select: none;
+  pointer-events: none;
 }
 </style>

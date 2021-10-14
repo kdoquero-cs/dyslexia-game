@@ -10,7 +10,7 @@
           <div class="spelling">
             <img
               @click="playInstruction"
-              src="/static/icons/Hear instructions.png"
+              src="@/assets/icons/Hear instructions.png"
               alt=""
               srcset=""
             />
@@ -136,7 +136,7 @@ export default defineComponent({
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .container {
-  background: url("/static/backgrounds/oral-spelling.png") no-repeat;
+  background: url("~@/assets/backgrounds/oral-spelling.png") no-repeat;
   background-size: cover;
   background-position: center;
   display: flex;
@@ -145,10 +145,10 @@ export default defineComponent({
 }
 
 .avatar {
-  width: 250px;
+  width: 200px;
   position: absolute;
-  left: -47px;
-  top: 81%;
+  left: -1em;
+  top: 80%;
 }
 .spelling-box {
   height: 328px;

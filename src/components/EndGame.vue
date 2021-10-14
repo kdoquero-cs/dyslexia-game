@@ -2,10 +2,11 @@
   <section class="main-container">
     <aside class="sidebar">
       <article class="content">
-        <h4>Thank you so much for helping me get home to my family and friends.</h4>
+        <h1 class="title">Thank you so much for helping me get home to my family and friends.</h1>
         <p>I really enjoyed our adventure. Please take care and be good!</p>
+        <p>Note: There are some information for your parents, let them know about it!</p>
 
-        <csm-button class="action" primary v-on:csmClick="seeReport()">See the report</csm-button>
+        <csm-button class="action" primary v-on:csmClick="seeReport()">Parents information</csm-button>
       </article>
       <img class="companion" :src="companion.path" />
     </aside>
@@ -27,12 +28,16 @@
 <script>
 import { defineComponent, ref } from "@vue/composition-api";
 import { useCompanion } from "../composables/useCompanion";
+import router from "@/router";
 
 function setup() {
   const companion = ref(useCompanion.getInstance().companion);
   const notCompanions = ref(useCompanion.getInstance().companionList.filter(c => c.name !== companion.value.name));
 
-  function seeReport() {}
+  function seeReport() {
+    router.push({ path: "/parentsInfo" });
+  }
+
   function getJewelClass(index) {
     return index % 7 === 0
         ? { 'jewel-full-columns': true }
@@ -73,7 +78,7 @@ export default defineComponent({
 
 .content {
   width: 100%;
-  height: 50%;
+  min-height: 50%;
   padding: var(--nazca-rect-padding);
   background-color: var(--nazca-rect-color);
   border-radius: var(--nazca-rect-radius);
@@ -82,11 +87,12 @@ export default defineComponent({
 
 .companion {
   position: absolute;
-  bottom: 10em;
+  bottom: 8em;
   left: -2em;
   width: 75%;
   user-select: none;
   transition: transform .33s ease-in-out, opacity 1s ease-in-out;
+  pointer-events: none;
 }
 
 .not-companions-container {

@@ -125,6 +125,7 @@ export default defineComponent({
   width: 75%;
   user-select: none;
   transition: transform .33s ease-in-out, opacity 1s ease-in-out;
+  pointer-events: none;
 }
 
 .companion.step-1 {
