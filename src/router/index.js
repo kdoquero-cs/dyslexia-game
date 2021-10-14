@@ -16,6 +16,7 @@ import Portal from '@/components/Portal';
 import EndGame from '@/components/EndGame';
 import WordRecognition from '@/components/WordRecognition';
 import SyllableClassification from '@/components/SyllableClassification';
+import ReadingProfile from '@/components/ReadingProfile';
 
 
 
@@ -59,7 +60,7 @@ export default new Router({
       component: GameAssessment
     },
     {
-      path: "/parentsInfo",
+      path: "/parents-information",
       name: "ParentsInfo",
       component: ParentsInfo
     },
@@ -91,6 +92,11 @@ export default new Router({
       path: '/syllable-classification',
       name: 'SyllableClassification',
       component: SyllableClassification
+    },
+    {
+      path: '/reading-profile',
+      name: 'ReadingProfile',
+      component: ReadingProfile
     }
   ]
 })
