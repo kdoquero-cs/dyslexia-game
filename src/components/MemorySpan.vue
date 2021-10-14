@@ -26,12 +26,12 @@
           <div class="inputs">
             <div @click="play" class="listen">
               <h2>Listen</h2>
-              <img src="/static/icons/Sound icon.svg" alt="Sound" srcset="" />
+              <img src="@/assets/icons/Sound icon.svg" alt="Sound" srcset="" />
             </div>
             <div @click="record" class="speak">
               <h2>Speak</h2>
               <img
-                src="/static/icons/noun_micro_3396391 1.png"
+                src="@/assets/icons/noun_micro_3396391 1.png"
                 alt="micro"
                 srcset=""
               />
@@ -52,7 +52,7 @@ import { useSpeechSynthesis } from "../composables/useSpeechSynthesis";
 import { useSpeechRecognition } from "../composables/useSpeechRecon";
 import router from "@/router";
 import { useCompanion } from "../composables/useCompanion";
-import SpellingExercise from "../../static/voices/SpellingExercise.mp3";
+import SpellingExercise from "@/assets/voices/SpellingExercise.mp3";
 export default defineComponent({
   props: {},
   setup() {

@@ -6,7 +6,7 @@
           <h1>Auditive comprehension</h1>
           <h2>Step 1</h2>
           <p>Listen to my story:</p>
-          <audio controls src="/static/voices/YoudLikeToKnowMoreAboutMe.mp3">
+          <audio controls src="@/assets/voices/YoudLikeToKnowMoreAboutMe.mp3">
             Your browser does not support the
             <code>audio</code> element.
           </audio>
@@ -57,7 +57,7 @@
 import { computed, defineComponent, ref, watch } from "@vue/composition-api";
 import router from "@/router";
 import { useCompanion } from "../composables/useCompanion";
-import SpellingExercise from "../../static/voices/SpellingExercise.mp3";
+import SpellingExercise from "@/assets/voices/SpellingExercise.mp3";
 export default defineComponent({
   props: {},
   setup() {
@@ -129,7 +129,7 @@ export default defineComponent({
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .container {
-  background: url("/static/backgrounds/auditory-comprehension.jpg") no-repeat;
+  background: url("~@/assets/backgrounds/auditory-comprehension.jpg") no-repeat;
   background-size: cover;
   background-position: center;
   display: flex;
