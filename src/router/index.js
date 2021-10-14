@@ -86,6 +86,11 @@ export default new Router({
       path: "/memorySpan",
       name: "MemorySpan",
       component: MemorySpan
+    },
+    {
+      path: '/syllable-classification',
+      name: 'SyllableClassification',
+      component: SyllableClassification
     }
   ]
 })
