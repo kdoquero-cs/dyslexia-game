@@ -21,6 +21,8 @@
               <label for="months" class="form-label">Months</label>
               <csm-input type="number" name="months" @csmInput="inputMonths" ></csm-input>
             </div>
+
+            <audio src="@/assets/voices/2B - niceToMeetYou.mp3" autoplay="true"></audio>
           </div>
         </div>
       </form>
@@ -30,6 +32,7 @@
     </div>
 
     <audio src="@/assets/music/MainMenu.mp4" autoplay="true"></audio>
+    <audio src="@/assets/voices/2A - whatsYourName.mp3" autoplay="true"></audio>
   </section>
 </template>
 

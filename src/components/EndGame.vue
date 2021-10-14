@@ -22,6 +22,7 @@
     </section>
 
     <audio src="@/assets/music/Credits.mp4" autoplay="true"></audio>
+    <audio src="@/assets/voices/WeMadeIt.mp3" autoplay="true"></audio>
   </section>
 </template>
 
@@ -86,7 +87,7 @@ export default defineComponent({
 
 .companion {
   position: absolute;
-  bottom: 8em;
+  bottom: 5vh;
   left: -2em;
   width: 75%;
   user-select: none;
