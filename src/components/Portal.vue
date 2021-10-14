@@ -15,7 +15,7 @@
       </div>
     </div>
 
-    <audio src="/static/music/Credits.mp4" autoplay="true"></audio>
+    <audio src="@/assets/music/Credits.mp4" autoplay="true"></audio>
   </section>
 </template>
 
@@ -89,7 +89,7 @@ export default defineComponent({
 .main-container {
   display: flex;
   padding: 4em 2em 4em 6em;
-  background-image: url('/static/backgrounds/end-portal.jpg');
+  background-image: url('~@/assets/backgrounds/end-portal.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

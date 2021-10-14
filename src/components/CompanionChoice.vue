@@ -30,7 +30,7 @@
       <csm-button class="next" @csmClick="goToForm">Next</csm-button>
     </fieldset>
 
-    <audio src="/static/music/MainMenu.mp4" autoplay="true"></audio>
+    <audio src="@/assets/music/MainMenu.mp4" autoplay="true"></audio>
   </div>
 </template>
 

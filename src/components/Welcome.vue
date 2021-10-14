@@ -9,7 +9,7 @@
       </router-link>
     </section>
 
-    <audio src="/static/music/MainMenu.mp4" autoplay="true"></audio>
+    <audio src="@/assets/music/MainMenu.mp4" autoplay="true"></audio>
   </fragment>
 </template>
 

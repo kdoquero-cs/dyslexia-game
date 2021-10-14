@@ -20,7 +20,7 @@
       </div>
     </section>
 
-    <audio src="/static/music/Credits.mp4" autoplay="true"></audio>
+    <audio src="@/assets/music/Credits.mp4" autoplay="true"></audio>
   </section>
 </template>
 
@@ -59,7 +59,7 @@ export default defineComponent({
 .main-container {
   display: flex;
   padding: 4em 2em 4em 6em;
-  background-image: url('/static/backgrounds/oral-spelling.png');
+  background-image: url('~@/assets/backgrounds/oral-spelling.png');
   background-size: 150%;
   background-repeat: no-repeat;
   background-position: 50% 100%;
