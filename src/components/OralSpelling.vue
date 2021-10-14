@@ -52,7 +52,7 @@ import { useSpeechSynthesis } from "../composables/useSpeechSynthesis";
 import { useSpeechRecognition } from "../composables/useSpeechRecon";
 import router from "@/router";
 import { useCompanion } from "../composables/useCompanion";
-import SpellingExercise from "../../static/voices/SpellingExercise.mp3";
+import SpellingExercise from "@/assets/voices/SpellingExercise.mp3";
 export default defineComponent({
   props: {},
   setup() {
