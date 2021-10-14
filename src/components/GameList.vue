@@ -27,11 +27,13 @@
     </ul>
 
     <audio src="@/assets/music/Page1a4.mp4" autoplay="true"></audio>
+    <audio src="@/assets/voices/3_.mp3" autoplay="true"></audio>
+    <span v-if="triggerNextVoice"><audio src="@/assets/voices/4_.mp3" autoplay="true"></audio></span>
   </section>
 </template>
 
 <script>
-import { defineComponent, ref } from "@vue/composition-api";
+import { defineComponent, ref, onMounted } from "@vue/composition-api";
 import { useCompanion } from "../composables/useCompanion";
 import router from "@/router";
 
@@ -52,11 +54,17 @@ function setup(props) {
     }
     router.push({ path: game.path });
   }
+  const triggerNextVoice = ref(false);
+
+  onMounted(() => {
+    setTimeout(() => { triggerNextVoice.value = true }, 17000)
+  })
 
   return {
     games,
     companion,
-    goToGame
+    goToGame,
+    triggerNextVoice,
   };
 }
 
