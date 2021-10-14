@@ -15,10 +15,13 @@
           </p>
           <br />
           <p>
-            We gathered a <a href="" class="link">detailed report</a> of the
-            information we could gather from this game.
+            We gathered a
+            <router-link to="/game-assessment" class="link">detailed report</router-link>
+            of the information we could gather from this game.
           </p>
-          <csm-button class="next" @csmClick="goToReport" primary>Detailed report</csm-button>
+          <csm-button class="next" @csmClick="goToReport" primary
+            >Detailed report</csm-button
+          >
         </div>
       </div>
       <div class="ProfilePanel">
@@ -67,13 +70,13 @@ export default defineComponent({
   setup() {
     const goToReadingProfile = () => {
       router.push({ path: "/reading-profile" });
-    }
+    };
     const goToReport = () => {
       router.push({ path: "/game-assessment" });
-    }
+    };
     return {
       goToReadingProfile,
-      goToReport 
+      goToReport
     };
   }
 });
