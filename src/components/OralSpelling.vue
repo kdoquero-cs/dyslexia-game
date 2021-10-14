@@ -144,10 +144,10 @@ export default defineComponent({
   width: 50%;
 }
 .avatar {
-  width: 250px;
+  width: 200px;
   position: absolute;
-  left: -47px;
-  top: 81%;
+  left: -1em;
+  top: 80%;
 }
 .spelling-box {
   height: 500px;

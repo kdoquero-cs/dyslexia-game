@@ -1,7 +1,7 @@
 <template>
 <div class="background">
   <h1 class="h1"><span class="kidName"><!-- here goes the variable for the kid's name --></span>'s Game Playthrough Assessment</h1>
-  
+
   <h2 class="h2">Your child's information</h2>
   <ul>
     <li class="listitem"><span class="kidDetail">Name :</span> <span class="kidName"><!-- here goes the variable for the kid's name --></span></li>
@@ -12,7 +12,7 @@
   <table class="table">
     <caption class="tableTitle">
       <h4 class="h4">Recognition skills: Words</h4>
-      <p><span class="task">Task:</span> Classifying words into 3 categories: regular word, irregular word and none sence words</p>
+      <p><span class="task">Task:</span> Classifying words into 3 categories: regular word, irregular word and nonsense words</p>
     </caption>
     <tr>
       <th scope="col" class="colHeader"><span class="sr-only">Score types</span>
@@ -21,7 +21,7 @@
       </th>
       <th scope="col" class="colHeader">Irregular word
       </th>
-      <th scope="col" class="colHeader">None sence words
+      <th scope="col" class="colHeader">Nonsense words
       </th>
     <tr>
     <tr>
@@ -31,7 +31,7 @@
       </td>
       <td class="row"><span class="result"><!-- here goes the variable for the kid's Irregular word error percentage --></span>
       </td>
-      <td class="row"><span class="result"><!-- here goes the variable for the kid's none sence words error percentage --></span>
+      <td class="row"><span class="result"><!-- here goes the variable for the kid's nonsense words error percentage --></span>
       </td>
     </tr>
     <tr>
@@ -41,7 +41,7 @@
       </td>
       <td class="row"><span class="result"><!-- here goes the variable for the Irregular word norm rate --></span>
       </td>
-      <td class="row"><span class="result"><!-- here goes the variable for the none sence words norm rate --></span>
+      <td class="row"><span class="result"><!-- here goes the variable for the nonsense words norm rate --></span>
       </td>
     </tr>
     <tr>
@@ -163,11 +163,11 @@
       </th>
       <th scope="col" class="colHeader">Global
       </th>
-      <th scope="col" class="colHeader">Phonetic 
+      <th scope="col" class="colHeader">Phonetic
       </th>
       <th scope="col" class="colHeader">Added / omitted (letter)
       </th>
-      <th scope="col" class="colHeader">Total 
+      <th scope="col" class="colHeader">Total
       </th>
     <tr>
     <tr>
@@ -217,11 +217,11 @@
       </th>
       <th scope="col" class="colHeader">Global
       </th>
-      <th scope="col" class="colHeader">Phonetic 
+      <th scope="col" class="colHeader">Phonetic
       </th>
       <th scope="col" class="colHeader">Added / omitted (letter)
       </th>
-      <th scope="col" class="colHeader">Total 
+      <th scope="col" class="colHeader">Total
       </th>
     <tr>
     <tr>

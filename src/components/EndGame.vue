@@ -74,7 +74,7 @@ export default defineComponent({
 
 .content {
   width: 100%;
-  height: 50%;
+  min-height: 50%;
   padding: var(--nazca-rect-padding);
   background-color: var(--nazca-rect-color);
   border-radius: var(--nazca-rect-radius);
@@ -83,11 +83,12 @@ export default defineComponent({
 
 .companion {
   position: absolute;
-  bottom: 10em;
+  bottom: 8em;
   left: -2em;
   width: 75%;
   user-select: none;
   transition: transform .33s ease-in-out, opacity 1s ease-in-out;
+  pointer-events: none;
 }
 
 .not-companions-container {

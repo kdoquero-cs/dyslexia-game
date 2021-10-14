@@ -94,6 +94,7 @@ export default defineComponent({
   left: -2em;
   width: 75%;
   user-select: none;
+  pointer-events: none;
 }
 
 .game-list {

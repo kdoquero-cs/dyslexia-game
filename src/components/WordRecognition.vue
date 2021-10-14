@@ -9,7 +9,6 @@
       >Back</csm-button
     > -->
     <csm-pill @csmClick="goToGameList" class="next-button">I'm done!</csm-pill>
-    <img src="./../../static/avatars/Animal1.svg" alt="Animal" />
 
     <div class="instruction">
       <div class="panel">
@@ -25,6 +24,13 @@
                 >
               </div>
             </button>
+
+          <img
+            class="companion"
+            v-if="companion"
+            :src="companion.path"
+            :alt="companion.name"
+          />
           <!-- <csm-button
             icon="play"
             iconPosition="left"
@@ -88,10 +94,12 @@
 import { defineComponent, ref } from "@vue/composition-api";
 import router from "@/router";
 import well from "./../../static/voices/Well.mp3";
+import { useCompanion } from "../composables/useCompanion";
 
 const setup = props => {
   const goToGameList = () => router.push({ path: "/gamelist" });
   const result = ref(null);
+  const companion = ref(useCompanion.getInstance().companion);
 
   const game1Solution = ref([
     {
@@ -214,7 +222,8 @@ const setup = props => {
     result,
     goToGameList,
     game1Solution,
-    playInstruction
+    playInstruction,
+    companion,
   };
 };
 export default defineComponent({
@@ -254,13 +263,13 @@ export default defineComponent({
   align-items: flex-start;
 }
 
-.game1 > img {
-  position: absolute;
-  left: -300px;
-  bottom: -380px;
-  z-index: 1;
-  width: 620px;
-}
+/*.game1 > img {*/
+/*  position: absolute;*/
+/*  left: -300px;*/
+/*  bottom: -380px;*/
+/*  z-index: 1;*/
+/*  width: 620px;*/
+/*}*/
 
 .instructionsPanel button {
   background: none;
@@ -367,5 +376,14 @@ csm-pill {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.companion {
+  position: absolute;
+  bottom: -8em;
+  left: 0;
+  width: 200px;
+  user-select: none;
+  pointer-events: none;
 }
 </style>
