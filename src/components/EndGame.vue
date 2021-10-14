@@ -27,6 +27,7 @@
 
 <script>
 import { defineComponent, ref } from "@vue/composition-api";
+import router from "@/router";
 import { useCompanion } from "../composables/useCompanion";
 import router from "@/router";
 
@@ -35,9 +36,8 @@ function setup() {
   const notCompanions = ref(useCompanion.getInstance().companionList.filter(c => c.name !== companion.value.name));
 
   function seeReport() {
-    router.push({ path: "/parentsInfo" });
+    router.push({ path: "/parents-information" });
   }
-
   function getJewelClass(index) {
     return index % 7 === 0
         ? { 'jewel-full-columns': true }
