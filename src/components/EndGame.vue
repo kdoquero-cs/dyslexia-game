@@ -87,7 +87,7 @@ export default defineComponent({
 
 .companion {
   position: absolute;
-  bottom: 8em;
+  bottom: 5vh;
   left: -2em;
   width: 75%;
   user-select: none;
