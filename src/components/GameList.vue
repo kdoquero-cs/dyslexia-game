@@ -46,11 +46,14 @@ function setup(props) {
     { id: 4, name: "Auditory comprehension", style: `grid-row: row-2 / span 1; grid-column: col-2 / span 2; background-image: url(${require('@/assets/backgrounds/auditory-comprehension.jpg')});`, path:"/auditive-comprehension" },
     { id: 5, name: "Oral spelling", style: `grid-row: row-2 / span 1; grid-column: col-4 / span 2; background-image: url(${require('@/assets/backgrounds/oral-spelling.png')});`, path:"/oral-spelling" },
     { id: 6, name: "Memory span", style: `grid-row: row-3 / span 1; grid-column: col-1 / span 2; background-image: url(${require('@/assets/backgrounds/memory-span.jpg')});`, path:"/memory-span" },
-    { id: 7, name: "game7", style: `grid-row: row-3 / span 1; grid-column: col-3 / span 2; background-image: url(${require('@/assets/backgrounds/test-7.jpg')});`, path:"" },
+    { id: 7, name: "Writing", style: `grid-row: row-3 / span 1; grid-column: col-3 / span 2; background-image: url(${require('@/assets/backgrounds/test-7.jpg')});`, path:"" },
   ]);
   const goToGame = (game) => {
     if (game.id === 3) {
-      window.location.href = "https://zfhhju.axshare.com/";
+      window.location.href = "https://zfhhju.axshare.com/#id=vv7tfc&p=page_1&pwd=hackathon&c=1";
+    }
+    if (game.id === 7) {
+      window.location.href = "https://zfhhju.axshare.com/#id=2nr89r&p=writing1&pwd=hackathon&c=1";
     }
     router.push({ path: game.path });
   }
