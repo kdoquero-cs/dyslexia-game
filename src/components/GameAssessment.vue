@@ -1,5 +1,5 @@
 <template>
-<div class="background">
+<div class="main-container">
 <h1 class="h1">
 	<span class="kidName">
 		<!-- here goes the variable for the kid's name -->
@@ -10,19 +10,19 @@
 <div id="banner" class="banner">
 	<div class="print">
 		<h2 class="h2">Your child's information</h2>
-		<csm-button data-v-115883ef="" primary="" class="action hydrated">Print the report</csm-button>
+		<csm-button primary class="action" v-on:csmClick="print()">Print the report</csm-button>
 	</div>
 	<div>
 		<ul class="ul">
 			<li class="listitem">
-				<span class="kidDetail">Name :</span> 
+				<span class="kidDetail">Name :</span>
 				<span>
 					<span class="tempText">[child's name]</span>
 					<!-- here goes the variable for the kid's name -->
 				</span>
 			</li>
 			<li class="listitem">
-				<span class="kidDetail">Age:</span> 
+				<span class="kidDetail">Age:</span>
 				<span>
 					<!-- here goes the variable for the kid's year -->
 					<span class="tempText">XX</span>
@@ -33,10 +33,11 @@
 					<span class="tempText">XX</span>
 					<span> month.</span>
 				</span>
+      </li>
 		</ul>
 	</div>
 </div>
-<div id"assessment">
+<div id="assessment">
 	<h2 class="h2">Your child's assessment</h2>
 	<h3 class="h3">1. Recognition skills</h3>
 	<div class="tableTitle">
@@ -54,18 +55,18 @@
 			<tr>
 			<tr>
 				<th scope="row" class="rowHeader">% error</th>
-				<td class="row" class="result">
+				<td class="row result">
 					<span class="result">
 						<span class="tempText">XX</span>
 						<!-- here goes the variable for the kid's Regular word error percentage -->
 					</span>
 				</td>
-				<td class="row" class="result">
+				<td class="row result">
 					<span class="result">
 						<span class="tempText">XX</span><!-- here goes the variable for the kid's Irregular word error percentage -->
 					</span>
 				</td>
-				<td class="row" class="result">
+				<td class="row result">
 					<span class="result">
 						<span class="tempText">XX</span><!-- here goes the variable for the kid's Logatoma error percentage -->
 					</span>
@@ -403,10 +404,10 @@
 				</span>
 			</td>
 			<td class="row">
-				<span class="result">0,5<!-- here goes the variable for the writting Added / omitted letter Standard error -->
+        <span class="result">0,5</span><!-- here goes the variable for the writting Added / omitted letter Standard error -->
 			</td>
 			<td class="row">
-				<span class="result">3<!-- here goes the variable for the writting Punctuation letter Standard error -->
+        <span class="result">3</span><!-- here goes the variable for the writting Punctuation letter Standard error -->
 			</td>
 			<td class="row">
 				<span class="result">
@@ -419,21 +420,22 @@
 	<ul>
 		<li class="listitem"><span class="task">Task:</span> numeric span</li>
 		<li class="listitem">
-			<span class="task">Results:</span> 
+			<span class="task">Results:</span>
 			<span class="kidyear">
 				<!-- here goes the variable for the kid's Memory span result (number) -->
 			</span>
-			years 
+			years
 			<span class="kidmonth">
 				<!-- here goes the variable for the kid's month -->
 			</span>
 			month</p>
+    </li>
 	</ul>
 	<h3 class="h3">General conclusion</h3>
 	<p><span class="emphase">As a reminder, this game is only a test, not a diagnosis.</span> </br>
 		For more precise results, see a healthcare professional.
 	</p>
-	<p>Your results suggest that: 
+	<p>Your results suggest that:
 	<p class="diagnostic">
 		<!-- here goes the variable for the kid's diagnostic - (one of the below)
 			- Everything seems good
@@ -447,15 +449,21 @@
 		</ul>
 	</div>
 </div>
+</div>
 </template>
 
 <script>
 export default {
-  name: 'GameAssessment'
+  name: 'GameAssessment',
+  setup: function() {
+    return {
+      print: () => window.print(),
+    }
+  },
 }
 </script>
 
-<style>
+<style scoped>
 .background {
  background-color: #FFFFFF;
 }
@@ -528,5 +536,12 @@ justify-content:space-between;
 .h4 {
   font-size: 16px;
   font-weight: bold;
+}
+
+.main-container {
+  padding: 5% 10%;
+  background-color: var(--colors-gray-white);
+  overflow: auto;
+  text-align: left;
 }
 </style>

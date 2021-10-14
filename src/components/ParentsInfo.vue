@@ -1,5 +1,5 @@
 <template>
-  <div class="background">
+  <div class="main-container">
     <div class="TxtBox">
       <div class="Txtbox">
         <h1 class="h1">Information for parents and professionals</h1>
@@ -145,5 +145,11 @@ export default defineComponent({
 .reading-profile__item img:hover {
   width: 82%;
   cursor: pointer;
+}
+
+.main-container {
+  padding: 5% 10%;
+  background-color: var(--colors-gray-white);
+  overflow: auto;
 }
 </style>
