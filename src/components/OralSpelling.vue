@@ -1,11 +1,11 @@
 <template>
   <section class="container">
-    <div>
-      <div>
+    <div class="display">
+      <div class="display">
         <div class="spelling-box">
           <h1>Spelling</h1>
           <p>Here, I'll say a few words.</p>
-          <p>Can you help me spell them?</p>
+          <p class="words2">Can you help me spell them?</p>
 
           <div class="spelling">
             <img
@@ -22,25 +22,26 @@
             :alt="companion.name"
           />
         </div>
+        <div class="inputs-container">
+          <div class="inputs">
+            <div @click="play" class="listen">
+              <h2>Listen</h2>
+              <img src="/static/icons/Sound icon.svg" alt="Sound" srcset="" />
+            </div>
+            <div @click="record" class="speak">
+              <h2>Speak</h2>
+              <img
+                src="/static/icons/noun_micro_3396391 1.png"
+                alt="micro"
+                srcset=""
+              />
+            </div>
+          </div>
+          <button class="next" @click="nextWord">Next Word</button>
+        </div>
       </div>
     </div>
-    <div class="inputs-container">
-      <div class="inputs">
-        <div @click="play" class="listen">
-          <h2>Listen</h2>
-          <img src="/static/icons/Sound icon.svg" alt="Sound" srcset="" />
-        </div>
-        <div @click="record" class="speak">
-          <h2>Speak</h2>
-          <img
-            src="/static/icons/noun_micro_3396391 1.png"
-            alt="micro"
-            srcset=""
-          />
-        </div>
-      </div>
-      <button class="next" @click="nextWord">NEXT WORD</button>
-    </div>
+
     <csm-pill @csmClick="goToGameList" class="next-button">I'm done!</csm-pill>
   </section>
 </template>
@@ -107,13 +108,15 @@ export default defineComponent({
       startRecon.value = currentRecording;
     });
     watch(transcript, (currentTranscript) => {
-      if (currentTranscript && currentTranscript.includes(currentWord.value)) {
+      if (
+        currentTranscript.toLowerCase() &&
+        currentTranscript.includes(currentWord.value.toLowerCase())
+      ) {
         result.value.push({
           word: currentWord.value,
           speech: transcript.value,
         });
         ++score.value;
-        console.log("score", score.value);
       }
     });
     return {
@@ -124,7 +127,7 @@ export default defineComponent({
       nextWord,
       confidence,
       goToGameList,
-      playInstruction
+      playInstruction,
     };
   },
 });
@@ -140,9 +143,7 @@ export default defineComponent({
   width: 100%;
   height: 100%;
 }
-.container > div {
-  width: 50%;
-}
+
 .avatar {
   width: 250px;
   position: absolute;
@@ -150,7 +151,7 @@ export default defineComponent({
   top: 81%;
 }
 .spelling-box {
-  height: 500px;
+  height: 328px;
   width: 350px;
   margin: 30px;
   border-radius: 15px;
@@ -158,14 +159,19 @@ export default defineComponent({
   position: relative;
   padding: 40px;
 }
+.spelling-box .words2 {
+  margin-top: 50px;
+}
 .spelling {
-  margin-top: 60px;
+  margin-top: 35px;
+  margin-left: 143px;
 }
 .inputs-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 100%;
 }
 .inputs {
   display: flex;
@@ -197,5 +203,11 @@ export default defineComponent({
   bottom: 80px;
   right: 26px;
   cursor: pointer;
+}
+.display {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: start;
 }
 </style>

@@ -2,7 +2,6 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Form from '@/components/Form';
 import CompanionChoice from '@/components/CompanionChoice';
-import Game10 from '@/components/Game10';
 import GameAssessment from '@/components/GameAssessment';
 import ParentsInfo from '@/components/ParentsInfo';
 import OralSpelling from '@/components/OralSpelling';
@@ -16,6 +15,8 @@ import Portal from '@/components/Portal';
 import EndGame from '@/components/EndGame';
 import WordRecognition from '@/components/WordRecognition';
 import SyllableClassification from '@/components/SyllableClassification';
+import AuditiveComprehension from '@/components/AuditiveComprehension';
+
 
 
 
@@ -49,11 +50,6 @@ export default new Router({
       component: CompanionChoice
     },
     {
-      path: '/game10',
-      name: 'Game10',
-      component: Game10
-    },
-    {
       path: "/gameAssessment",
       name: "GameAssessment",
       component: GameAssessment
@@ -78,12 +74,12 @@ export default new Router({
       name: "EndGame",
       component: EndGame
     }, {
-      path: "/oralSpelling",
+      path: "/oral-spelling",
       name: "OralSpelling",
       component: OralSpelling
     },
     {
-      path: "/memorySpan",
+      path: "/memory-span",
       name: "MemorySpan",
       component: MemorySpan
     },
@@ -91,6 +87,11 @@ export default new Router({
       path: '/syllable-classification',
       name: 'SyllableClassification',
       component: SyllableClassification
+    },
+    {
+      path: '/auditive-comprehension',
+      name: 'AuditiveComprehension',
+      component: AuditiveComprehension
     }
   ]
 })
