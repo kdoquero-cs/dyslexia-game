@@ -16,7 +16,7 @@ import EndGame from '@/components/EndGame';
 import WordRecognition from '@/components/WordRecognition';
 import SyllableClassification from '@/components/SyllableClassification';
 import AuditiveComprehension from '@/components/AuditiveComprehension';
-
+import ReadingProfile from '@/components/ReadingProfile';
 
 
 
@@ -55,7 +55,7 @@ export default new Router({
       component: GameAssessment
     },
     {
-      path: "/parentsInfo",
+      path: "/parents-information",
       name: "ParentsInfo",
       component: ParentsInfo
     },
@@ -92,6 +92,10 @@ export default new Router({
       path: '/auditive-comprehension',
       name: 'AuditiveComprehension',
       component: AuditiveComprehension
+    },{
+      path: '/reading-profile',
+      name: 'ReadingProfile',
+      component: ReadingProfile
     }
   ]
 })
