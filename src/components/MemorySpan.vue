@@ -3,9 +3,9 @@
     <div class="display">
       <div class="display">
         <div class="spelling-box">
-          <h1>Spelling</h1>
-          <p>Here, I'll say a few words.</p>
-          <p class="words2">Can you help me spell them?</p>
+          <h1>Memory span</h1>
+          <p>We need to open this chest. </p>
+          <p class="words2">I'll tell you the code, remember it and repeat after me.</p>
 
           <div class="spelling">
             <img
@@ -52,7 +52,7 @@ import { useSpeechSynthesis } from "../composables/useSpeechSynthesis";
 import { useSpeechRecognition } from "../composables/useSpeechRecon";
 import router from "@/router";
 import { useCompanion } from "../composables/useCompanion";
-import SpellingExercise from "@/assets/voices/SpellingExercise.mp3";
+import OpenChest from "@/assets/voices/OpenChest.mp3";
 export default defineComponent({
   props: {},
   setup() {
@@ -62,7 +62,7 @@ export default defineComponent({
     let companionFromHook =
       companionHook.companion.value || companionHook.companionList[0];
     const companion = ref(companionFromHook);
-    const values = ref(["1", "1 2", "1 2 3", "1 2 3 4", "1 2 3 4"]);
+    const values = ref(["1", "1 3", "4 3 5", "3 2 1 5", "3 4 1 6 2"]);
     const count = ref(0);
     const result = ref([]);
     const score = ref(0);
@@ -87,7 +87,7 @@ export default defineComponent({
       play();
     };
     const playInstruction = () => {
-      const audio = new Audio(SpellingExercise);
+      const audio = new Audio(OpenChest);
       audio.play();
     };
 

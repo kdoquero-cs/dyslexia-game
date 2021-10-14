@@ -11,7 +11,7 @@
             <code>audio</code> element.
           </audio>
           <h2>Step 2</h2>
-          <p>Next, answer four questions:</p>
+          <p>Next, answer five questions:</p>
           <img
             class="avatar"
             v-if="companion"
@@ -23,7 +23,7 @@
           <div class="modal">
             <div class="modal-content">
               <div>
-                <h4>Question {{ count +1 }} /4</h4>
+                <h4>Question {{ count +1 }} /5</h4>
                 <p>{{ currentValue.question }}</p>
               </div>
               <div class="answers-container">
@@ -70,26 +70,26 @@ export default defineComponent({
         choices: ["Carrot cake", "Lasagna", "Fruit"],
       },
       {
-        id: 0,
+        id: 1,
         question: "Does every animal talk in Nazka's world ?",
         answer: "",
         choices: ["Yes", "No"],
       },
       {
-        id: 1,
+        id: 2,
         question:
           "Is it true that the more trees we have, the cleaner the air is?",
         answer: "",
         choices: ["Yes", "No"],
       },
       {
-        id: 2,
+        id: 3,
         question: "Who is samantha ?",
         answer: "",
         choices: ["My best friend", "My cousin", "My enemy"],
       },
       {
-        id: 3,
+        id: 4,
         question: "How many siblings does Naska have ?",
         answer: "",
         choices: ["2", "3", "4"],
