@@ -50,7 +50,7 @@ export default new Router({
       component: CompanionChoice
     },
     {
-      path: "/gameAssessment",
+      path: "/game-assessment",
       name: "GameAssessment",
       component: GameAssessment
     },

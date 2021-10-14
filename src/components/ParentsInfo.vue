@@ -18,6 +18,7 @@
             We gathered a <a href="" class="link">detailed report</a> of the
             information we could gather from this game.
           </p>
+          <csm-button class="next" @csmClick="goToReport" primary>Detailed report</csm-button>
         </div>
       </div>
       <div class="ProfilePanel">
@@ -67,8 +68,12 @@ export default defineComponent({
     const goToReadingProfile = () => {
       router.push({ path: "/reading-profile" });
     }
+    const goToReport = () => {
+      router.push({ path: "/game-assessment" });
+    }
     return {
-      goToReadingProfile 
+      goToReadingProfile,
+      goToReport 
     };
   }
 });
