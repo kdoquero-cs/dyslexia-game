@@ -15,7 +15,7 @@ import Welcome from "@/components/Welcome";
 import Portal from '@/components/Portal';
 import EndGame from '@/components/EndGame';
 import WordRecognition from '@/components/WordRecognition';
-import Game2 from '@/components/Game2';
+import SyllableClassification from '@/components/SyllableClassification';
 
 
 

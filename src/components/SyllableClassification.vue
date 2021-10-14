@@ -1,5 +1,5 @@
 <template>
-  <div class="game1">
+  <div class="game2">
     <!-- <csm-button
       icon="arrow-left"
       iconPosition="left"
@@ -14,10 +14,10 @@
     <div class="instruction">
       <div class="panel">
         <div class="instructionsPanel">
-          <h1 class="h2">Word recognition</h1>
-          <h2 class="h2">Waouh, look!</h2>
-          <p>There are wells!</p>
-            <button type="button" @click="playInstruction()">
+          <h1 class="h2">Syllable classification</h1>
+          <h2 class="h2">Waouh, what a mess!</h2>
+          <p>There are baskets!</p>
+          <button type="button" @click="playInstruction()">
               <div class="button_text">
                 <img src="./../../static/icons/Sound icon.png" alt="" />
                 <span class="listen"
@@ -54,101 +54,102 @@
     <div class="basket_container">
       <div id="target" class="basket_column">
         <div @dragover.prevent @drop="drop">
-          <img src="./../../static/icons/well.png" alt="well" />
+          <img src="./../../static/icons/basket.svg" alt="basket" />
           <!-- <div class="draggable" v-for="t of words.target1" :key="t">
             {{ t }}
           </div> -->
-          <csm-pill>General words</csm-pill>
+          <csm-pill>Words</csm-pill>
         </div>
       </div>
-      <div id="target2" class="basket_column">
+      <!-- <div id="target2" class="basket_column">
         <div @dragover.prevent @drop="drop2">
-          <img src="./../../static/icons/well.png" alt="well" />
-          <!-- <div class="draggable" v-for="t of words.target2" :key="t">
-            {{ t }}
-          </div> -->
+          <img src="./../assets/well.png" alt="well" />
           <csm-pill>Irregular words</csm-pill>
         </div>
-      </div>
+      </div> -->
       <div id="target3" class="basket_column">
-        <div @dragover.prevent @drop="drop3">
-          <img src="./../../static/icons/well.png" alt="well" />
+        <div @dragover.prevent @drop="drop2">
+          <img src="./../../static/icons/basket.svg" alt="basket" />
           <!-- <div class="draggable" v-for="t of words.target3" :key="t">
             {{ t }}
           </div> -->
-          <csm-pill>Words with no meaning</csm-pill>
+          <csm-pill>Syllables</csm-pill>
         </div>
       </div>
     </div>
     <!-- <div>{{ this.result }} / 9</div> -->
   </div>
 </template>
-
 <script>
 import { defineComponent, ref } from "@vue/composition-api";
 import router from "@/router";
-import well from "./../../static/voices/Well.mp3";
+import well from "./../../static/voices/WhatAMess.mp3";
 
 const setup = props => {
   const goToGameList = () => router.push({ path: "/gamelist" });
   const result = ref(null);
 
-  const game1Solution = ref([
+  const game2Solution = ref([
     {
-      name: "General word",
+      name: "Game2",
       answer: [
-        "maze",
-        "trial"
-        //   "cream"
-        // "peace", "way", "day"
+        "lace",
+        "mice",
+        "lore"
+        //   "theme",
+        //   "few",
+        //   "mad",
+        //   "cab",
+        //   "cup",
+        //   "leave",
+        //   "bat"
       ]
     },
     {
-      name: "Sight word",
+      name: "Syllables",
       answer: [
-        "niece",
-        "through"
-        //   "eyes"
-        //  "laugh", "cough", "doubt"
-      ]
-    },
-    {
-      name: "Nonsense word",
-      answer: [
-        "flaos"
-        //   "qarmel",
-        //   "faw"
-        // "lare", "miro", "himmer"
+        "glas",
+        "dai",
+        "mon"
+        //   "pret",
+        //   "fect",
+        //   "glit",
+        //   "ther",
+        //   "ses",
+        //   "sil",
+        //   "gui"
       ]
     }
   ]);
 
   const words = ref({
     origin: [
-      "maze",
-      "niece",
-      "flaos",
-      "trial",
-      "through"
-      // "qarmel",
-      // "cream",
-      // "eyes",
-      // "faw"
-      // "peace",
-      // "laugh",
-      // "lare",
-      // "way",
-      // "cough",
-      // "miro",
-      // "day",
-      // "doubt",
-      // "himmer"
+      "lace",
+      "mice",
+      "lore",
+      // "theme",
+      // "few",
+      // "mad",
+      // "cab",
+      // "cup",
+      // "leave",
+      // "bat",
+      "glas",
+      "dai",
+      "mon"
+      // "pret",
+      // "fect",
+      // "glit",
+      // "ther",
+      // "ses",
+      // "sil",
+      // "gui"
     ],
     target1: [],
     target2: [],
-    target3: [],
-    game1Solution
+    game2Solution
   });
+
   const checkResult = (first, second) => {
     const count = first.reduce((acc, val) => {
       if (second.includes(val)) {
@@ -164,18 +165,18 @@ const setup = props => {
     words.value.origin.splice(index, 1);
     if (words.value.origin.length === 0) {
       const count1 = checkResult(
-        words.value.game1Solution[0].answer,
+        words.value.game2Solution[0].answer,
         words.value.target1
       );
       const count2 = checkResult(
-        words.value.game1Solution[1].answer,
+        words.value.game2Solution[1].answer,
         words.value.target2
       );
-      const count3 = checkResult(
-        words.value.game1Solution[2].answer,
-        words.value.target3
-      );
-      const total = count1 + count2 + count3;
+      // const count3 = checkResult(
+      //   words.value.game2Solution[2].answer,
+      //   words.value.target3
+      // );
+      const total = count1 + count2;
       return total;
     }
   };
@@ -213,21 +214,21 @@ const setup = props => {
     drop3,
     result,
     goToGameList,
-    game1Solution,
+    game2Solution,
     playInstruction
   };
 };
+
 export default defineComponent({
-  name: "WordRecognition",
+  name: "SyllableClassification",
   props: {},
   setup
 });
 </script>
-
 <style scoped>
-.game1 {
-  background: url("./../../static/backgrounds/word-recognition.jpg") no-repeat
-    center center fixed;
+.game2 {
+  background: url("./../../static/backgrounds/syllable-classification.jpg")
+    no-repeat center center fixed;
   background-color: antiquewhite;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -254,15 +255,15 @@ export default defineComponent({
   align-items: flex-start;
 }
 
-.game1 > img {
+.game2 > img {
   position: absolute;
-  left: -300px;
+  left: -275px;
   bottom: -380px;
   z-index: 1;
-  width: 620px;
+  width: 580px;
 }
 
-.instructionsPanel button {
+/* .instruction button {
   background: none;
   color: inherit;
   border: none;
@@ -270,12 +271,12 @@ export default defineComponent({
   font: inherit;
   cursor: pointer;
   outline: inherit;
-  width: 50px;
-}
+} */
 
 .panel {
   display: flex;
   justify-content: center;
+  padding: 0 40px;
 }
 
 .draggable-container {
@@ -329,8 +330,9 @@ export default defineComponent({
   justify-content: center;
   align-items: flex-end;
   position: absolute;
-  bottom: 170px;
+  bottom: 90px;
   left: 30%;
+  width: 850px;
 }
 
 .basket_column {
@@ -367,5 +369,16 @@ csm-pill {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.instructionsPanel button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  width: 50px;
 }
 </style>
