@@ -14,6 +14,10 @@ import GameList from '@/components/GameList';
 import Welcome from "@/components/Welcome";
 import Portal from '@/components/Portal';
 import EndGame from '@/components/EndGame';
+import WordRecognition from '@/components/WordRecognition';
+import Game2 from '@/components/Game2';
+
+
 
 Vue.use(Router)
 
@@ -63,6 +67,11 @@ export default new Router({
       path: "/portal",
       name: "Portal",
       component: Portal
+    }, 
+    {
+      path: '/word-recognition',
+      name: 'WordRecognition',
+      component: WordRecognition
     },
     {
       path: "/end-game",
