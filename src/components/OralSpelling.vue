@@ -10,7 +10,7 @@
           <div class="spelling">
             <img
               @click="playInstruction"
-              src="/static/icons/Hear instructions.png"
+              src="@/assets/icons/Hear instructions.png"
               alt=""
               srcset=""
             />
@@ -28,12 +28,12 @@
       <div class="inputs">
         <div @click="play" class="listen">
           <h2>Listen</h2>
-          <img src="/static/icons/Sound icon.svg" alt="Sound" srcset="" />
+          <img src="@/assets/icons/Sound icon.svg" alt="Sound" srcset="" />
         </div>
         <div @click="record" class="speak">
           <h2>Speak</h2>
           <img
-            src="/static/icons/noun_micro_3396391 1.png"
+            src="@/assets/icons/noun_micro_3396391 1.png"
             alt="micro"
             srcset=""
           />
@@ -133,7 +133,7 @@ export default defineComponent({
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .container {
-  background: url("/static/backgrounds/oral-spelling.png") no-repeat;
+  background: url("~@/assets/backgrounds/oral-spelling.png") no-repeat;
   background-size: cover;
   background-position: center;
   display: flex;

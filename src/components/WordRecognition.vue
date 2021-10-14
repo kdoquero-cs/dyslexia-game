@@ -18,7 +18,7 @@
           <p>There are wells!</p>
             <button type="button" @click="playInstruction()">
               <div class="button_text">
-                <img src="./../../static/icons/Sound icon.png" alt="" />
+                <img src="@/assets/icons/Sound icon.png" alt="" />
                 <span class="listen"
                   ><span class="sr-only">Listen to the</span>Instructions</span
                 >
@@ -60,7 +60,7 @@
     <div class="basket_container">
       <div id="target" class="basket_column">
         <div @dragover.prevent @drop="drop">
-          <img src="./../../static/icons/well.png" alt="well" />
+          <img src="@/assets/icons/well.png" alt="well" />
           <!-- <div class="draggable" v-for="t of words.target1" :key="t">
             {{ t }}
           </div> -->
@@ -69,7 +69,7 @@
       </div>
       <div id="target2" class="basket_column">
         <div @dragover.prevent @drop="drop2">
-          <img src="./../../static/icons/well.png" alt="well" />
+          <img src="@/assets/icons/well.png" alt="well" />
           <!-- <div class="draggable" v-for="t of words.target2" :key="t">
             {{ t }}
           </div> -->
@@ -78,7 +78,7 @@
       </div>
       <div id="target3" class="basket_column">
         <div @dragover.prevent @drop="drop3">
-          <img src="./../../static/icons/well.png" alt="well" />
+          <img src="@/assets/icons/well.png" alt="well" />
           <!-- <div class="draggable" v-for="t of words.target3" :key="t">
             {{ t }}
           </div> -->
@@ -93,7 +93,7 @@
 <script>
 import { defineComponent, ref } from "@vue/composition-api";
 import router from "@/router";
-import well from "./../../static/voices/Well.mp3";
+import well from "@/assets/voices/Well.mp3";
 import { useCompanion } from "../composables/useCompanion";
 
 const setup = props => {
@@ -235,7 +235,7 @@ export default defineComponent({
 
 <style scoped>
 .game1 {
-  background: url("./../../static/backgrounds/word-recognition.jpg") no-repeat
+  background: url("~@/assets/backgrounds/word-recognition.jpg") no-repeat
     center center fixed;
   background-color: antiquewhite;
   -webkit-background-size: cover;

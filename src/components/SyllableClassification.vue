@@ -18,7 +18,7 @@
           <p>There are baskets!</p>
           <button type="button" @click="playInstruction()">
               <div class="button_text">
-                <img src="./../../static/icons/Sound icon.png" alt="" />
+                <img src="@/assets/icons/Sound icon.png" alt="" />
                 <span class="listen"
                   ><span class="sr-only">Listen to the</span>Instructions</span
                 >
@@ -60,7 +60,7 @@
     <div class="basket_container">
       <div id="target" class="basket_column">
         <div @dragover.prevent @drop="drop">
-          <img src="./../../static/icons/basket.svg" alt="basket" />
+          <img src="@/assets/icons/basket.svg" alt="basket" />
           <!-- <div class="draggable" v-for="t of words.target1" :key="t">
             {{ t }}
           </div> -->
@@ -75,7 +75,7 @@
       </div> -->
       <div id="target3" class="basket_column">
         <div @dragover.prevent @drop="drop2">
-          <img src="./../../static/icons/basket.svg" alt="basket" />
+          <img src="@/assets/icons/basket.svg" alt="basket" />
           <!-- <div class="draggable" v-for="t of words.target3" :key="t">
             {{ t }}
           </div> -->
@@ -236,7 +236,7 @@ export default defineComponent({
 </script>
 <style scoped>
 .game2 {
-  background: url("./../../static/backgrounds/syllable-classification.jpg")
+  background: url("~@/assets/backgrounds/syllable-classification.jpg")
     no-repeat center center fixed;
   background-color: antiquewhite;
   -webkit-background-size: cover;
