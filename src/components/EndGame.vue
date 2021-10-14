@@ -29,7 +29,6 @@
 import { defineComponent, ref } from "@vue/composition-api";
 import router from "@/router";
 import { useCompanion } from "../composables/useCompanion";
-import router from "@/router";
 
 function setup() {
   const companion = ref(useCompanion.getInstance().companion);
