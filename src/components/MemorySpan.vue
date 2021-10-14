@@ -153,6 +153,7 @@ export default defineComponent({
 .spelling {
   margin-top: 35px;
   margin-left: 143px;
+  cursor: pointer;
 }
 .inputs-container {
   display: flex;
@@ -171,6 +172,7 @@ export default defineComponent({
   background-color: white;
   height: 200px;
   margin: 20px;
+  cursor: pointer;
 }
 .listen h2,
 .speak h2 {
