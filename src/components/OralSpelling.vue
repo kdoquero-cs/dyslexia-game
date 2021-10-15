@@ -53,9 +53,11 @@ import { useSpeechRecognition } from "../composables/useSpeechRecon";
 import router from "@/router";
 import { useCompanion } from "../composables/useCompanion";
 import SpellingExercise from "@/assets/voices/SpellingExercise.mp3";
+import { usePlayAudio } from "../composables/usePlayAudio";
 export default defineComponent({
   props: {},
   setup() {
+    const {  play : playAudio } = usePlayAudio();
     const startRecon = ref(false);
     const goToGameList = () => router.push({ path: "/gamelist" });
     const companionHook = useCompanion.getInstance();
@@ -96,11 +98,9 @@ export default defineComponent({
     };
     const nextWord = () => {
       count.value = ++count.value;
-      play();
     };
     const playInstruction = () => {
-      const audio = new Audio(SpellingExercise);
-      audio.play();
+      playAudio(SpellingExercise);
     };
 
     watch(isRecording, (currentRecording) => {

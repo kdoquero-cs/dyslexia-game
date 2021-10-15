@@ -4,7 +4,7 @@
       <img v-if="companion" :src="companion.path" :alt="companion.name" />
     </div>
     <div class="form-container" >
-      <h1>Hello! I'm Nazca!</h1>
+      <h1>Hello! I'm Nazka!</h1>
       <form action="">
         <div class="form">
             <h2>What is your {{ title }}?</h2>

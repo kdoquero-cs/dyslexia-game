@@ -4,8 +4,10 @@
       <div class="display">
         <div class="spelling-box">
           <h1>Memory span</h1>
-          <p>We need to open this chest. </p>
-          <p class="words2">I'll tell you the code, remember it and repeat after me.</p>
+          <p>We need to open this chest.</p>
+          <p class="words2">
+            I'll tell you the code, remember it and repeat after me.
+          </p>
 
           <div class="spelling">
             <img
@@ -53,9 +55,11 @@ import { useSpeechRecognition } from "../composables/useSpeechRecon";
 import router from "@/router";
 import { useCompanion } from "../composables/useCompanion";
 import OpenChest from "@/assets/voices/OpenChest.mp3";
+import { usePlayAudio } from "../composables/usePlayAudio";
 export default defineComponent({
   props: {},
   setup() {
+    const {  play : playAudio } = usePlayAudio();
     const startRecon = ref(false);
     const goToGameList = () => router.push({ path: "/gamelist" });
     const companionHook = useCompanion.getInstance();
@@ -84,11 +88,9 @@ export default defineComponent({
     };
     const nextWord = () => {
       count.value = ++count.value;
-      play();
     };
     const playInstruction = () => {
-      const audio = new Audio(OpenChest);
-      audio.play();
+      playAudio(OpenChest);
     };
 
     watch(isRecording, (currentRecording) => {

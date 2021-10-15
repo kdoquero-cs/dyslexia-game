@@ -95,7 +95,7 @@ import { defineComponent, ref } from "@vue/composition-api";
 import router from "@/router";
 import well from "@/assets/voices/Well.mp3";
 import { useCompanion } from "../composables/useCompanion";
-
+import { usePlayAudio } from "../composables/usePlayAudio";
 const setup = props => {
   const goToGameList = () => router.push({ path: "/gamelist" });
   const result = ref(null);
@@ -206,9 +206,9 @@ const setup = props => {
     spliceArray(text);
     words.value.target3.push(text);
   };
+  const { play } = usePlayAudio();
   const playInstruction = () => {
-    const audio = new Audio(well);
-    audio.play();
+    play(well);
   };
 
   return {

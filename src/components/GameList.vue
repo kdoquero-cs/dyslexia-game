@@ -11,57 +11,120 @@
       <img class="companion" :src="companion.path" />
     </aside>
     <ul class="game-list">
-      <li class="game-item" v-for="(game, index) in games" :key="index" :style="game.style" @click="goToGame(game)">
+      <li
+        class="game-item"
+        v-for="(game, index) in games"
+        :key="index"
+        :style="game.style"
+        @click="goToGame(game)"
+      >
         <span class="play-btn">
           <csm-icon name="play" size-xl class="play-btn-icon" />
         </span>
       </li>
 
-      <router-link to="/portal" class="link" style="grid-row: row-3 / span 1; grid-column: col-5 / span 2;">
-        <li class="game-item game-item--locked" :style="`background-image: url(${require('@/assets/backgrounds/end-portal.jpg')})`">
+      <router-link
+        to="/portal"
+        class="link"
+        style="grid-row: row-3 / span 1; grid-column: col-5 / span 2"
+      >
+        <li
+          class="game-item game-item--locked"
+          :style="`background-image: url(${require('@/assets/backgrounds/end-portal.jpg')})`"
+        >
           <span class="lock-btn">
             <csm-icon name="lock" size-xl class="lock-btn-icon"></csm-icon>
           </span>
         </li>
       </router-link>
     </ul>
-
     <audio src="@/assets/music/Page1a4.mp4" autoplay="true"></audio>
-    <audio src="@/assets/voices/3_.mp3" autoplay="true"></audio>
-    <span v-if="triggerNextVoice"><audio src="@/assets/voices/4_.mp3" autoplay="true"></audio></span>
   </section>
 </template>
 
 <script>
-import { defineComponent, ref, onMounted } from "@vue/composition-api";
+import {
+  defineComponent,
+  ref,
+  onMounted,
+  computed,
+} from "@vue/composition-api";
 import { useCompanion } from "../composables/useCompanion";
-import router from "@/router";
+import { usePlayAudio } from "../composables/usePlayAudio";
+import Audio1 from "@/assets/voices/3_.mp3";
+import Audio2 from "@/assets/voices/4_.mp3";
 
+import router from "@/router";
+import store from "../store";
 function setup(props) {
   const companion = ref(useCompanion.getInstance().companion);
   const games = ref([
-    { id: 1, name: "Words recognition", style: `grid-row: row-1 / span 1; grid-column: col-1 / span 2; background-image: url(${require('@/assets/backgrounds/word-recognition.jpg')});`, path:"word-recognition" },
-    { id: 2, name: "Syllable recognition", style: `grid-row: row-1 / span 1; grid-column: col-3 / span 2; background-image: url(${require('@/assets/backgrounds/syllable-classification.jpg')});`, path:"/syllable-classification" },
-    { id: 3, name: "Visual attention", style: `grid-row: row-1 / span 1; grid-column: col-5 / span 2; background-image: url(${require('@/assets/backgrounds/visual-attention.jpg')});`, path:"" },
-    { id: 4, name: "Auditory comprehension", style: `grid-row: row-2 / span 1; grid-column: col-2 / span 2; background-image: url(${require('@/assets/backgrounds/auditory-comprehension.jpg')});`, path:"/auditive-comprehension" },
-    { id: 5, name: "Oral spelling", style: `grid-row: row-2 / span 1; grid-column: col-4 / span 2; background-image: url(${require('@/assets/backgrounds/oral-spelling.png')});`, path:"/oral-spelling" },
-    { id: 6, name: "Memory span", style: `grid-row: row-3 / span 1; grid-column: col-1 / span 2; background-image: url(${require('@/assets/backgrounds/memory-span.jpg')});`, path:"/memory-span" },
-    { id: 7, name: "Writing", style: `grid-row: row-3 / span 1; grid-column: col-3 / span 2; background-image: url(${require('@/assets/backgrounds/test-7.jpg')});`, path:"" },
+    {
+      id: 1,
+      name: "Words recognition",
+      style: `grid-row: row-1 / span 1; grid-column: col-1 / span 2; background-image: url(${require("@/assets/backgrounds/word-recognition.jpg")});`,
+      path: "word-recognition",
+    },
+    {
+      id: 2,
+      name: "Syllable recognition",
+      style: `grid-row: row-1 / span 1; grid-column: col-3 / span 2; background-image: url(${require("@/assets/backgrounds/syllable-classification.jpg")});`,
+      path: "/syllable-classification",
+    },
+    {
+      id: 3,
+      name: "Visual attention",
+      style: `grid-row: row-1 / span 1; grid-column: col-5 / span 2; background-image: url(${require("@/assets/backgrounds/visual-attention.jpg")});`,
+      path: "",
+    },
+    {
+      id: 4,
+      name: "Auditory comprehension",
+      style: `grid-row: row-2 / span 1; grid-column: col-2 / span 2; background-image: url(${require("@/assets/backgrounds/auditory-comprehension.jpg")});`,
+      path: "/auditive-comprehension",
+    },
+    {
+      id: 5,
+      name: "Oral spelling",
+      style: `grid-row: row-2 / span 1; grid-column: col-4 / span 2; background-image: url(${require("@/assets/backgrounds/oral-spelling.png")});`,
+      path: "/oral-spelling",
+    },
+    {
+      id: 6,
+      name: "Memory span",
+      style: `grid-row: row-3 / span 1; grid-column: col-1 / span 2; background-image: url(${require("@/assets/backgrounds/memory-span.jpg")});`,
+      path: "/memory-span",
+    },
+    {
+      id: 7,
+      name: "Writing",
+      style: `grid-row: row-3 / span 1; grid-column: col-3 / span 2; background-image: url(${require("@/assets/backgrounds/test-7.jpg")});`,
+      path: "",
+    },
   ]);
+
   const goToGame = (game) => {
     if (game.id === 3) {
-      window.location.href = "https://zfhhju.axshare.com/#id=vv7tfc&p=page_1&pwd=hackathon&c=1";
+      window.location.href =
+        "https://zfhhju.axshare.com/#id=vv7tfc&p=page_1&pwd=hackathon&c=1";
     }
     if (game.id === 7) {
-      window.location.href = "https://zfhhju.axshare.com/#id=2nr89r&p=writing1&pwd=hackathon&c=1";
+      window.location.href =
+        "https://zfhhju.axshare.com/#id=2nr89r&p=writing1&pwd=hackathon&c=1";
     }
     router.push({ path: game.path });
-  }
+  };
+  const { play } = usePlayAudio();
   const triggerNextVoice = ref(false);
-
+  usePlayAudio();
   onMounted(() => {
-    setTimeout(() => { triggerNextVoice.value = true }, 17000)
-  })
+    if (!store.getVisitedMainMenu()) {
+      play([Audio1,Audio2]);
+      store.setVisitedMainMenu(true);
+    }
+    
+  
+  });
 
   return {
     games,
@@ -73,7 +136,7 @@ function setup(props) {
 
 export default defineComponent({
   props: {},
-  setup
+  setup,
 });
 </script>
 
@@ -81,7 +144,7 @@ export default defineComponent({
 .main-container {
   display: flex;
   padding: 4em 2em 4em 6em;
-  background-image: url('~@/assets/backgrounds/game-selection.jpg');
+  background-image: url("~@/assets/backgrounds/game-selection.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -113,7 +176,7 @@ export default defineComponent({
 
 .game-list {
   display: grid;
-  grid-template-columns: [col-1] 12.5%  [col-2] 12.5%  [col-3] 12.5%  [col-4] 12.5%  [col-5] 12.5%  [col-6] 12.5%;
+  grid-template-columns: [col-1] 12.5% [col-2] 12.5% [col-3] 12.5% [col-4] 12.5% [col-5] 12.5% [col-6] 12.5%;
   grid-template-rows: [row-1] 1fr [row-2] 1fr [row-3] 1fr;
   gap: 2em;
   width: 75%;
@@ -130,7 +193,7 @@ export default defineComponent({
   border-radius: var(--nazca-rect-radius);
   border: 3px solid var(--nazca-rect-color);
   cursor: pointer;
-  transition: transform .2s ease-in-out, border-color .1s, ease-in-out;
+  transition: transform 0.2s ease-in-out, border-color 0.1s, ease-in-out;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -144,7 +207,8 @@ export default defineComponent({
   height: 52px;
   background-color: var(--nazca-rect-color);
   border-radius: 50%;
-  transition: box-shadow .2s ease-in-out, transform .2s ease-in-out, background-color .1s ease-in-out;
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out,
+    background-color 0.1s ease-in-out;
 }
 
 .game-item--locked {

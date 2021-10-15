@@ -91,12 +91,12 @@ import { defineComponent, ref } from "@vue/composition-api";
 import router from "@/router";
 import well from "./../../static/voices/WhatAMess.mp3";
 import { useCompanion } from "../composables/useCompanion";
-
+import { usePlayAudio } from "../composables/usePlayAudio";
 const setup = props => {
   const goToGameList = () => router.push({ path: "/gamelist" });
   const result = ref(null);
   const companion = ref(useCompanion.getInstance().companion);
-
+  const { play } = usePlayAudio();
   const game2Solution = ref([
     {
       name: "Game2",
@@ -208,8 +208,7 @@ const setup = props => {
     words.value.target3.push(text);
   };
   const playInstruction = () => {
-    const audio = new Audio(well);
-    audio.play();
+    play(well);
   };
 
   return {

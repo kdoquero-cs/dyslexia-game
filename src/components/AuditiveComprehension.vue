@@ -23,7 +23,7 @@
           <div class="modal">
             <div class="modal-content">
               <div>
-                <h4>Question {{ count +1 }} /5</h4>
+                <h4>Question {{ count +1 }} /{{questionsCount}}</h4>
                 <p>{{ currentValue.question }}</p>
               </div>
               <div class="answers-container">
@@ -42,7 +42,7 @@
                   <label :for="choice + '-' + index">{{ choice }}</label>
                 </div>
               </div>
-              <csm-pill :disabled="currentValue.answer.length === 0 || count == 4" class="next-question" @csmClick="next">Next question</csm-pill>
+              <csm-pill :disabled="currentValue.answer.length === 0" v-if="count !== questionsCount -1" class="next-question" @csmClick="next">Next question</csm-pill>
             </div>
           </div>
         </div>
@@ -58,10 +58,12 @@ import { computed, defineComponent, ref, watch } from "@vue/composition-api";
 import router from "@/router";
 import { useCompanion } from "../composables/useCompanion";
 import SpellingExercise from "@/assets/voices/SpellingExercise.mp3";
+import { usePlayAudio } from "../composables/usePlayAudio";
 export default defineComponent({
   props: {},
   setup() {
     const count = ref(0);
+    const { play } = usePlayAudio();
     const values = ref([
       {
         id: 0,
@@ -95,6 +97,7 @@ export default defineComponent({
         choices: ["2", "3", "4"],
       },
     ]);
+    const questionsCount = computed(()=> values.value.length);
     const currentValue = computed(() => values.value[count.value]);
 
     const goToGameList = () => router.push({ path: "/gamelist" });
@@ -104,8 +107,7 @@ export default defineComponent({
     const companion = ref(companionFromHook);
 
     const playInstruction = () => {
-      const audio = new Audio(SpellingExercise);
-      audio.play();
+      play(SpellingExercise);
     };
     const setChoice =(choice) => {
       currentValue.value.answer = choice;
@@ -120,7 +122,8 @@ export default defineComponent({
       count,
       currentValue,
       next,
-      setChoice
+      setChoice,
+      questionsCount
     };
   },
 });
