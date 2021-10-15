@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { defineComponent, onMounted, ref } from '@vue/composition-api';
+import { defineComponent, onMounted, onBeforeUnmount, ref } from '@vue/composition-api';
 import { AnimatedBackground } from "../composables/animated-background";
 
 function setup() {
@@ -23,7 +23,11 @@ function setup() {
   let animatedBackground = new AnimatedBackground();
 
   onMounted(() => {
-    // animatedBackground.init(canvas);
+    animatedBackground.init(document.querySelector('.animated-background'));
+  });
+
+  onBeforeUnmount(() => {
+    animatedBackground.destroy();
   });
 }
 
@@ -37,6 +41,10 @@ export default defineComponent({
 .animated-background, .content  {
   height: 100%;
   width: 100%;
+}
+
+.animated-background {
+  backface-visibility: hidden;
 }
 
 .content {
