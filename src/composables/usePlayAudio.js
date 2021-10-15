@@ -7,7 +7,8 @@ export function usePlayAudio() {
 
     const play = (sources)=> {
         let i = 1;
-        let playRetry; 
+        let playRetry;
+        stop();
         if (Array.isArray(sources)) {
             audio.value = new Audio(sources[0]);
             audio.value.onended = () => {
