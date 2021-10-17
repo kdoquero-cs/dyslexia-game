@@ -59,7 +59,7 @@ export default {
 
 <style scoped>
 .main-container {
-  padding: var(--nazca-app-padding);
+  padding: var(--nazka-app-padding);
 }
 
 .main-form {
@@ -78,7 +78,7 @@ export default {
   margin-bottom: 1em;
   padding: var(--spacing-sp-3);
   font-size: 2em;
-  border-radius: var(--nazca-rect-radius);
+  border-radius: var(--nazka-rect-radius);
   background-color: var(--colors-gray-lighter-40);
 }
 

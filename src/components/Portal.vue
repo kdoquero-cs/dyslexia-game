@@ -104,9 +104,9 @@ export default defineComponent({
 .content {
   width: 100%;
   height: 50%;
-  padding: var(--nazca-rect-padding);
-  background-color: var(--nazca-rect-color);
-  border-radius: var(--nazca-rect-radius);
+  padding: var(--nazka-rect-padding);
+  background-color: var(--nazka-rect-color);
+  border-radius: var(--nazka-rect-radius);
   transition: opacity .2s ease-in-out;
 }
 

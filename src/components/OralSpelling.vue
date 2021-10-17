@@ -54,12 +54,12 @@ import router from "@/router";
 import { useCompanion } from "../composables/useCompanion";
 import SpellingExercise from "@/assets/voices/SpellingExercise.mp3";
 import { usePlayAudio } from "../composables/usePlayAudio";
+import { useGameState } from "../composables/useGameState";
 export default defineComponent({
   props: {},
   setup() {
     const {  play : playAudio } = usePlayAudio();
     const startRecon = ref(false);
-    const goToGameList = () => router.push({ path: "/gamelist" });
     const companionHook = useCompanion.getInstance();
     let companionFromHook =
       companionHook.companion.value || companionHook.companionList[0];
@@ -80,6 +80,11 @@ export default defineComponent({
     const count = ref(0);
     const result = ref([]);
     const score = ref(0);
+    const gameState = useGameState.getInstance();
+    const goToGameList = () => {
+      gameState.updateGame(5);
+      router.push({ path: "/gamelist" });
+    }
 
     const currentWord = computed(() => values.value[count.value]);
 

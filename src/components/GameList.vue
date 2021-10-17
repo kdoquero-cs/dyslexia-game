@@ -10,10 +10,10 @@
       </article>
       <img class="companion" :src="companion.path" />
     </aside>
-    <ul class="game-list">
+    <ul class="game-list" v-if="gameList && gameList.length">
       <li
-        class="game-item"
         v-for="(game, index) in games"
+        :class="{ 'game-item': true, 'game-item--completed': gameList[index].completed }"
         :key="index"
         :style="game.style"
         @click="goToGame(game)"
@@ -21,6 +21,11 @@
         <span class="play-btn">
           <csm-icon name="play" size-xl class="play-btn-icon" />
         </span>
+
+        <div class="game-item__success-wrapper">
+          <div class="game-item__success">Well done!</div>
+        </div>
+        <img src="@/assets/jewel.png" class="game-item__success-jewel" />
       </li>
 
       <router-link
@@ -29,10 +34,14 @@
         style="grid-row: row-3 / span 1; grid-column: col-5 / span 2"
       >
         <li
-          class="game-item game-item--locked"
+          :class="{ 'game-item': true, 'game-item--locked': !allCompleted }"
           :style="`background-image: url(${require('@/assets/backgrounds/end-portal.jpg')})`"
         >
-          <span class="lock-btn">
+          <span class="play-btn" v-if="allCompleted">
+            <csm-icon name="play" size-xl class="play-btn-icon hydrated" />
+          </span>
+
+          <span class="lock-btn" v-if="!allCompleted">
             <csm-icon name="lock" size-xl class="lock-btn-icon"></csm-icon>
           </span>
         </li>
@@ -66,6 +75,7 @@ import {
   computed,
 } from "@vue/composition-api";
 import { useCompanion } from "../composables/useCompanion";
+import { useGameState } from "../composables/useGameState";
 import { usePlayAudio } from "../composables/usePlayAudio";
 import Audio1 from "@/assets/voices/3_.mp3";
 import Audio2 from "@/assets/voices/4_.mp3";
@@ -76,6 +86,7 @@ function setup(props) {
   const modal2 = ref(null);
   const modal7 = ref(null);
   const companion = ref(useCompanion.getInstance().companion);
+  const gameState = useGameState.getInstance();
   const games = ref([
     {
       id: 1,
@@ -120,7 +131,9 @@ function setup(props) {
       path: "",
     },
   ]);
+  const gameList = ref([]);
 
+  const allCompleted = gameState.allCompleted();
   const { play } = usePlayAudio();
   const triggerNextVoice = ref(false);
   usePlayAudio();
@@ -129,6 +142,8 @@ function setup(props) {
       play([Audio1,Audio2]);
       store.setVisitedMainMenu(true);
     }
+
+    gameList.value = gameState.games;
   });
 
   function goToGame(game) {
@@ -151,15 +166,19 @@ function setup(props) {
     goToGame,
     openVisualAttention: () => {
       window.open("https://zfhhju.axshare.com/#id=vv7tfc&p=page_1&pwd=hackathon&c=1", '_blank');
+      gameState.updateGame(2);
       modal2.value.close();
     },
     openWriting: () => {
       window.open("https://zfhhju.axshare.com/#id=2nr89r&p=writing1&pwd=hackathon&c=1", '_blank');
+      gameState.updateGame(7);
       modal7.value.close();
     },
     triggerNextVoice,
     modal2,
     modal7,
+    allCompleted,
+    gameList,
   };
 }
 
@@ -189,9 +208,9 @@ export default defineComponent({
 .content {
   width: 100%;
   height: 50%;
-  padding: var(--nazca-rect-padding);
-  background-color: var(--nazca-rect-color);
-  border-radius: var(--nazca-rect-radius);
+  padding: var(--nazka-rect-padding);
+  background-color: var(--nazka-rect-color);
+  border-radius: var(--nazka-rect-radius);
 }
 
 .companion {
@@ -219,8 +238,8 @@ export default defineComponent({
   justify-content: center;
   align-items: center;
   height: 20vh;
-  border-radius: var(--nazca-rect-radius);
-  border: 3px solid var(--nazca-rect-color);
+  border-radius: var(--nazka-rect-radius);
+  border: 3px solid var(--nazka-rect-color);
   cursor: pointer;
   transition: transform 0.2s ease-in-out, border-color 0.1s, ease-in-out;
   background-size: cover;
@@ -235,15 +254,72 @@ export default defineComponent({
   align-items: center;
   width: 52px;
   height: 52px;
-  background-color: var(--nazca-rect-color);
+  background-color: var(--nazka-rect-color);
   border-radius: 50%;
   transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out,
     background-color 0.1s ease-in-out;
 }
 
+.link {
+  color: var(--colors-text-gray-base);
+  text-decoration: none;
+}
+
 .game-item--locked {
   box-shadow: inset 666px 666px rgba(0, 0, 0, 0.33);
   pointer-events: none;
+  cursor: default;
+}
+
+.game-item--completed {
+  box-shadow: inset 666px 666px rgba(255, 255, 255, 0.33);
+  pointer-events: none;
+  cursor: default;
+}
+
+.game-item__success-wrapper {
+  display: none;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--nazka-rect-radius);
+  overflow: hidden;
+}
+
+.game-item__success {
+  position: absolute;
+  bottom: -45px;
+  right: -45px;
+  border-radius: var(--nazka-rect-radius);
+  background-color: #A8FF63;
+  width: 100px;
+  height: 100px;
+  z-index: 1;
+  transform: rotate(-45deg);
+  font-size: .66em;
+  padding: 6px 0;
+  font-weight: bold;
+  box-shadow: var(--shadows-sh-30), inset 0px 6px 12px rgba(0, 0, 0, .33);
+}
+
+.game-item__success-jewel {
+  display: none;
+  position: absolute;
+  bottom: -26px;
+  right: -26px;
+  margin: auto;
+  width: 52px;
+  height: 52px;
+  z-index: 2;
+}
+
+.game-item--completed .game-item__success-wrapper,
+.game-item--completed .game-item__success-jewel {
+  display: block;
+}
+
+.game-item--completed .play-btn {
+  display: none;
 }
 
 .game-item:hover {

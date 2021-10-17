@@ -96,8 +96,8 @@ import router from "@/router";
 import well from "@/assets/voices/Well.mp3";
 import { useCompanion } from "../composables/useCompanion";
 import { usePlayAudio } from "../composables/usePlayAudio";
+import { useGameState } from "../composables/useGameState";
 const setup = props => {
-  const goToGameList = () => router.push({ path: "/gamelist" });
   const result = ref(null);
   const companion = ref(useCompanion.getInstance().companion);
 
@@ -210,6 +210,12 @@ const setup = props => {
   const playInstruction = () => {
     play(well);
   };
+
+  const gameState = useGameState.getInstance();
+  const goToGameList = () => {
+    gameState.updateGame(1);
+    router.push({ path: "/gamelist" });
+  }
 
   return {
     words,

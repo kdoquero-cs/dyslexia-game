@@ -32,7 +32,7 @@
                   v-for="(choice, index) in currentValue.choices"
                   :key="index"
                 >
-                  <input @click="setChoice(choice)" 
+                  <input @click="setChoice(choice)"
                     :checked="currentValue.answer === choice"
                     type="radio"
                     name="anwser"
@@ -59,11 +59,13 @@ import router from "@/router";
 import { useCompanion } from "../composables/useCompanion";
 import SpellingExercise from "@/assets/voices/SpellingExercise.mp3";
 import { usePlayAudio } from "../composables/usePlayAudio";
+import { useGameState } from "../composables/useGameState";
 export default defineComponent({
   props: {},
   setup() {
     const count = ref(0);
     const { play } = usePlayAudio();
+    const gameState = useGameState.getInstance();
     const values = ref([
       {
         id: 0,
@@ -100,7 +102,10 @@ export default defineComponent({
     const questionsCount = computed(()=> values.value.length);
     const currentValue = computed(() => values.value[count.value]);
 
-    const goToGameList = () => router.push({ path: "/gamelist" });
+    const goToGameList = () => {
+      gameState.updateGame(4);
+      router.push({ path: "/gamelist" });
+    }
     const companionHook = useCompanion.getInstance();
     let companionFromHook =
       companionHook.companion.value || companionHook.companionList[0];
@@ -115,6 +120,7 @@ export default defineComponent({
     const next =() => {
       ++count.value;
     }
+
     return {
       companion,
       goToGameList,

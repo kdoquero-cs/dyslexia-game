@@ -93,9 +93,9 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: var(--nazca-rect-padding);
-  background-color: var(--nazca-rect-color);
-  border-radius: var(--nazca-rect-radius);
+  padding: var(--nazka-rect-padding);
+  background-color: var(--nazka-rect-color);
+  border-radius: var(--nazka-rect-radius);
   margin-right: 3em;
 }
 
