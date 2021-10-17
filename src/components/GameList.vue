@@ -6,7 +6,7 @@
           There is a door that can take me home but it needs 7 jewels to open.
           To get these jewels, we need to solve a few puzzles.
         </p>
-        <h4>Do you want to play with me?</h4>
+        <h2>Do you want to play with me?</h2>
       </article>
       <img class="companion" :src="companion.path" />
     </aside>
@@ -38,6 +38,22 @@
         </li>
       </router-link>
     </ul>
+
+    <csm-modal ref="modal2">
+      <h2>This game is under construction!</h2>
+      <p>Click "Ok" to open an interactive mockup in another tab.</p>
+      <p>The password to access the mockup is "hackathon".</p>
+      <csm-button primary v-on:csmClick="openVisualAttention()">Ok</csm-button>
+      <csm-button tertiary v-on:csmClick="modal2.close()">Cancel</csm-button>
+    </csm-modal>
+
+    <csm-modal ref="modal7">
+      <h2>This game is under construction!</h2>
+      <p>Click "Ok" to open an interactive mockup in another tab.</p>
+      <p>The password to access the mockup is "hackathon".</p>
+      <csm-button primary v-on:csmClick="openWriting()">Ok</csm-button>
+      <csm-button tertiary v-on:csmClick="modal7.close()">Cancel</csm-button>
+    </csm-modal>
     <audio src="@/assets/music/Page1a4.mp4" autoplay="true"></audio>
   </section>
 </template>
@@ -57,6 +73,8 @@ import Audio2 from "@/assets/voices/4_.mp3";
 import router from "@/router";
 import store from "../store";
 function setup(props) {
+  const modal2 = ref(null);
+  const modal7 = ref(null);
   const companion = ref(useCompanion.getInstance().companion);
   const games = ref([
     {
@@ -103,17 +121,6 @@ function setup(props) {
     },
   ]);
 
-  const goToGame = (game) => {
-    if (game.id === 2) {
-      window.location.href =
-        "https://zfhhju.axshare.com/#id=vv7tfc&p=page_1&pwd=hackathon&c=1";
-    }
-    if (game.id === 7) {
-      window.location.href =
-        "https://zfhhju.axshare.com/#id=2nr89r&p=writing1&pwd=hackathon&c=1";
-    }
-    router.push({ path: game.path });
-  };
   const { play } = usePlayAudio();
   const triggerNextVoice = ref(false);
   usePlayAudio();
@@ -124,11 +131,35 @@ function setup(props) {
     }
   });
 
+  function goToGame(game) {
+    switch(game.id) {
+      case 2:
+        modal2.value.open();
+        break;
+      case 7:
+        modal7.value.open();
+        break;
+      default:
+        router.push({ path: game.path });
+        break;
+    }
+  }
+
   return {
     games,
     companion,
     goToGame,
+    openVisualAttention: () => {
+      window.open("https://zfhhju.axshare.com/#id=vv7tfc&p=page_1&pwd=hackathon&c=1", '_blank');
+      modal2.value.close();
+    },
+    openWriting: () => {
+      window.open("https://zfhhju.axshare.com/#id=2nr89r&p=writing1&pwd=hackathon&c=1", '_blank');
+      modal7.value.close();
+    },
     triggerNextVoice,
+    modal2,
+    modal7,
   };
 }
 
