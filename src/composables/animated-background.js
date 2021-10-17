@@ -4,6 +4,7 @@ export class AnimatedBackground {
     number: 50,
     speed: 30,
     fireflies: [],
+    fireflyShadow: 35,
   };
   core = {
     now: 0,
@@ -17,6 +18,15 @@ export class AnimatedBackground {
       height: 0,
     },
   };
+  instance = null;
+
+  static getInstance() {
+    if (!this.instance) {
+      this.instance = new AnimatedBackground();
+      return this.instance;
+    }
+    return this.instance;
+  }
 
   init(canvas) {
     if (!this.core.isRunning) {
@@ -51,12 +61,11 @@ export class AnimatedBackground {
       const firefly = {
         x: 0.1 + Math.random() * this.core.canvasBoundaries.width,
         y: 0.1 + Math.random() * this.core.canvasBoundaries.height,
-
-        vx: Math.random() * (Math.random() < 0.5 ? -1 : 1) * this.config.speed,
-        vy: Math.random() * (Math.random() < 0.5 ? -1 : 1) * this.config.speed,
-
-        radius: Math.random() * 5,
+        vx: Math.random() * (Math.random() < 0.5 ? -1 : 1) * .5 * this.config.speed,
+        vy: Math.random() * -.5 * this.config.speed,
+        radius: Math.max(3, Math.random() * 7),
       };
+
       this.config.fireflies.push(firefly);
     }
   }
@@ -99,13 +108,13 @@ export class AnimatedBackground {
       let velocityY = this.config.fireflies[i].vy * this.core.delta;
       this.config.fireflies[i].y = this.config.fireflies[i].y + velocityY;
 
+
       if (this.config.fireflies[i].x > this.core.canvasBoundaries.width) {
         this.config.fireflies[i].x = 0;
       }
       else if (this.config.fireflies[i].x < 0) {
         this.config.fireflies[i].x = this.core.canvasBoundaries.width;
       }
-
 
       if (this.config.fireflies[i].y > this.core.canvasBoundaries.height) {
         this.config.fireflies[i].y = 0;
@@ -118,9 +127,12 @@ export class AnimatedBackground {
 
   renderGraphics() {
     for (let i = 0; i < this.config.number; i++) {
+      const seed = Math.random() * 20;
       this.canvas.ctx.beginPath();
-      this.canvas.ctx.fillStyle = '#2AA1DD';
-      this.canvas.ctx.strokeStyle = '#2AA1DD';
+      this.canvas.ctx.fillStyle = '#fffda6';
+      this.canvas.ctx.strokeStyle = '#fffda6';
+      this.canvas.ctx.shadowColor = '#fffda6';
+      this.canvas.ctx.shadowBlur = this.config.fireflyShadow - seed;
       this.canvas.ctx.arc(this.config.fireflies[i].x, this.config.fireflies[i].y, this.config.fireflies[i].radius, 0, Math.PI * 2, false);
       this.canvas.ctx.fill();
       this.canvas.ctx.imageSmoothingEnabled = true;

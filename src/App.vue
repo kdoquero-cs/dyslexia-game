@@ -1,17 +1,31 @@
 <template>
   <div id="app">
-    <router-view/>
+    <canvas ref="canvas" class="animated-background"></canvas>
+    <router-view class="main" />
   </div>
 </template>
 
 <script>
 import Vue from 'vue';
 import CompositionApi from '@vue/composition-api';
+import { onMounted, onBeforeUnmount } from '@vue/composition-api';
+import { AnimatedBackground } from '@/composables/animated-background';
 import "./style.css"
 Vue.use(CompositionApi);
 
 export default {
-  name: 'App'
+  name: 'App',
+  setup: () => {
+    const animatedBackground = AnimatedBackground.getInstance();
+
+    onMounted(() => {
+      animatedBackground.init(document.querySelector('.animated-background'));
+    });
+
+    onBeforeUnmount(() => {
+      animatedBackground.destroy();
+    });
+  }
 }
 </script>
 
@@ -30,6 +44,20 @@ html, body, #app {
   overflow: hidden;
 
   background-color: var(--colors-dataviz-purple-darker-30);
-  background-image: radial-gradient(ellipse at bottom, var(--colors-dataviz-purple-darker-20), var(--colors-dataviz-purple-darker-30));
+  background-image: radial-gradient(ellipse at bottom, rgba(255, 253, 166, .2), var(--colors-dataviz-purple-darker-30), var(--colors-dataviz-purple-darker-30));
+  background-size: 200%;
+  background-position: 50% 100%;
+}
+
+.animated-background {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.main {
+  z-index: 1;
 }
 </style>

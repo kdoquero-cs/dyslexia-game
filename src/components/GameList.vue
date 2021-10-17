@@ -82,11 +82,13 @@ import Audio2 from "@/assets/voices/4_.mp3";
 
 import router from "@/router";
 import store from "../store";
+import { AnimatedBackground } from "../composables/animated-background";
 function setup(props) {
   const modal2 = ref(null);
   const modal7 = ref(null);
   const companion = ref(useCompanion.getInstance().companion);
   const gameState = useGameState.getInstance();
+  const animatedBackground = AnimatedBackground.getInstance();
   const games = ref([
     {
       id: 1,
@@ -132,11 +134,11 @@ function setup(props) {
     },
   ]);
   const gameList = ref([]);
-
   const allCompleted = gameState.allCompleted();
   const { play } = usePlayAudio();
   const triggerNextVoice = ref(false);
   usePlayAudio();
+  animatedBackground.destroy();
   onMounted(() => {
     if (!store.getVisitedMainMenu()) {
       play([Audio1,Audio2]);

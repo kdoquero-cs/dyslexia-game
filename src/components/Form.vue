@@ -41,6 +41,7 @@ import { computed, defineComponent, ref } from "@vue/composition-api";
 import router from "@/router";
 import store from "../store"
 import { useCompanion } from "../composables/useCompanion";
+import { AnimatedBackground } from "../composables/animated-background";
 
 export default defineComponent({
   props: {},
@@ -48,6 +49,8 @@ export default defineComponent({
     const companionHook = useCompanion.getInstance();
     let companionFromHook = companionHook.companion.value || companionHook.companionList[0];
     const companion = ref(companionFromHook);
+    const animatedBackground = AnimatedBackground.getInstance();
+    animatedBackground.play();
 
     const showAge = ref(false);
     const title = computed(() => (showAge.value ? "age" : "name"));

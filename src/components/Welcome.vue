@@ -1,52 +1,23 @@
 <template>
-  <fragment>
-    <canvas ref="canvas" class="animated-background"></canvas>
-    <section class="content">
-      <h1 class="title">Welcome to Nazka's adventure</h1>
+  <section class="content">
+    <h1 class="title">Welcome to Nazka's adventure</h1>
 
-      <router-link to="/companion" class="link">
-        <csm-button primary>Press start</csm-button>
-      </router-link>
-    </section>
+    <router-link to="/companion" class="link">
+      <csm-button primary>Press start</csm-button>
+    </router-link>
 
     <audio src="@/assets/music/MainMenu.mp4" autoplay="true"></audio>
-  </fragment>
+  </section>
 </template>
 
 <script>
-import { defineComponent, onMounted, onBeforeUnmount, ref } from '@vue/composition-api';
+import { defineComponent, onMounted, ref } from '@vue/composition-api';
 import { AnimatedBackground } from "../composables/animated-background";
 
-function setup() {
-  const canvas = ref(null);
-  const isMuted = ref(false);
-  let animatedBackground = new AnimatedBackground();
-
-  onMounted(() => {
-    animatedBackground.init(document.querySelector('.animated-background'));
-  });
-
-  onBeforeUnmount(() => {
-    animatedBackground.destroy();
-  });
-}
-
-export default defineComponent({
-  props: {},
-  setup,
-});
+export default defineComponent({});
 </script>
 
 <style scoped>
-.animated-background, .content  {
-  height: 100%;
-  width: 100%;
-}
-
-.animated-background {
-  backface-visibility: hidden;
-}
-
 .content {
   position: absolute;
   top: 0;
@@ -55,6 +26,8 @@ export default defineComponent({
   justify-content: center;
   align-items: center;
   flex-flow: column;
+  height: 100%;
+  width: 100%;
   z-index: 1;
 }
 
