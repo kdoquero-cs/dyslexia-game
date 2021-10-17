@@ -67,15 +67,15 @@ function setup(props) {
     },
     {
       id: 2,
-      name: "Syllable recognition",
+      name: "Visual attention",
       style: `grid-row: row-1 / span 1; grid-column: col-3 / span 2; background-image: url(${require("@/assets/backgrounds/syllable-classification.jpg")});`,
-      path: "/syllable-classification",
+      path: "",
     },
     {
       id: 3,
-      name: "Visual attention",
+      name: "Syllable recognition",
       style: `grid-row: row-1 / span 1; grid-column: col-5 / span 2; background-image: url(${require("@/assets/backgrounds/visual-attention.jpg")});`,
-      path: "",
+      path: "/syllable-classification",
     },
     {
       id: 4,
@@ -104,7 +104,7 @@ function setup(props) {
   ]);
 
   const goToGame = (game) => {
-    if (game.id === 3) {
+    if (game.id === 2) {
       window.location.href =
         "https://zfhhju.axshare.com/#id=vv7tfc&p=page_1&pwd=hackathon&c=1";
     }
@@ -122,8 +122,6 @@ function setup(props) {
       play([Audio1,Audio2]);
       store.setVisitedMainMenu(true);
     }
-    
-  
   });
 
   return {
@@ -197,6 +195,7 @@ export default defineComponent({
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  will-change: transform, border-color;
 }
 
 .play-btn {

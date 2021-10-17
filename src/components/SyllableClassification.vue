@@ -235,7 +235,7 @@ export default defineComponent({
 </script>
 <style scoped>
 .game2 {
-  background: url("~@/assets/backgrounds/syllable-classification.jpg")
+  background: url("~@/assets/backgrounds/visual-attention.jpg")
     no-repeat center center fixed;
   background-color: antiquewhite;
   -webkit-background-size: cover;
