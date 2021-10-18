@@ -180,6 +180,7 @@ export default defineComponent({
   height: 200px;
   margin: 20px;
   cursor: pointer;
+  z-index: 10;
 }
 .listen h2,
 .speak h2 {
@@ -194,6 +195,7 @@ export default defineComponent({
   font-weight: 800;
   font-size: 20px;
   border-style: unset;
+  z-index: 10;
 }
 .next-button {
   position: absolute;
