@@ -55,6 +55,7 @@ html, body, #app {
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
+  pointer-events: none;
 }
 
 .main {
