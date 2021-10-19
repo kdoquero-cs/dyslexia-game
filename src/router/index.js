@@ -4,10 +4,7 @@ import Form from '@/components/Form';
 import CompanionChoice from '@/components/CompanionChoice';
 import GameAssessment from '@/components/GameAssessment';
 import ParentsInfo from '@/components/ParentsInfo';
-import OralSpelling from '@/components/OralSpelling';
-
-
-import MemorySpan from '@/components/MemorySpan';
+import SpellingGames from '@/components/SpellingGames';
 import DragAndDrop from '@/components/DragAndDrop';
 import GameList from '@/components/GameList';
 import Welcome from "@/components/Welcome";
@@ -76,12 +73,12 @@ export default new Router({
     }, {
       path: "/oral-spelling",
       name: "OralSpelling",
-      component: OralSpelling
+      component: SpellingGames
     },
     {
       path: "/memory-span",
       name: "MemorySpan",
-      component: MemorySpan
+      component: SpellingGames
     },
     {
       path: '/syllable-classification',

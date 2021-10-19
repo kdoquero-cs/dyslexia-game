@@ -4,6 +4,7 @@ export function useSpeechRecognition(state) {
     const transcript = ref(null);
     const confidence = ref(0);
     const isRecording = ref(false);
+    const recorded = ref(false);
     const SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
     const recognition = new SpeechRecognition();
     recognition.continuous = false;

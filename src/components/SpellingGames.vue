@@ -1,12 +1,17 @@
 <template>
-  <section class="container">
+  <section
+    v-bind:style="{
+      backgroundImage: `url(${componentSettings.background})`,
+    }"
+    class="container"
+  >
     <div class="display">
       <div class="display">
         <div class="spelling-box">
-          <h1>Memory span</h1>
-          <p>We need to open this chest.</p>
+          <h1>{{ componentSettings.title }}</h1>
+          <p>{{ componentSettings.textOne }}</p>
           <p class="words2">
-            I'll tell you the code, remember it and repeat after me.
+            {{ componentSettings.textTwo }}
           </p>
 
           <div class="spelling">
@@ -26,11 +31,19 @@
         </div>
         <div class="inputs-container">
           <div class="inputs">
-            <div @click="play" class="listen">
+            <div
+              @click="play"
+              v-bind:class="[synthesisIsSpeaking ? 'playing' : '']"
+              class="listen"
+            >
               <h2>Listen</h2>
               <img src="@/assets/icons/Sound icon.svg" alt="Sound" srcset="" />
             </div>
-            <div @click="record" class="speak">
+            <div
+              @click="record"
+              v-bind:class="[isRecording ? 'recording' : '']"
+              class="speak"
+            >
               <h2>Speak</h2>
               <img
                 src="@/assets/icons/noun_micro_3396391 1.png"
@@ -39,12 +52,14 @@
               />
             </div>
           </div>
-          <button class="next" @click="nextWord">Next</button>
+          <button :disabled="!recordingState" class="next" @click="nextWord">
+            Next
+          </button>
         </div>
       </div>
     </div>
 
-    <csm-pill @csmClick="goToGameList" class="next-button">I'm done!</csm-pill>
+    <done-button :disabled="!completed" :id="6"></done-button>
   </section>
 </template>
 
@@ -55,21 +70,69 @@ import { useSpeechRecognition } from "../composables/useSpeechRecon";
 import router from "@/router";
 import { useCompanion } from "../composables/useCompanion";
 import OpenChest from "@/assets/voices/OpenChest.mp3";
+import MemorySpanBG from "@/assets/backgrounds/memory-span.jpg";
+import OralSpellingBG from "@/assets/backgrounds/oral-spelling.png";
 import { usePlayAudio } from "../composables/usePlayAudio";
 import { useGameState } from "../composables/useGameState";
+import DoneButton from "./DoneButton.vue";
 export default defineComponent({
-  props: {},
-  setup() {
-    const {  play : playAudio } = usePlayAudio();
+  components: { DoneButton },
+  props: {
+    values2: {
+      default: null,
+      background: null,
+    },
+    components: {
+      DoneButton,
+    },
+  },
+  setup(props, { root }) {
+    const { play: playAudio } = usePlayAudio();
     const startRecon = ref(false);
+    const recordingState = ref(false);
+    const values = ref([]);
+    // to do Props Values & settings  instead
+    const componentSettings = computed(() => {
+      switch (root.$route.name) {
+        case "OralSpelling":
+          values.value = [
+            "Word",
+            "Cow",
+            "Dog",
+            "paper",
+            "have",
+            "like",
+            "home",
+            "dad",
+            "little",
+            "goat",
+            "this",
+          ];
+          return {
+            title: "Oral spelling",
+            background: OralSpellingBG,
+            textOne: "Here, I'll say a few words.",
+            textTwo: "Can you help me spell them?",
+          };
+        case "MemorySpan":
+          values.value = ["1", "1 3", "4 3 5", "3 2 1 5", "3 4 1 6 2"];
+          return {
+            title: "Memory span",
+            background: MemorySpanBG,
+            textOne: "We need to open this chest.",
+            textTwo: "I'll tell you the code, remember it and repeat after me.",
+          };
+      }
+    });
     const companionHook = useCompanion.getInstance();
     let companionFromHook =
       companionHook.companion.value || companionHook.companionList[0];
     const companion = ref(companionFromHook);
-    const values = ref(["1", "1 3", "4 3 5", "3 2 1 5", "3 4 1 6 2"]);
+
     const count = ref(0);
     const result = ref([]);
     const score = ref(0);
+    const completed = computed(() => count.value === values.value.length);
     const gameState = useGameState.getInstance();
     const goToGameList = () => {
       gameState.updateGame(6);
@@ -78,7 +141,8 @@ export default defineComponent({
 
     const currentWord = computed(() => values.value[count.value]);
 
-    const { playOnWord } = useSpeechSynthesis();
+    const { playOnWord, isSpeaking: synthesisIsSpeaking } =
+      useSpeechSynthesis();
     const { isRecording, transcript, confidence } =
       useSpeechRecognition(startRecon);
     const play = () => {
@@ -88,22 +152,27 @@ export default defineComponent({
       console.log("compare", "ok");
     };
     const record = () => {
+      recordingState.value = true;
       startRecon.value = true;
       compare();
     };
     const nextWord = () => {
-      count.value = ++count.value;
+      recordingState.value = false;
+      if (!completed.value) {
+        count.value = ++count.value;
+      }
     };
     const playInstruction = () => {
       playAudio(OpenChest);
     };
 
     watch(isRecording, (currentRecording) => {
-      console.log(currentRecording);
       startRecon.value = currentRecording;
     });
     watch(transcript, (currentTranscript) => {
       if (
+        currentTranscript &&
+        currentWord.value &&
         currentTranscript.toLowerCase() &&
         currentTranscript.includes(currentWord.value.toLowerCase())
       ) {
@@ -118,11 +187,14 @@ export default defineComponent({
       play,
       companion,
       record,
-      transcript,
       nextWord,
-      confidence,
       goToGameList,
       playInstruction,
+      recordingState,
+      componentSettings,
+      synthesisIsSpeaking,
+      isRecording,
+      completed,
     };
   },
 });
@@ -131,9 +203,9 @@ export default defineComponent({
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .container {
-  background: url("~@/assets/backgrounds/memory-span.jpg") no-repeat;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   width: 100%;
   height: 100%;
@@ -196,6 +268,12 @@ export default defineComponent({
   font-size: 20px;
   border-style: unset;
   z-index: 10;
+  cursor: pointer;
+}
+.next:disabled {
+  cursor: not-allowed;
+  background-color: #c1c1c1;
+  color: black;
 }
 .next-button {
   position: absolute;
@@ -208,5 +286,10 @@ export default defineComponent({
   width: 100%;
   align-items: center;
   justify-content: start;
+}
+.playing,
+.recording {
+  background-color: #cef5d9;
+  border: 3px solid black;
 }
 </style>

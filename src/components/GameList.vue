@@ -81,7 +81,6 @@ import Audio1 from "@/assets/voices/3_.mp3";
 import Audio2 from "@/assets/voices/4_.mp3";
 
 import router from "@/router";
-import store from "../store";
 import { AnimatedBackground } from "../composables/animated-background";
 function setup(props) {
   const modal2 = ref(null);
@@ -137,12 +136,11 @@ function setup(props) {
   const allCompleted = gameState.allCompleted();
   const { play } = usePlayAudio();
   const triggerNextVoice = ref(false);
-  usePlayAudio();
   animatedBackground.destroy();
   onMounted(() => {
-    if (!store.getVisitedMainMenu()) {
+    if (!gameState.mainMenuState) {
       play([Audio1,Audio2]);
-      store.setVisitedMainMenu(true);
+      gameState.setVisitedMainMenu(true);
     }
 
     gameList.value = gameState.games;

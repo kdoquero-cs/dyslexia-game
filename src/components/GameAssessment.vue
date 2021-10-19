@@ -5,7 +5,7 @@
 		<!-- here goes the variable for the kid's name -->
 		<span class="tempText">[child's name]</span>
 	</span>
-	<span>'s Game Playthrough Assessment</span>
+	<span>'s Game Playthrough Assessment</span><span class="mockup"> MOCKUP</span>
 </h1>
 <div id="banner" class="banner">
 	<div class="print">
@@ -453,7 +453,9 @@
 </template>
 
 <script>
+import SpellingGames from './SpellingGames.vue'
 export default {
+  components: { SpellingGames },
   name: 'GameAssessment',
   setup: function() {
     return {
@@ -543,5 +545,8 @@ justify-content:space-between;
   background-color: var(--colors-gray-white);
   overflow: auto;
   text-align: left;
+}
+.mockup {
+	color: red;
 }
 </style>

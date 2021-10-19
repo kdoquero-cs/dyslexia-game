@@ -20,7 +20,7 @@
             of the information we could gather from this game.
           </p>
           <csm-button class="next" @csmClick="goToReport" primary
-            >Detailed report</csm-button
+            >Detailed report (mockup)</csm-button
           >
         </div>
       </div>

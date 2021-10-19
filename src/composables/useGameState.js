@@ -11,6 +11,7 @@ export class useGameState {
     { id: 6, completed: false },
     { id: 7, completed: false },
   ];
+  visitedMainMenu = false;
 
   static getInstance() {
     if (!this.instance) {
@@ -24,6 +25,10 @@ export class useGameState {
     return this.gameList;
   }
 
+  get mainMenuState() {
+    return this.visitedMainMenu;
+  }
+
   updateGame(id) {
     this.gameList.find(game => game.id === id).completed = true;
   }
@@ -31,4 +36,8 @@ export class useGameState {
   allCompleted() {
     return computed(() => this.gameList.every((game) => game.completed));
   }
+  setVisitedMainMenu(status) {
+    this.visitedMainMenu = status;
+  }
+
 }

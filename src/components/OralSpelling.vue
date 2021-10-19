@@ -37,7 +37,7 @@
               />
             </div>
           </div>
-          <button class="next" @click="nextWord">Next Word</button>
+          <button :disabled="!recordingState" class="next" @click="nextWord">Next Word</button>
         </div>
       </div>
     </div>
@@ -80,6 +80,7 @@ export default defineComponent({
     const count = ref(0);
     const result = ref([]);
     const score = ref(0);
+    const recordingState = ref(false);
     const gameState = useGameState.getInstance();
     const goToGameList = () => {
       gameState.updateGame(5);
@@ -98,10 +99,12 @@ export default defineComponent({
       console.log("compare", "ok");
     };
     const record = () => {
+      recordingState.value = true;
       startRecon.value = true;
       compare();
     };
     const nextWord = () => {
+      recordingState.value = false;
       count.value = ++count.value;
     };
     const playInstruction = () => {
@@ -133,6 +136,7 @@ export default defineComponent({
       confidence,
       goToGameList,
       playInstruction,
+      recordingState
     };
   },
 });
@@ -216,5 +220,8 @@ export default defineComponent({
   width: 100%;
   align-items: center;
   justify-content: start;
+}
+.next:disabled{
+  cursor:not-allowed;
 }
 </style>

@@ -140,7 +140,9 @@ export class AnimatedBackground {
   }
 
   clearCanvas() {
-    this.canvas.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    if(this.canvas) {
+      this.canvas.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
   }
 
   stop() {
