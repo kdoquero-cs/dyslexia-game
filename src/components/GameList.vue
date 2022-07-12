@@ -30,7 +30,7 @@
       <router-link
         to="/portal"
         class="link"
-        style="grid-row: row-3 / span 1; grid-column: col-5 / span 2"
+        style="grid-row: row-3 / span 1; grid-column: col-3 / span 2"
       >
         <li
           :class="{ 'game-item': true, 'game-item--locked': !allCompleted }"
@@ -72,45 +72,48 @@ function setup(props) {
     {
       id: 1,
       name: "Words recognition",
-      style: `grid-row: row-1 / span 1; grid-column: col-1 / span 2; background-image: url(${require("@/assets/backgrounds/word-recognition.jpg")});`,
+      style: `grid-row: row-1 / span 1; grid-column: col-2 / span 2; background-image: url(${require("@/assets/backgrounds/word-recognition.jpg")});`,
       path: "word-recognition",
     },
+    // {
+    //   id: 2,
+    //   name: "Visual attention",
+    //   style: `grid-row: row-1 / span 1; grid-column: col-3 / span 2; background-image: url(${require("@/assets/backgrounds/syllable-classification.jpg")});`,
+    //   path: "",
+    // },
     {
       id: 2,
-      name: "Visual attention",
-      style: `grid-row: row-1 / span 1; grid-column: col-3 / span 2; background-image: url(${require("@/assets/backgrounds/syllable-classification.jpg")});`,
-      path: "",
-    },
-    {
-      id: 3,
+      // id: 3,
       name: "Syllable recognition",
-      style: `grid-row: row-1 / span 1; grid-column: col-5 / span 2; background-image: url(${require("@/assets/backgrounds/visual-attention.jpg")});`,
+      style: `grid-row: row-1 / span 1; grid-column: col-4  / span 2; background-image: url(${require("@/assets/backgrounds/visual-attention.jpg")});`,
       path: "/syllable-classification",
     },
     {
-      id: 4,
+      // id: 4,
+      id: 3,
       name: "Auditory comprehension",
       style: `grid-row: row-2 / span 1; grid-column: col-2 / span 2; background-image: url(${require("@/assets/backgrounds/auditory-comprehension.jpg")});`,
       path: "/auditive-comprehension",
     },
     {
-      id: 5,
+      id: 4,
+      // id: 5,
       name: "Oral spelling",
       style: `grid-row: row-2 / span 1; grid-column: col-4 / span 2; background-image: url(${require("@/assets/backgrounds/oral-spelling.png")});`,
       path: "/oral-spelling",
     },
-    {
-      id: 6,
-      name: "Memory span",
-      style: `grid-row: row-3 / span 1; grid-column: col-1 / span 2; background-image: url(${require("@/assets/backgrounds/memory-span.jpg")});`,
-      path: "/memory-span",
-    },
-    {
-      id: 7,
-      name: "Writing",
-      style: `grid-row: row-3 / span 1; grid-column: col-3 / span 2; background-image: url(${require("@/assets/backgrounds/test-7.jpg")});`,
-      path: "",
-    },
+    // {
+    //   id: 6,
+    //   name: "Memory span",
+    //   style: `grid-row: row-3 / span 1; grid-column: col-1 / span 2; background-image: url(${require("@/assets/backgrounds/memory-span.jpg")});`,
+    //   path: "/memory-span",
+    // },
+    // {
+    //   id: 7,
+    //   name: "Writing",
+    //   style: `grid-row: row-3 / span 1; grid-column: col-3 / span 2; background-image: url(${require("@/assets/backgrounds/test-7.jpg")});`,
+    //   path: "",
+    // },
   ]);
   const gameList = ref([]);
   const allCompleted = gameState.allCompleted();
@@ -128,12 +131,12 @@ function setup(props) {
 
   function goToGame(game) {
     switch(game.id) {
-      case 2:
-        modal2.value.open();
-        break;
-      case 7:
-        modal7.value.open();
-        break;
+      // case 2:
+      //   modal2.value.open();
+      //   break;
+      // case 7:
+      //   modal7.value.open();
+      //   break;
       default:
         router.push({ path: game.path });
         break;
@@ -204,9 +207,9 @@ export default defineComponent({
 
 .game-list {
   display: grid;
-  grid-template-columns: [col-1] 12.5% [col-2] 12.5% [col-3] 12.5% [col-4] 12.5% [col-5] 12.5% [col-6] 12.5%;
+  grid-template-columns: [col-1] 6.0% [col-2] 12.5% [col-3] 12.5% [col-4] 12.5% [col-5] 12.5% [col-6] 12.5%;
   grid-template-rows: [row-1] 1fr [row-2] 1fr [row-3] 1fr;
-  gap: 2em;
+  gap: 6em;
   width: 75%;
   margin: 0;
   padding-left: 3em;
