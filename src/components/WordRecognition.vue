@@ -77,9 +77,11 @@
 import { defineComponent, ref } from "@vue/composition-api";
 import router from "@/router";
 import well from "@/assets/voices/Well.mp3";
+import store from "../store";
 import { useCompanion } from "../composables/useCompanion";
 import { usePlayAudio } from "../composables/usePlayAudio";
 import { useGameState } from "../composables/useGameState";
+
 const setup = (props) => {
   const result = ref(null);
   const companion = ref(useCompanion.getInstance().companion);
@@ -167,7 +169,12 @@ const setup = (props) => {
         words.value.target3
       );
       const total = count1 + count2 + count3;
-      console.log(total, "total");
+      store.setGameResult("WORD_RECOGNITION", [
+        { GeneralWords: count1 },
+        { IrregularWords: count2 },
+        { WordsWithNoMeaning: count3 },
+      ]);
+    
       return total > 0 ? total + 1 : total;
     }
   };

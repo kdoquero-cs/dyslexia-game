@@ -23,7 +23,7 @@
           <div class="modal">
             <div class="modal-content">
               <div>
-                <h4>Question {{ count +1 }} /{{questionsCount}}</h4>
+                <h4>Question {{ count + 1 }} /{{ questionsCount }}</h4>
                 <p>{{ currentValue.question }}</p>
               </div>
               <div class="answers-container">
@@ -32,7 +32,8 @@
                   v-for="(choice, index) in currentValue.choices"
                   :key="index"
                 >
-                  <input @click="setChoice(choice)"
+                  <input
+                    @click="setChoice(choice)"
                     :checked="currentValue.answer === choice"
                     type="radio"
                     name="anwser"
@@ -42,7 +43,14 @@
                   <label :for="choice + '-' + index">{{ choice }}</label>
                 </div>
               </div>
-              <button class="pill next-question" :disabled="currentValue.answer.length === 0" v-if="count !== questionsCount -1"  @click="next">Next question</button>
+              <button
+                class="pill next-question"
+                :disabled="currentValue.answer.length === 0"
+                v-if="count !== questionsCount - 1"
+                @click="next"
+              >
+                Next question
+              </button>
             </div>
           </div>
         </div>
@@ -60,6 +68,8 @@ import { useCompanion } from "../composables/useCompanion";
 import SpellingExercise from "@/assets/voices/SpellingExercise.mp3";
 import { usePlayAudio } from "../composables/usePlayAudio";
 import { useGameState } from "../composables/useGameState";
+import store from "../store";
+
 export default defineComponent({
   props: {},
   setup() {
@@ -72,12 +82,16 @@ export default defineComponent({
         question: "What is Nazka's favourite food?",
         answer: "",
         choices: ["Carrot cake", "Lasagna", "Fruit"],
+        response: "Carrot cake",
+        isCorrect: false,
       },
       {
         id: 1,
         question: "Does every animal talk in Nazka's world ?",
         answer: "",
         choices: ["Yes", "No"],
+        response: "Yes",
+        isCorrect: false,
       },
       {
         id: 2,
@@ -85,27 +99,37 @@ export default defineComponent({
           "Is it true that the more trees we have, the cleaner the air is?",
         answer: "",
         choices: ["Yes", "No"],
+        response: "Yes",
+        isCorrect: false,
       },
       {
         id: 3,
         question: "Who is samantha ?",
         answer: "",
         choices: ["My best friend", "My cousin", "My enemy"],
+        response: "My best friend",
+        isCorrect: false,
       },
       {
         id: 4,
         question: "How many siblings does Naska have ?",
         answer: "",
         choices: ["2", "3", "4"],
+        response: "3",
+        isCorrect: false,
       },
     ]);
-    const questionsCount = computed(()=> values.value.length);
+    const questionsCount = computed(() => values.value.length);
     const currentValue = computed(() => values.value[count.value]);
 
     const goToGameList = () => {
+      console.log(values.value,"currentValue");
+     console.log( values.value.map(val => val.isCorrect).filter(Boolean).length,"every");
       gameState.updateGame(4);
+      const total = (values.value.map(val => val.isCorrect).filter(Boolean).length / values.value.length) *100;
+      store.setGameResult("Auditive_Comprehension",total);
       router.push({ path: "/gamelist" });
-    }
+    };
     const companionHook = useCompanion.getInstance();
     let companionFromHook =
       companionHook.companion.value || companionHook.companionList[0];
@@ -114,12 +138,15 @@ export default defineComponent({
     const playInstruction = () => {
       play(SpellingExercise);
     };
-    const setChoice =(choice) => {
+    const setChoice = (choice) => {
+      console.log(choice, "choice", currentValue.value);
       currentValue.value.answer = choice;
-    }
-    const next =() => {
+      currentValue.value.isCorrect = currentValue.value.answer === currentValue.value.response;
+    };
+    const next = () => {
+      console.log();
       ++count.value;
-    }
+    };
 
     return {
       companion,
@@ -129,7 +156,7 @@ export default defineComponent({
       currentValue,
       next,
       setChoice,
-      questionsCount
+      questionsCount,
     };
   },
 });

@@ -6,7 +6,8 @@ const state = ref({
         years: 0,
         months: 0
     },
-    visitedMainMenu:false
+    visitedMainMenu: false,
+    gamesResults: {}
 });
 
 function setName(name) {
@@ -14,16 +15,22 @@ function setName(name) {
 }
 
 function setYears(years) {
-    state.value.User.years= years;
+    state.value.User.years = years;
 }
 function setMonths(months) {
     state.value.User.months = months;
 }
 function setVisitedMainMenu(status) {
-     state.value.visitedMainMenu = status;
-   
+    state.value.visitedMainMenu = status;
+
 }
 function getVisitedMainMenu() {
-   return state.value.visitedMainMenu;
+    return state.value.visitedMainMenu;
 }
-export default { setVisitedMainMenu,getVisitedMainMenu,setName, setYears, setMonths,user :computed(()=> state.value.User) };
+function setGameResult(challengeId, result) {
+    console.log(challengeId, result, "result");
+    state.value.gamesResults = { ...state.value.gamesResults, [challengeId]: result };
+    console.log(challengeId, state.value.gameResults, "result 22322");
+}
+
+export default { setVisitedMainMenu, getVisitedMainMenu, setName, setYears, setMonths, setGameResult, user: computed(() => state.value.User), gamesResults: computed(() => state.value.gamesResults) };
