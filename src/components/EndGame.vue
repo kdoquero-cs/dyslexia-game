@@ -15,7 +15,7 @@
       <img v-for="(companion, index) in notCompanions" :src="companion.path" :alt="companion.name" :key="index" :class="`not-companion offset-${index}`"/>
 
       <div class="jewels-container">
-        <div :class="getJewelClass(index)" v-for="(jewel, index) in new Array(7).fill(undefined)" :key="index">
+        <div :class="getJewelClass(index)" v-for="(jewel, index) in new Array(4).fill(undefined)" :key="index">
           <img class="jewel" src="@/assets/jewel.png" alt="A jewel that looks like a shiny diamond!"/>
         </div>
       </div>
@@ -145,6 +145,6 @@ export default defineComponent({
 
 .jewel-single-column {
   position: relative;
-  grid-column: span 1;
+  grid-column: span 4;
 }
 </style>
