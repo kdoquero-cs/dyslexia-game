@@ -3,7 +3,7 @@
     <aside class="sidebar">
       <article class="content">
         <p>
-          There is a door that can take me home but it needs 7 jewels to open.
+          There is a door that can take me home but it needs 4 jewels to open.
           To get these jewels, we need to solve a few puzzles.
         </p>
         <h2>Do you want to play with me?</h2>
@@ -78,14 +78,14 @@ function setup(props) {
     // {
     //   id: 2,
     //   name: "Visual attention",
-    //   style: `grid-row: row-1 / span 1; grid-column: col-3 / span 2; background-image: url(${require("@/assets/backgrounds/syllable-classification.jpg")});`,
+    //   style: `grid-row: row-1 / span 1; grid-column: col-3 / span 2; background-image: url(${require("@/assets/backgrounds/visual-attention")});`,
     //   path: "",
     // },
     {
       id: 2,
       // id: 3,
       name: "Syllable recognition",
-      style: `grid-row: row-1 / span 1; grid-column: col-4  / span 2; background-image: url(${require("@/assets/backgrounds/visual-attention.jpg")});`,
+      style: `grid-row: row-1 / span 1; grid-column: col-4  / span 2; background-image: url(${require("@/assets/backgrounds/syllable-classification.jpg")});`,
       path: "/syllable-classification",
     },
     {

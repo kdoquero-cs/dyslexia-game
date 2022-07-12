@@ -49,7 +49,7 @@
       </div>
     </div>
 
-    <button class="pill next-button" @click="goToGameList">I'm done!</button>
+    <button class="pill next-button" :disabled="questionCount == count +1" v-if="currentValue.answer.length > 0 && questionsCount == count +1" @click="goToGameList">I'm done!</button>
   </section>
 </template>
 
@@ -103,7 +103,7 @@ export default defineComponent({
     const currentValue = computed(() => values.value[count.value]);
 
     const goToGameList = () => {
-      gameState.updateGame(4);
+      gameState.updateGame(3);
       router.push({ path: "/gamelist" });
     }
     const companionHook = useCompanion.getInstance();
