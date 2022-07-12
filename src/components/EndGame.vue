@@ -6,7 +6,7 @@
         <p>I really enjoyed our adventure. Please take care and be good!</p>
         <p>Note: There are some information for your parents, let them know about it!</p>
 
-        <csm-button class="action" primary v-on:csmClick="seeReport()">Parents information</csm-button>
+        <button class="action" primary @click="seeReport()">Parents information</button>
       </article>
       <img class="companion" :src="companion.path" />
     </aside>

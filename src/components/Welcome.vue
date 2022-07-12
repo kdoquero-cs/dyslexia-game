@@ -3,7 +3,7 @@
     <h1 class="title">Welcome to Nazka's adventure</h1>
 
     <router-link to="/companion" class="link">
-      <csm-button primary>Press start</csm-button>
+      <button >Press start</button>
     </router-link>
 
     <audio src="@/assets/music/MainMenu.mp4" autoplay="true"></audio>

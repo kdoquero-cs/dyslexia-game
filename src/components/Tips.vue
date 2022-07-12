@@ -7,7 +7,7 @@
      <div>IMAGE</div>
      <div>
        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique adipisci dignissimos fugit, nobis magnam quae illo ducimus iste numquam voluptatem. Tenetur neque eos facilis cupiditate, ex iste blanditiis deleniti doloribus.</div>
-        <csm-button @csmClick="goToGameList">Let's Play</csm-button>
+        <button @click="goToGameList">Let's Play</button>
      </div>
    </div>
 

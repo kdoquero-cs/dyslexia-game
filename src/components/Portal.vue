@@ -4,7 +4,7 @@
       <article :class="{content: true, hide: stepIndex === 2}">
         <p>{{ activeStep.text }}</p>
         <h4>{{ activeStep.bold }}</h4>
-        <csm-button class="action" primary v-on:csmClick="incrementStep()">{{ activeStep.action }}</csm-button>
+        <button class="action" primary @click="incrementStep()">{{ activeStep.action }}</button>
       </article>
       <img :class="companionClass" :src="companion.path" />
     </aside>

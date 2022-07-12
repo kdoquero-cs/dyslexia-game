@@ -58,6 +58,10 @@ html, body, #app {
   pointer-events: none;
 }
 
+button.pill {
+  border-radius: 16px;
+}
+
 .main {
   z-index: 1;
 }

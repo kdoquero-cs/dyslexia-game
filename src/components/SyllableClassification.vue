@@ -1,14 +1,6 @@
 <template>
   <div class="game2">
-    <!-- <csm-button
-      icon="arrow-left"
-      iconPosition="left"
-      text
-      @csmClick="goToGameList"
-      class="back-button"
-      >Back</csm-button
-    > -->
-    <csm-pill @csmClick="goToGameList" class="next-button">I'm done!</csm-pill>
+    <button class="pill next-button" @click="goToGameList" >I'm done!</button>
 
     <div class="instruction">
       <div class="panel">
@@ -31,15 +23,6 @@
               :src="companion.path"
               :alt="companion.name"
           />
-          <!-- <csm-button
-            icon="play"
-            iconPosition="left"
-            text
-            @csmClick="playInstruction"
-            ><span class="listen"
-              ><span class="sr-only">Listen to the</span>Instructions</span
-            ></csm-button
-          > -->
         </div>
         <div class="game"></div>
       </div>
@@ -64,22 +47,16 @@
           <!-- <div class="draggable" v-for="t of words.target1" :key="t">
             {{ t }}
           </div> -->
-          <csm-pill>Words</csm-pill>
+          <button class="pill">Words</button>
         </div>
       </div>
-      <!-- <div id="target2" class="basket_column">
-        <div @dragover.prevent @drop="drop2">
-          <img src="./../assets/well.png" alt="well" />
-          <csm-pill>Irregular words</csm-pill>
-        </div>
-      </div> -->
       <div id="target3" class="basket_column">
         <div @dragover.prevent @drop="drop2">
           <img src="@/assets/icons/basket.svg" alt="basket" />
           <!-- <div class="draggable" v-for="t of words.target3" :key="t">
             {{ t }}
           </div> -->
-          <csm-pill>Syllables</csm-pill>
+          <button class="pill">Syllables</button>
         </div>
       </div>
     </div>
@@ -371,11 +348,6 @@ export default defineComponent({
 
 .draggable span {
   margin: 20px;
-}
-
-csm-pill {
-  height: 50px;
-  min-width: 200px;
 }
 
 .button_text {

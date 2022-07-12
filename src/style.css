@@ -19,8 +19,3 @@
 body {
   overflow: hidden;
 }
-
-csm-pill.next-button {
-  height: 50px;
-  min-width: 200px;
-}

@@ -42,7 +42,7 @@
       </div>
     </div>
 
-    <csm-pill @csmClick="goToGameList" class="next-button">I'm done!</csm-pill>
+    <button class="pill next-button" @click="goToGameList">I'm done!</button>
   </section>
 </template>
 

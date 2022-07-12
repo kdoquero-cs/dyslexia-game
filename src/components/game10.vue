@@ -2,8 +2,8 @@
   <section>
     <div class="container">
     </div>
-    <csm-button :icon='!isRecording ? "play" : "square-filled"' @csmClick="toogleVoice">
-      {{ !isRecording ? "Start" : "stop" }}</csm-button
+    <button :icon='!isRecording ? "play" : "square-filled"' @click="toogleVoice">
+      {{ !isRecording ? "Start" : "stop" }}</button
     >
   </section>
 </template>
