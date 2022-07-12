@@ -96,7 +96,7 @@ export default defineComponent({
       switch (root.$route.name) {
         case "OralSpelling":
           values.value = [
-            "Word",
+            "maison",
             "Cow",
             "Dog",
             "paper",
@@ -170,6 +170,7 @@ export default defineComponent({
       startRecon.value = currentRecording;
     });
     watch(transcript, (currentTranscript) => {
+      console.log(currentTranscript,'word');
       if (
         currentTranscript &&
         currentWord.value &&
