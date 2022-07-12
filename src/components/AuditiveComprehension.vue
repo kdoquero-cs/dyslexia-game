@@ -3,15 +3,15 @@
     <div class="display">
       <div class="display">
         <div class="spelling-box">
-          <h1>Auditive comprehension</h1>
-          <h2>Step 1</h2>
-          <p>Listen to my story:</p>
+          <h1>Compréhension auditive</h1>
+          <h2>Etape 1</h2>
+          <p>Écoutez mon histoire:</p>
           <audio controls src="@/assets/voices/YoudLikeToKnowMoreAboutMe.mp3">
-            Your browser does not support the
+            Votre navigateur ne prend pas en charge le
             <code>audio</code> element.
           </audio>
-          <h2>Step 2</h2>
-          <p>Next, answer five questions:</p>
+          <h2>Etape 2</h2>
+          <p>Ensuite, répondez à cinq questions :</p>
           <img
             class="avatar"
             v-if="companion"
@@ -49,7 +49,7 @@
       </div>
     </div>
 
-    <button class="pill next-button" @click="goToGameList">I'm done!</button>
+    <button class="pill next-button" @click="goToGameList">J'ai fini !</button>
   </section>
 </template>
 

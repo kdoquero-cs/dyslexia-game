@@ -47,7 +47,7 @@
           <!-- <div class="draggable" v-for="t of words.target1" :key="t">
             {{ t }}
           </div> -->
-          <button class="pill">General words</button>
+          <button class="pill">Mots regulier</button>
         </div>
       </div>
       <div id="target2" class="basket_column">
@@ -56,7 +56,7 @@
           <!-- <div class="draggable" v-for="t of words.target2" :key="t">
             {{ t }}
           </div> -->
-          <button class="pill">Irregular words</button>
+          <button class="pill">Mots irregulier</button>
         </div>
       </div>
       <div id="target3" class="basket_column">
@@ -65,7 +65,7 @@
           <!-- <div class="draggable" v-for="t of words.target3" :key="t">
             {{ t }}
           </div> -->
-          <button class="pill">Words with no meaning</button>
+          <button class="pill">Mots sans signification</button>
         </div>
       </div>
     </div>
