@@ -10,7 +10,7 @@
 <div id="banner" class="banner">
 	<div class="print">
 		<h2 class="h2">Your child's information</h2>
-		<csm-button primary class="action" v-on:csmClick="print()">Print the report</csm-button>
+		<button primary class="action" @click="print()">Print the report</button>
 	</div>
 	<div>
 		<ul class="ul">
@@ -428,11 +428,11 @@
 			<span class="kidmonth">
 				<!-- here goes the variable for the kid's month -->
 			</span>
-			month</p>
+			<p>month</p>
     </li>
 	</ul>
 	<h3 class="h3">General conclusion</h3>
-	<p><span class="emphase">As a reminder, this game is only a test, not a diagnosis.</span> </br>
+	<p><span class="emphase">As a reminder, this game is only a test, not a diagnosis.</span>
 		For more precise results, see a healthcare professional.
 	</p>
 	<p>Your results suggest that:

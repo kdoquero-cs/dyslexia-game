@@ -19,7 +19,6 @@
         @click="goToGame(game)"
       >
         <span class="play-btn">
-          <csm-icon name="play" size-xl class="play-btn-icon" />
         </span>
 
         <div class="game-item__success-wrapper">
@@ -38,31 +37,13 @@
           :style="`background-image: url(${require('@/assets/backgrounds/end-portal.jpg')})`"
         >
           <span class="play-btn" v-if="allCompleted">
-            <csm-icon name="play" size-xl class="play-btn-icon hydrated" />
           </span>
 
           <span class="lock-btn" v-if="!allCompleted">
-            <csm-icon name="lock" size-xl class="lock-btn-icon"></csm-icon>
           </span>
         </li>
       </router-link>
     </ul>
-
-    <csm-modal ref="modal2">
-      <h2>This game is under construction!</h2>
-      <p>Click "Ok" to open an interactive mockup in another tab.</p>
-      <p>The password to access the mockup is "hackathon".</p>
-      <csm-button primary v-on:csmClick="openVisualAttention()">Ok</csm-button>
-      <csm-button tertiary v-on:csmClick="modal2.close()">Cancel</csm-button>
-    </csm-modal>
-
-    <csm-modal ref="modal7">
-      <h2>This game is under construction!</h2>
-      <p>Click "Ok" to open an interactive mockup in another tab.</p>
-      <p>The password to access the mockup is "hackathon".</p>
-      <csm-button primary v-on:csmClick="openWriting()">Ok</csm-button>
-      <csm-button tertiary v-on:csmClick="modal7.close()">Cancel</csm-button>
-    </csm-modal>
     <audio src="@/assets/music/Page1a4.mp4" autoplay="true"></audio>
   </section>
 </template>
@@ -72,7 +53,6 @@ import {
   defineComponent,
   ref,
   onMounted,
-  computed,
 } from "@vue/composition-api";
 import { useCompanion } from "../composables/useCompanion";
 import { useGameState } from "../composables/useGameState";

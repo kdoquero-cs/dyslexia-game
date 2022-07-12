@@ -42,14 +42,14 @@
                   <label :for="choice + '-' + index">{{ choice }}</label>
                 </div>
               </div>
-              <csm-pill :disabled="currentValue.answer.length === 0" v-if="count !== questionsCount -1" class="next-question" @csmClick="next">Next question</csm-pill>
+              <button class="pill next-question" :disabled="currentValue.answer.length === 0" v-if="count !== questionsCount -1"  @click="next">Next question</button>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <csm-pill @csmClick="goToGameList" class="next-button">I'm done!</csm-pill>
+    <button class="pill next-button" @click="goToGameList">I'm done!</button>
   </section>
 </template>
 

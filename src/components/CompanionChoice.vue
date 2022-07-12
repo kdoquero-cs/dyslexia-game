@@ -27,7 +27,7 @@
         </label>
       </div>
 
-      <csm-button class="next" @csmClick="goToForm">Next</csm-button>
+      <button class="next" @click="goToForm">Next</button>
     </fieldset>
 
     <audio src="@/assets/music/MainMenu.mp4" autoplay="true"></audio>

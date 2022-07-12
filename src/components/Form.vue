@@ -10,16 +10,16 @@
             <h2>What is your {{ title }}?</h2>
           <div class="input-container" v-if="!showAge">
             <label for="name">Name</label>
-            <csm-input type="text" @csmInput="inputName"></csm-input>
+            <input type="text" @input="inputName"/>
           </div>
           <div class="inputs-container" v-if="showAge">
             <div class="input-container" >
               <label for="years" class="form-label">Years</label>
-              <csm-input type="number" name="years" @csmInput="inputYears" ></csm-input>
+              <input type="number" name="years" @input="inputYears" />
             </div>
             <div class="input-container">
               <label for="months" class="form-label">Months</label>
-              <csm-input type="number" name="months" @csmInput="inputMonths" ></csm-input>
+              <input type="number" name="months" @input="inputMonths" />
             </div>
 
             <audio src="@/assets/voices/2B - niceToMeetYou.mp3" autoplay="true"></audio>
@@ -27,7 +27,7 @@
         </div>
       </form>
       <div class="next-container">
-          <csm-button @csmClick="toggleShowAge" primary>Next</csm-button>
+          <button @click="toggleShowAge" primary>Next</button>
       </div>
     </div>
 
@@ -39,7 +39,7 @@
 <script>
 import { computed, defineComponent, ref } from "@vue/composition-api";
 import router from "@/router";
-import store from "../store"
+import store from "../store";
 import { useCompanion } from "../composables/useCompanion";
 import { AnimatedBackground } from "../composables/animated-background";
 
@@ -56,14 +56,14 @@ export default defineComponent({
     const title = computed(() => (showAge.value ? "age" : "name"));
     const allowGoNext = computed(()=> showAge.value && store.user.value.name && store.user.value.years && store.user.value.months);
     const inputName = (event) => {
-      store.setName(event.detail.value);
+      store.setName(event.target.value);
     };
 
     const inputYears = (event) => {
-      store.setYears(event.detail.value)
+      store.setYears(event.target.value)
     };
     const inputMonths = (event) => {
-        store.setMonths(event.detail.value)
+        store.setMonths(event.target.value)
     };
     const toggleShowAge = () => {
       if (allowGoNext.value) {
@@ -126,9 +126,6 @@ section > div {
 }
 .form-label {
   width: 10em;
-}
-csm-input {
-  margin: 5px;
 }
 .input-container {
     display: flex;

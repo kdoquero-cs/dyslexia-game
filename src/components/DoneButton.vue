@@ -1,7 +1,5 @@
 <template>
-  <csm-pill :disabled="disabled" @csmClick="goToGameList" class="next-button"
-    >I'm done!</csm-pill
-  >
+  <button class="pill next-button" :disabled="disabled" @click="goToGameList">I'm done!</button>
 </template>
 
 <script>

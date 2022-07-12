@@ -19,8 +19,8 @@
             <router-link to="/game-assessment" class="link">detailed report</router-link>
             of the information we could gather from this game.
           </p>
-          <csm-button class="next" @csmClick="goToReport" primary
-            >Detailed report (mockup)</csm-button
+          <button class="next" @click="goToReport" primary
+            >Detailed report (mockup)</button
           >
         </div>
       </div>
