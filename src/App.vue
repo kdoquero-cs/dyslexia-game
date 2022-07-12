@@ -1,64 +1,31 @@
 <template>
   <div id="app">
-    <canvas ref="canvas" class="animated-background"></canvas>
-    <router-view class="main" />
+    <router-view></router-view>
   </div>
 </template>
 
-<script>
-import Vue from 'vue';
-import CompositionApi from '@vue/composition-api';
-import { onMounted, onBeforeUnmount } from '@vue/composition-api';
-import { AnimatedBackground } from '@/composables/animated-background';
-import "./style.css"
-Vue.use(CompositionApi);
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import HelloWorld from './components/HelloWorld.vue';
+import Welcome from './components/Welcome.vue';
 
-export default {
-  name: 'App',
-  setup: () => {
-    const animatedBackground = AnimatedBackground.getInstance();
 
-    onMounted(() => {
-      animatedBackground.init(document.querySelector('.animated-background'));
-    });
-
-    onBeforeUnmount(() => {
-      animatedBackground.destroy();
-    });
-  }
-}
+@Component({
+  components: {
+    HelloWorld,
+    Welcome
+  },
+})
+export default class App extends Vue {}
 </script>
 
 <style>
-html, body, #app {
-  height: 100%;
-  width: 100%;
-}
-
 #app {
-  font-family: Luciole, Helvetica, Arial, sans-serif;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: var(--colors-text-gray-base);
-  overflow: hidden;
-
-  background-color: var(--colors-dataviz-purple-darker-30);
-  background-image: radial-gradient(ellipse at bottom, rgba(255, 253, 166, .2), var(--colors-dataviz-purple-darker-30), var(--colors-dataviz-purple-darker-30));
-  background-size: 200%;
-  background-position: 50% 100%;
-}
-
-.animated-background {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  pointer-events: none;
-}
-
-.main {
-  z-index: 1;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 </style>

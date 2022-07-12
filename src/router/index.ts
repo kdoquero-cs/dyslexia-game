@@ -1,19 +1,19 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Form from '@/components/Form';
-import CompanionChoice from '@/components/CompanionChoice';
-import GameAssessment from '@/components/GameAssessment';
-import ParentsInfo from '@/components/ParentsInfo';
-import SpellingGames from '@/components/SpellingGames';
-import DragAndDrop from '@/components/DragAndDrop';
-import GameList from '@/components/GameList';
-import Welcome from "@/components/Welcome";
-import Portal from '@/components/Portal';
-import EndGame from '@/components/EndGame';
-import WordRecognition from '@/components/WordRecognition';
-import SyllableClassification from '@/components/SyllableClassification';
-import AuditiveComprehension from '@/components/AuditiveComprehension';
-import ReadingProfile from '@/components/ReadingProfile';
+import Form from '@/components/Form.vue';
+import CompanionChoice from '@/components/CompanionChoice.vue';
+import GameAssessment from '@/components/GameAssessment.vue';
+import ParentsInfo from '@/components/ParentsInfo.vue';
+import SpellingGames from '@/components/SpellingGames.vue';
+import DragAndDrop from '@/components/DragAndDrop.vue';
+import GameList from '@/components/GameList.vue';
+import Welcome from "@/components/Welcome.vue";
+import Portal from '@/components/Portal.vue';
+import EndGame from '@/components/EndGame.vue';
+import WordRecognition from '@/components/WordRecognition.vue';
+import SyllableClassification from '@/components/SyllableClassification.vue';
+import AuditiveComprehension from '@/components/AuditiveComprehension.vue';
+import ReadingProfile from '@/components/ReadingProfile.vue';
 
 
 

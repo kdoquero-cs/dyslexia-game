@@ -1,11 +1,11 @@
 import { computed, watch, ref } from "@vue/composition-api";
-
+declare var  SpeechRecognition;
 export function useSpeechRecognition(state) {
     const transcript = ref(null);
     const confidence = ref(0);
     const isRecording = ref(false);
     const recorded = ref(false);
-    const SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+    const speechRecognition = SpeechRecognition;
     const recognition = new SpeechRecognition();
     recognition.continuous = false;
     recognition.lang = 'en-US';

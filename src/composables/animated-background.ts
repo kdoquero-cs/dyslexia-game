@@ -20,7 +20,7 @@ export class AnimatedBackground {
   };
   instance = null;
 
-  static getInstance() {
+  getInstance() {
     if (!this.instance) {
       this.instance = new AnimatedBackground();
       return this.instance;
@@ -28,7 +28,7 @@ export class AnimatedBackground {
     return this.instance;
   }
 
-  init(canvas) {
+  init(canvas?) {
     if (!this.core.isRunning) {
       this.setCanvas(this.canvas || canvas);
       this.createFireflies();
@@ -162,7 +162,7 @@ export class AnimatedBackground {
       this.createFireflies();
       this.renderGraphics();
       this.play();
-      resolve();
+      resolve(null);
     });
   };
 
@@ -177,16 +177,16 @@ export class AnimatedBackground {
   }
 
   setupListeners() {
-    this.debouncedReset = this.debounce(this.reset, 300);
+    this.core.debouncedReset = this.debounce(this.reset, 300);
     window.addEventListener('keydown', this.keydownListener.bind(this));
-    window.addEventListener('resize', this.debouncedReset.bind(this));
+    window.addEventListener('resize', this.core.debouncedReset.bind(this));
   }
 
   destroy() {
     this.stop();
     this.clearCanvas();
     window.removeEventListener('keydown', this.keydownListener);
-    window.removeEventListener('resize', this.debouncedReset);
+    window.removeEventListener('resize', this.core.debouncedReset);
   }
 
   debounce(fn, delay) {

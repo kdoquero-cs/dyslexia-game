@@ -26,8 +26,8 @@ export function useSpeechSynthesis() {
 
   getVoices();
 
-  function playOnWord(word) {
-    if (word && (typeof word === 'string' || word instanceof String)) {
+  function playOnWord(word:string) {
+    if (word && (typeof word === 'string')) {
       utterrance.value = new SpeechSynthesisUtterance(word);
       utterrance.value.voice = voice.value;
       utterrance.value.lang = "en-US";

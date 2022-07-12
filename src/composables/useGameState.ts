@@ -1,7 +1,8 @@
 import { ref, computed } from '@vue/composition-api';
 
 export class useGameState {
-  instance = null;
+  private instance:useGameState;
+ 
   gameList = [
     { id: 1, completed: false },
     { id: 2, completed: false },
@@ -12,8 +13,9 @@ export class useGameState {
     { id: 7, completed: false },
   ];
   visitedMainMenu = false;
-
-  static getInstance() {
+  constructor() {}
+  
+  getInstance() {
     if (!this.instance) {
       this.instance = new useGameState();
       return this.instance;

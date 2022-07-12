@@ -10,7 +10,7 @@ export class useCompanion {
   ];
   companion = ref(this.companionList[3]);
 
-  static getInstance() {
+  getInstance() {
     if (!this.instance) {
       this.instance = new useCompanion();
       return this.instance;
