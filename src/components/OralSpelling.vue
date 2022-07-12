@@ -83,7 +83,7 @@ export default defineComponent({
     const recordingState = ref(false);
     const gameState = useGameState.getInstance();
     const goToGameList = () => {
-      gameState.updateGame(5);
+      gameState.updateGame(4); //FIXME: hard coded to 5, because we had 7 games.
       router.push({ path: "/gamelist" });
     }
 
