@@ -30,7 +30,7 @@
       <button class="next" @click="goToForm">Suivant</button>
     </fieldset>
 
-    <audio src="@/assets/music/MainMenu.mp4" autoplay="true"></audio>
+    <!-- <audio src="@/assets/music/MainMenu.mp3" autoplay="true"></audio> -->
   </div>
 </template>
 

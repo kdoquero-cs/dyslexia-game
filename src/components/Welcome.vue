@@ -6,7 +6,7 @@
       <button >Appuyer sur start</button>
     </router-link>
 
-    <audio src="@/assets/music/MainMenu.mp4" autoplay="true"></audio>
+    <!-- <audio src="@/assets/music/MainMenu.mp3" autoplay="true"></audio> -->
   </section>
 </template>
 
