@@ -9,18 +9,20 @@
         <div class="form">
             <h2>Quel est votre {{ title }}?</h2>
           <div class="input-container" v-if="!showAge">
-            <label for="name">Prenom</label>
-            <input type="text" @input="inputName"/>
+            <!-- <label for="name">Prenom</label> -->
+            <input  class="name-input" placeholder="Écris ton nom ici"  type="text" @input="inputName"/>
+
           </div>
-          <div class="inputs-container" v-if="showAge">
+          <div  class="inputs-container" v-if="showAge">
             <div class="input-container" >
 
+
               <label for="years" class="form-label">Ans</label>
-              <input class="number-input" type="number" min="0" max="110" name="years" @input="inputYears" />
+              <input  placeholder="28" class="age-input" type="number" min="0" max="110" name="years" @input="inputYears" />
             </div>
             <div class="input-container">
               <label for="months" class="form-label">Mois</label>
-              <input class="number-input" type="number" min="0" max="12" name="months" @input="inputMonths" />
+              <input class="age-input" type="number" min="0" max="12" name="months" @input="inputMonths" />
 
             </div>
 
@@ -29,7 +31,7 @@
         </div>
       </form>
       <div class="next-container">
-          <button :disabled="showAge && !isValid" @click="toggleShowAge" primary>Suivant</button>
+          <button style="padding:10px 24px; background-color: #B7D0F5; border-radius: 15px" :disabled="showAge && !isValid" @click="toggleShowAge" primary>Suivant</button>
       </div>
     </div>
 
@@ -102,9 +104,10 @@ export default defineComponent({
   flex-direction: column;
   justify-content: center;
   padding: var(--nazka-rect-padding);
-  background-color: var(--nazka-rect-color);
+  background-color: #5045CD;
   border-radius: var(--nazka-rect-radius);
   margin-right: 3em;
+  color:white;
 }
 
 img {
@@ -119,22 +122,37 @@ section > div {
 }
 .form {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-evenly;
+
+
 }
 .inputs-container {
-  width: 50%;
+  /* width: 50%;   */
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-flow: column;
+  /* flex-direction: row; */
+  justify-content: normal;
+  align-items: flex-start;
+  /* align-items: center; */
+  /* flex-flow: column; */
 }
 .form-label {
   width: 10em;
 }
+.name-input {
+ padding:1em; 
+ border-radius: 15px;
+}
+.age-input {
+ padding:1em; 
+ width: 5em; 
+ border-radius: 15px;
+}
 .input-container {
     display: flex;
     align-items: center;
+    flex-direction: column 
 }
 .next-container {
     display: flex;

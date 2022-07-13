@@ -49,4 +49,9 @@ export default defineComponent({});
   color: var(--colors-text-white-base);
   cursor: pointer;
 }
+.start-button {
+ padding:20px 30px;
+ border-radius: 30px; 
+ background-color: #B7D0F5 ; 
+}
 </style>

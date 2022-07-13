@@ -124,10 +124,20 @@ export default {
 .radio:focus + .companion-img,
 .radio:checked + .companion-img {
   transform: scale(1.1);
-  border-color: var(--colors-gray-lighter-40);
+  border-color:#FD605D;
 }
 
 .next {
   margin-top: 2em;
+/* padding: 15px 32px; */
+ /* margin: auto; */
+  width: 30%;
+    margin-left: auto;
+  margin-right: auto;
+font-size: 36px;
+
+background: #B7D0F5;
+border-radius: 30px;
+
 }
 </style>
