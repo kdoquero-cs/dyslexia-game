@@ -12,7 +12,7 @@
               <div class="button_text">
                 <img src="@/assets/icons/Sound icon.png" alt="" />
                 <span class="listen"
-                  ><span class="sr-only">Écoutez les</span>Instructions</span
+                  ><span class="sr-only">Écoutez les</span>Consignes</span
                 >
               </div>
             </button>
@@ -124,9 +124,9 @@ const setup = props => {
 
   const words = ref({
     origin: [
-      "lace",
-      "mice",
-      "lore",
+      "tôt"	 ,
+      "temps",
+      "fleur",
       // "theme",
       // "few",
       // "mad",
@@ -134,9 +134,9 @@ const setup = props => {
       // "cup",
       // "leave",
       // "bat",
-      "glas",
-      "dai",
-      "mon"
+      "tis"	,
+      "fra"	,
+      "gue"	,
       // "pret",
       // "fect",
       // "glit",

@@ -2,7 +2,7 @@
   <div class="main-container">
     <div class="TxtBox">
       <div class="Txtbox">
-        <h1 class="h1">Information for parents and professionals</h1>
+        <h1 class="h1">Informations pour les parents et les professionnels </h1>
         <div class="main-info">
           <p>
           Tout d'abord, nous pensons qu'il est important pour vous de féliciter
@@ -10,14 +10,14 @@
           pour eux, même si nous avons fait en sorte de le rendre aussi ludique que possible.
           </p>
           <p>
-            Ce jeu nous a permis de distinguer les principales difficultés que votre enfant peut
-            dans la lecture.
+            Ce jeu nous a permis de distinguer les principales difficultés que votre enfant peut rencontrer
+            en lecture.
           </p>
           <br />
           <p>
-            Nous avons réuni un
+            Nous avons créé un 
           <router-link to="/game-assessment" class="link">rapport détaillé</router-link>
-            des informations que nous pourrions recueillir de ce jeu.
+            reprenant les resultats du jeu.
           </p>
           <button class="next" @click="goToReport" primary
             >Rapport détaillé (mockup)</button

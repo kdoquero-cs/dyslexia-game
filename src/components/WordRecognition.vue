@@ -12,7 +12,7 @@
             <div class="button_text">
               <img src="@/assets/icons/Sound icon.png" alt="" />
               <span class="listen"
-                ><span class="sr-only">Écoutes les</span>Instructions</span
+                ><span class="sr-only">Écoutes les</span>Consignes</span
               >
             </div>
           </button>
@@ -101,17 +101,17 @@ const setup = (props) => {
       answer: [
         "monsieur",
         "août",
-        // "oignon"
-        // "poële", "tousser", "doute"
+        //   "oignon"
+        //  "poële", "tousser", "doute"
       ],
     },
     {
       name: "Nonsense word",
       answer: [
         "badou",
-        // "lirette",
-        // "tarteau"
-        // "frague", "miro"
+        //   "lirette",
+        //   "tarteau"
+        // "frague", "miro", "himmer"
       ],
     },
   ]);
@@ -134,28 +134,7 @@ const setup = (props) => {
       // "oignon"
       // "poële", 
       //"tousser", 
-      //"doute"   
-
-      //"maze",
-      //"niece",
-      //"flaos",
-      //"trial",
-      //"through",
-      // "qarmel",
-      // "cream",
-      // "eyes",
-      // "faw"
-      // "peace",
-      // "laugh",
-      // "lare",
-      // "way",
-      // "cough",
-      // "miro",
-      // "day",
-      // "doubt",
-      // "himmer"
-        
-
+      //"doute"
     ],
     target1: [],
     target2: [],

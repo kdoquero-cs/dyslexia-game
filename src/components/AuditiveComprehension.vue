@@ -49,7 +49,7 @@
                 v-if="count !== questionsCount - 1"
                 @click="next"
               >
-                Next question
+                Question suiante
               </button>
             </div>
           </div>
@@ -106,8 +106,8 @@ export default defineComponent({
         id: 3,
         question: "Qui est samantha ?",
         answer: "",
-        choices: [" Ma meilleur ami ", " Ma cousinne ", " Mon ennemi "],
-        response: " Ma meilleur ami ",
+        choices: [" Ma meilleure amie ", " Ma cousinne ", " Mon ennemie"],
+        response: " Ma meilleure amie ",
         isCorrect: false,
       },
       {

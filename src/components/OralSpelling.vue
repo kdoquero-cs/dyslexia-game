@@ -3,8 +3,8 @@
     <div class="display">
       <div class="display">
         <div class="spelling-box">
-          <h1>L'orthographe</h1>
-          <p>Ici, je vais dire quelques mots.</p>
+          <h1> L'orthographe</h1>
+          <p> Ici, je vais dire quelques mots.</p>
           <p class="words2">Pouvez-vous m'aider à les épeler ?</p>
 
           <div class="spelling">

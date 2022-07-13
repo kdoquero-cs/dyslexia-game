@@ -27,7 +27,7 @@ import { useCompanion } from "../composables/useCompanion";
 function setup() {
   const companion = ref(useCompanion.getInstance().companion);
   const steps = ref([
-    { text: "Tu as les 7 diamants ! Excellent travail !", bold: "Maintenant, allons au portail !", action: "Allons - y" },
+    { text: "Tu as les 4 diamants ! Excellent travail !", bold: "Maintenant, allons au portail !", action: "Allons - y" },
     { text: "",  bold: "Nous avons réussi ! C’était une sacrée aventure !", action: "Place les diamants" },
     { text: "", bold: "", action: "" },
   ]);

@@ -5,7 +5,7 @@
 	<span> Bilan de depistage de </span><span class="mockup"> MOCKUP</span>
 		<span class="kidName">
 		<!-- here goes the variable for the kid's name -->
-		<span class="tempText">[child's name]</span>
+		<span class="tempText">[Prenom  de l'enfant]</span>
 	</span>
 </h1>
 <div id="banner" class="banner">
@@ -18,7 +18,7 @@
 			<li class="listitem">
 				<span class="kidDetail">Prenom:</span>
 				<span>
-					<span class="tempText">[child's name]</span>
+					<span class="tempText">[Prenom de l'enfant]</span>
 					<!-- here goes the variable for the kid's name -->
 				</span>
 			</li>

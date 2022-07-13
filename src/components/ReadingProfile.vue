@@ -1,30 +1,30 @@
 <template>
   <div class="background">
-    <h1>The best profile for your child</h1>
+    <h1>Le meilleur profil pour votre enfant</h1>
     <div class="reading-profile">
       <div class="reading-profile__item">
-        <label>Reading profile 1</label>
+        <label>Profile de lecture 1</label>
         <img
           src="./../../static/reading-profile/profile1.png"
           alt="Reading profile 1"
         />
       </div>
       <div class="reading-profile__item">
-        <label>Reading profile 2</label>
+        <label>Profile de lecture 2</label>
         <img
           src="./../../static/reading-profile/profile2.png"
           alt="Reading profile 2"
         />
       </div>
       <div class="reading-profile__item">
-        <label>Reading profile 3</label>
+        <label>Profile de lecture 3</label>
         <img
           src="./../../static/reading-profile/profile3.png"
-          alt="Reading profile 3"
+          alt="Profile de lecture 3"
         />
       </div>
       <div class="reading-profile__item">
-        <label>Reading profile 4</label>
+        <label>Profile de lecture 4</label>
         <img
           src="./../../static/reading-profile/profile4.png"
           alt="Reading profile 4"
