@@ -2,56 +2,56 @@
   <div class="main-container">
     <div class="TxtBox">
       <div class="Txtbox">
-        <h1 class="h1">Information for parents and professionals</h1>
+        <h1 class="h1">Informations pour les parents et les professionnels </h1>
         <div class="main-info">
           <p>
-            First of all, we believe it is important for you to congratulate
-            your child on finishing this game! It is not always an easy thing
-            for them, eventhough we made sure to make it as playful as possible.
+          Tout d'abord, nous pensons qu'il est important pour vous de féliciter
+          votre enfant pour avoir terminé ce jeu ! Ce n'est pas toujours une chose facile
+          pour eux, même si nous avons fait en sorte de le rendre aussi ludique que possible.
           </p>
           <p>
-            This game allowed us to distinguish key difficulties your child may
-            have when reading.
+            Ce jeu nous a permis de distinguer les principales difficultés que votre enfant peut rencontrer
+            en lecture.
           </p>
           <br />
           <p>
-            We gathered a
-            <router-link to="/game-assessment" class="link">detailed report</router-link>
-            of the information we could gather from this game.
+            Nous avons créé un 
+          <router-link to="/game-assessment" class="link">rapport détaillé</router-link>
+            reprenant les resultats du jeu.
           </p>
           <button class="next" @click="goToReport" primary
-            >Detailed report (mockup)</button
+            >Rapport détaillé (mockup)</button
           >
         </div>
       </div>
       <div class="ProfilePanel">
-        <h2 class="h2">The best profile for your child</h2>
+        <h2 class="h2">Le meilleur profil pour votre enfant</h2>
       </div>
     </div>
     <div class="reading-profile" v-on:click="goToReadingProfile()">
       <div class="reading-profile__item">
-        <label>Reading profile 1</label>
+        <label>Profil de lecture 1</label>
         <img
           src="./../../static/reading-profile/profile1.png"
           alt="Reading profile 1"
         />
       </div>
       <div class="reading-profile__item">
-        <label>Reading profile 2</label>
+        <label>Profil de lecture 2</label>
         <img
           src="./../../static/reading-profile/profile2.png"
           alt="Reading profile 2"
         />
       </div>
       <div class="reading-profile__item">
-        <label>Reading profile 3</label>
+        <label>Profil de lecture 3</label>
         <img
           src="./../../static/reading-profile/profile3.png"
           alt="Reading profile 3"
         />
       </div>
       <div class="reading-profile__item">
-        <label>Reading profile 4</label>
+        <label>Profil de lecture 4</label>
         <img
           src="./../../static/reading-profile/profile4.png"
           alt="Reading profile 4"

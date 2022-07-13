@@ -1,9 +1,9 @@
 <template>
   <section class="content">
-    <h1 class="title">Welcome to Nazka's adventure</h1>
+    <h1 class="title">Bienvenue dans l'aventure de Nazka</h1>
 
     <router-link to="/companion" class="link">
-      <button >Press start</button>
+      <button >Appuyer sur start</button>
     </router-link>
 
     <audio src="@/assets/music/MainMenu.mp4" autoplay="true"></audio>

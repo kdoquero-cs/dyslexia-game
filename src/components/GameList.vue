@@ -3,10 +3,10 @@
     <aside class="sidebar">
       <article class="content">
         <p>
-          There is a door that can take me home but it needs 4 jewels to open.
-          To get these jewels, we need to solve a few puzzles.
+          Il y a une porte qui peut me ramener chez moi mais il faut 7 joyaux pour l'ouvrir.
+          Pour obtenir ces bijoux, nous devons résoudre quelques énigmes.
         </p>
-        <h2>Do you want to play with me?</h2>
+        <h2>Tu veux jouer avec moi ?</h2>
       </article>
       <img class="companion" :src="companion.path" />
     </aside>
@@ -22,7 +22,7 @@
         </span>
 
         <div class="game-item__success-wrapper">
-          <div class="game-item__success">Well done!</div>
+          <div class="game-item__success">Bien joué !</div>
         </div>
         <img src="@/assets/jewel.png" class="game-item__success-jewel" />
       </li>

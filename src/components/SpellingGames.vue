@@ -36,7 +36,7 @@
               v-bind:class="[synthesisIsSpeaking ? 'playing' : '']"
               class="listen"
             >
-              <h2>Listen</h2>
+              <h2>Ecoutes</h2>
               <img src="@/assets/icons/Sound icon.svg" alt="Sound" srcset="" />
             </div>
             <div
@@ -44,7 +44,7 @@
               v-bind:class="[isRecording ? 'recording' : '']"
               class="speak"
             >
-              <h2>Speak</h2>
+              <h2>Parles</h2>
               <img
                 src="@/assets/icons/noun_micro_3396391 1.png"
                 alt="micro"
@@ -53,7 +53,7 @@
             </div>
           </div>
           <button :disabled="!recordingState" class="next" @click="nextWord">
-            Next
+            Suivant
           </button>
         </div>
       </div>
@@ -96,31 +96,26 @@ export default defineComponent({
       switch (root.$route.name) {
         case "OralSpelling":
           values.value = [
-            "maison",
-            "Cow",
-            "Dog",
-            "paper",
-            "have",
-            "like",
-            "home",
-            "dad",
-            "little",
-            "goat",
-            "this",
+          "boîte"	,
+          "porte"	,
+          "femme"	,
+          "crayon"	,
+          "table"	,
+          "maison"	,
           ];
           return {
-            title: "Oral spelling",
+            title: "Expression orale",
             background: OralSpellingBG,
-            textOne: "Here, I'll say a few words.",
-            textTwo: "Can you help me spell them?",
+            textOne: "Ici, je vais dire quelques mots.",
+            textTwo: "Peux-tu m'aider à les épeler ?",
           };
-        case "MemorySpan":
+        case "Mémoire":
           values.value = ["1", "1 3", "4 3 5", "3 2 1 5", "3 4 1 6 2"];
           return {
             title: "Memory span",
             background: MemorySpanBG,
-            textOne: "We need to open this chest.",
-            textTwo: "I'll tell you the code, remember it and repeat after me.",
+            textOne: "Il faut qu'on ouvre ce coffre.",
+            textTwo: "Je vais te dire le code, mémorises-le et répètes après moi.",
           };
       }
     });

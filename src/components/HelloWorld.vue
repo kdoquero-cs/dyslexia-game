@@ -1,14 +1,14 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
+    <h2>Liens essentiels</h2>
     <ul>
       <li>
         <a
           href="https://vuejs.org"
           target="_blank"
         >
-          Core Docs
+          Documents de base
         </a>
       </li>
       <li>
@@ -24,7 +24,7 @@
           href="https://chat.vuejs.org"
           target="_blank"
         >
-          Community Chat
+          Chat de la communauté
         </a>
       </li>
       <li>
@@ -41,11 +41,11 @@
           href="http://vuejs-templates.github.io/webpack/"
           target="_blank"
         >
-          Docs for This Template
+          Documents relatifs à ce modèle
         </a>
       </li>
     </ul>
-    <h2>Ecosystem</h2>
+    <h2>Ecosysteme</h2>
     <ul>
       <li>
         <a
