@@ -89,7 +89,7 @@ export default defineComponent({
 .main-container {
   display: flex;
   padding: 4em 2em 4em 6em;
-  background-image: url('~@/assets/backgrounds/end-portal.jpg');
+  background-image: url('https://img.freepik.com/darmowe-wektory/magiczny-portal-na-gorskim-klifie-z-latajacymi-skalami-dookola_107791-4674.jpg?w=1200');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

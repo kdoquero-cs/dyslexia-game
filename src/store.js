@@ -28,9 +28,7 @@ function getVisitedMainMenu() {
     return state.value.visitedMainMenu;
 }
 function setGameResult(challengeId, result) {
-    console.log(challengeId, result, "result");
     state.value.gamesResults = { ...state.value.gamesResults, [challengeId]: result };
-    console.log(challengeId, state.value.gameResults, "result 22322");
 }
 
 export default { setVisitedMainMenu, getVisitedMainMenu, setName, setYears, setMonths, setGameResult, user: computed(() => state.value.User), gamesResults: computed(() => state.value.gamesResults) };

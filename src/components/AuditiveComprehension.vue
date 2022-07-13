@@ -123,8 +123,7 @@ export default defineComponent({
     const currentValue = computed(() => values.value[count.value]);
 
     const goToGameList = () => {
-      console.log(values.value,"currentValue");
-     console.log( values.value.map(val => val.isCorrect).filter(Boolean).length,"every");
+  
       gameState.updateGame(3);
       const total = (values.value.map(val => val.isCorrect).filter(Boolean).length / values.value.length) *100;
       store.setGameResult("AUDITIVE_COMPREHENSION",total);
@@ -139,12 +138,10 @@ export default defineComponent({
       play(SpellingExercise);
     };
     const setChoice = (choice) => {
-      console.log(choice, "choice", currentValue.value);
       currentValue.value.answer = choice;
       currentValue.value.isCorrect = currentValue.value.answer === currentValue.value.response;
     };
     const next = () => {
-      console.log();
       ++count.value;
     };
 
@@ -165,7 +162,7 @@ export default defineComponent({
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .container {
-  background: url("~@/assets/backgrounds/auditory-comprehension.jpg") no-repeat;
+  background: url("https://img.freepik.com/free-vector/landscape-with-cascade-waterfall-in-forest_107791-7143.jpg?w=1200") no-repeat;
   background-size: cover;
   background-position: center;
   display: flex;

@@ -55,6 +55,7 @@ import { useCompanion } from "../composables/useCompanion";
 import SpellingExercise from "@/assets/voices/SpellingExercise.mp3";
 import { usePlayAudio } from "../composables/usePlayAudio";
 import { useGameState } from "../composables/useGameState";
+import store from "../store";
 export default defineComponent({
   props: {},
   setup() {
@@ -65,17 +66,12 @@ export default defineComponent({
       companionHook.companion.value || companionHook.companionList[0];
     const companion = ref(companionFromHook);
     const values = ref([
-      "Word",
-      "Cow",
-      "Dog",
-      "paper",
-      "have",
-      "like",
-      "home",
-      "dad",
-      "little",
-      "goat",
-      "this",
+      "boite",
+      "crayon",
+      "femme",
+      "maison",
+      "porte",
+      "table",
     ]);
     const count = ref(0);
     const result = ref([]);
@@ -90,8 +86,7 @@ export default defineComponent({
     const currentWord = computed(() => values.value[count.value]);
 
     const { playOnWord } = useSpeechSynthesis();
-    const { isRecording, transcript, confidence } =
-      useSpeechRecognition(startRecon);
+    const { isRecording, transcript, confidence } = useSpeechRecognition(startRecon);
     const play = () => {
       playOnWord(currentWord.value);
     };
@@ -124,7 +119,9 @@ export default defineComponent({
           word: currentWord.value,
           speech: transcript.value,
         });
-        ++score.value;
+        
+        score.value = score.value + (10 / values.value) /100;
+        store.setGameResult("ORAL_SPELLING",score.value);
       }
     });
     return {
@@ -145,7 +142,7 @@ export default defineComponent({
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .container {
-  background: url("~@/assets/backgrounds/oral-spelling.png") no-repeat;
+  background: url("https://img.freepik.com/free-vector/golf-course-with-green-grass-pond-sunset_107791-6976.jpg?w=1200") no-repeat;
   background-size: cover;
   background-position: center;
   display: flex;

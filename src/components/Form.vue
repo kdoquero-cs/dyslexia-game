@@ -15,11 +15,11 @@
           <div class="inputs-container" v-if="showAge">
             <div class="input-container" >
               <label for="years" class="form-label">Years</label>
-              <input type="number" name="years" @input="inputYears" />
+              <input class="number-input" type="number" min="0" max="110" name="years" @input="inputYears" />
             </div>
             <div class="input-container">
               <label for="months" class="form-label">Months</label>
-              <input type="number" name="months" @input="inputMonths" />
+              <input class="number-input" type="number" min="0" max="12" name="months" @input="inputMonths" />
             </div>
 
             <audio src="@/assets/voices/2B - niceToMeetYou.mp3" autoplay="true"></audio>
@@ -27,7 +27,7 @@
         </div>
       </form>
       <div class="next-container">
-          <button @click="toggleShowAge" primary>Next</button>
+          <button :disabled="showAge && !isValid" @click="toggleShowAge" primary>Next</button>
       </div>
     </div>
 
@@ -51,22 +51,21 @@ export default defineComponent({
     const companion = ref(companionFromHook);
     const animatedBackground = AnimatedBackground.getInstance();
     animatedBackground.play();
-
+   const isValid = computed(()=> store.user.value.name !== "" && store.user.value.years !== 0 && store.user.value.months !== 0);
     const showAge = ref(false);
     const title = computed(() => (showAge.value ? "age" : "name"));
-    const allowGoNext = computed(()=> showAge.value && store.user.value.name && store.user.value.years && store.user.value.months);
     const inputName = (event) => {
       store.setName(event.target.value);
     };
 
     const inputYears = (event) => {
-      store.setYears(event.target.value)
+      store.setYears(event.target.value);
     };
     const inputMonths = (event) => {
-        store.setMonths(event.target.value)
+        store.setMonths(event.target.value);
     };
     const toggleShowAge = () => {
-      if (allowGoNext.value) {
+      if (isValid.value) {
         router.push({ path: "/gamelist" });
       }
       showAge.value = !showAge.value;
@@ -81,12 +80,16 @@ export default defineComponent({
       inputMonths,
       companion,
       companionHook,
+      isValid,
     };
   },
 });
 </script>
 
 <style scoped>
+.number-input {
+  width: 150px;
+}
 .main-container {
   display: flex;
   align-items: center;
