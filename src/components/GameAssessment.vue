@@ -430,6 +430,7 @@ export default {
 
     const user = computed(() => store.user.value);
     const gameResults = computed(() => store.gamesResults.value);
+    //the norms from the default norm isn't real life norm, this will need to be reviewed & improved
     const norms = computed(()=> json);
     return {
       print: () => window.print(),

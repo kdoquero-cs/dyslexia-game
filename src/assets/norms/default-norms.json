@@ -1,17 +1,17 @@
 {
     "WordRecognition": {
-        "GeneralWords": 2,
-        "IrregularWords": 2,
-        "WordsWithNoMeaning": 3
+        "GeneralWords": 0,
+        "IrregularWords": 0,
+        "WordsWithNoMeaning": 0
     },
     "SyllableRecognition": {
-        "Words": 5,
-        "Syllables": 5
+        "Words": 0,
+        "Syllables": 0
     },
     "Comprehension": {
-        "Mean": 80
+        "Mean": 0
     },
     "Spelling": {
-        "Mean": 80
+        "Mean": 0
     }
 }
