@@ -1,10 +1,6 @@
 <template>
   <div class="game2">
-<<<<<<< HEAD
-    <button class="pill next-button" :disabled="words.origin.length != 0" v-if="words.origin.length === 0" @click="goToGameList" >I'm done!</button>
-=======
-    <button class="pill next-button" @click="goToGameList" >J'ai finis !</button>
->>>>>>> b973b10 (traduction 2)
+    <button class="pill next-button" :disabled="words.origin.length != 0" v-if="words.origin.length === 0" @click="goToGameList" >J'ai finis !</button>
 
     <div class="instruction">
       <div class="panel">
