@@ -3,7 +3,7 @@
     <h1 class="title">Bienvenue dans l'aventure de Nazka</h1>
 
     <router-link to="/companion" class="link">
-      <button >Appuyer sur start</button>
+      <button class="start-button" >Appuyer sur start</button>
     </router-link>
 
     <!-- <audio src="@/assets/music/MainMenu.mp3" autoplay="true"></audio> -->

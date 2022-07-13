@@ -2,26 +2,11 @@
   <section class="main-container">
     <aside class="sidebar">
       <article class="content">
-<<<<<<< HEAD
         <h1 class="title">Merci beaucoup de m'avoir aidé à rentrer chez moi auprès de ma famille et de mes amis.</h1>
         <p>J'ai vraiment apprécié notre aventure. Prenez soin de vous et soyez sages !</p>
         <p>Note : Il y a quelques informations pour vos parents, faites-leur savoir !</p>
 
         <button class="action" primary @click="seeReport()">Informations pour les parents</button>
-=======
-        <h1 class="title">
-          Thank you so much for helping me get home to my family and friends.
-        </h1>
-        <p>I really enjoyed our adventure. Please take care and be good!</p>
-        <p>
-          Note: There are some information for your parents, let them know about
-          it!
-        </p>
-
-        <button class="action" primary @click="seeReport()">
-          Parents information
-        </button>
->>>>>>> 285b109 (Changed the assets and UI)
       </article>
       <img class="companion" :src="companion.path" />
     </aside>
@@ -97,11 +82,7 @@ export default defineComponent({
 .main-container {
   display: flex;
   padding: 4em 2em 4em 6em;
-<<<<<<< HEAD
   background-image: url('~https://img.freepik.com/free-vector/golf-course-with-green-grass-pond-sunset_107791-6976.jpg?w=1200');
-=======
-  background-image: url("~@/assets/backgrounds/oral-spelling.png");
->>>>>>> 285b109 (Changed the assets and UI)
   background-size: 150%;
   background-repeat: no-repeat;
   background-position: 50% 100%;

@@ -12,14 +12,22 @@
           </audio>
           <h2>Etape 2</h2>
           <p>Écoute mon histoire :</p>
-          <button type="button" v-on:click="playInstruction()">
-              <div class="button_text">
-                <img src="@/assets/icons/Sound icon.png" alt="" />
-                <span class="listen"
-                  ><span class="sr-only">Listen to the</span>Instructions</span
-                >
+          <button type="button" class="button-play" @click="playInstruction()">
+            <div class="button_text">
+              <img
+                src="@/assets/icons/Sound_icon.svg"
+                alt=""
+                width="30"
+                height="30"
+              />
+              <div>
+              <span class="listen">
+                Instructions
+              </span>
               </div>
-            </button>
+            </div>
+          </button>
+
           <h2>Etape 3</h2>
           <p>Ensuite, réponde aux cinq questions :</p>
           <img
@@ -60,11 +68,7 @@
                 v-if="count !== questionsCount - 1"
                 @click="next"
               >
-<<<<<<< HEAD
                 Question suiante
-=======
-                Next
->>>>>>> 285b109 (Changed the assets and UI)
               </button>
             </div>
           </div>
@@ -244,6 +248,7 @@ export default defineComponent({
   bottom: 80px;
   right: 26px;
   cursor: pointer;
+  
 }
 .display {
   display: flex;
@@ -298,9 +303,22 @@ label {
   color: #666363;
   cursor: auto;
 }
+.button-play {
+   border: 2px solid #f9edee;
+}
+.button_text {
+   width: 150px;
+   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  justify-content: space-between;
+  background-color: #f9edee;
+  border: #f9edee;
+}
 .next-question:enabled:hover{
     background: #DCE8FA;
 }
+
 h4 {
   text-align: start;
 }

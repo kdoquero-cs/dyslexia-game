@@ -30,7 +30,7 @@
           <p>Exemples :</p>
           <button type="button" @click="playInstruction1()">
             <div class="button_text">
-              <img src="@/assets/icons/Sound icon.png" alt="" />
+              <img src="@/assets/icons/Sound_icon.svg" alt="" width="50" height="50"/>
               <span class="listen"
                 ><span class="sr-only">Listen to the</span>Instructions</span
               >
@@ -67,11 +67,7 @@
           <!-- <div class="draggable" v-for="t of words.target1" :key="t">
             {{ t }}
           </div> -->
-<<<<<<< HEAD
-          <button class="pill">Mots Réguliers</button>
-=======
-          <button class="pill well-labels">General words</button>
->>>>>>> 285b109 (Changed the assets and UI)
+          <button class="pill well-labels">Mots Réguliers</button>
         </div>
       </div>
       <div id="target2" class="basket_column">
@@ -80,11 +76,7 @@
           <!-- <div class="draggable" v-for="t of words.target2" :key="t">
             {{ t }}
           </div> -->
-<<<<<<< HEAD
-          <button class="pill">Mots Irréguliers</button>
-=======
-          <button class="pill well-labels">Irregular words</button>
->>>>>>> 285b109 (Changed the assets and UI)
+          <button class="pill well-labels">Mots Irréguliers</button>
         </div>
       </div>
       <div id="target3" class="basket_column">
@@ -93,11 +85,7 @@
           <!-- <div class="draggable" v-for="t of words.target3" :key="t">
             {{ t }}
           </div> -->
-<<<<<<< HEAD
-          <button class="pill">Mots qui n'existent pas</button>
-=======
-          <button class="pill well-labels">Words with no meaning</button>
->>>>>>> 285b109 (Changed the assets and UI)
+          <button class="pill well-labels">Mots qui n'existent pas</button>
         </div>
       </div>
     </div>
@@ -237,19 +225,11 @@ const setup = (props) => {
     play(wellExamples);
   };
 
-<<<<<<< HEAD
   // const isEndSet = computed(() => words.value.origin.length === 0);
   // const isEndGame = computed(
   //   () => isEndSet.value && sets.value.length === setNumber.value
   // );
   
-=======
-  const isEndSet = computed(() => words.value.origin.length === 0);
-  const isEndGame = computed(
-    () => isEndSet.value && sets.value.length === setNumber.value
-  );
-
->>>>>>> 285b109 (Changed the assets and UI)
   const gameState = useGameState.getInstance();
   const goToGameList = () => {
     gameState.updateGame(1);
@@ -296,11 +276,12 @@ export default defineComponent({
 .instruction {
   left: 40px;
   position: absolute;
-  top: 200px;
-  width: 361px;
+  top: 100px;
+  width: 400px;
   height: 480px;
   background: #f9eded;
   border-radius: 8px;
+  padding: 0px 0px 0px 25px;
 }
 
 .instructionsPanel {

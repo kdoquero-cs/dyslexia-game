@@ -44,11 +44,7 @@
               v-bind:class="[synthesisIsSpeaking ? 'playing' : '']"
               class="listen"
             >
-<<<<<<< HEAD
               <h2>Ecoutes</h2>
-              <img src="@/assets/icons/Sound icon.svg" alt="Sound" srcset="" />
-=======
-              <h2>Listen</h2>
               <img
                 src="@/assets/icons/Sound_icon.svg"
                 alt="Sound"
@@ -56,7 +52,6 @@
                 width="100"
                 height="100  "
               />
->>>>>>> 285b109 (Changed the assets and UI)
             </div>
             <div
               @click="record"
@@ -200,21 +195,14 @@ export default defineComponent({
       startRecon.value = currentRecording;
     });
     watch(transcript, (currentTranscript) => {
-<<<<<<< HEAD
       console.log(currentTranscript, "word",currentWord.value);
-=======
-      console.log(currentTranscript);
->>>>>>> 285b109 (Changed the assets and UI)
       if (
         currentTranscript &&
         currentWord.value &&
         currentTranscript.toLowerCase() &&
         currentTranscript.includes(currentWord.value.toLowerCase())
       ) {
-<<<<<<< HEAD
         ++correctCount.value;
-=======
->>>>>>> 285b109 (Changed the assets and UI)
         result.value.push({
           word: currentWord.value,
           speech: transcript.value,

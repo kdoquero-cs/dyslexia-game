@@ -1,16 +1,6 @@
 <template>
   <div class="game2">
-<<<<<<< HEAD
     <button class="pill next-button" :disabled="words.origin.length != 0" @click="goToGameList" >J'ai fini !</button>
-=======
-    <button
-      class="pill next-button"
-      :disabled="words.origin.length != 0"
-      @click="goToGameList"
-    >
-      I'm done!
-    </button>
->>>>>>> 285b109 (Changed the assets and UI)
 
     <div class="instruction">
       <div class="panel">
@@ -19,23 +9,13 @@
           <h2 class="h2">Waouh, quel désordre !</h2>
           <p>Il y a des paniers !</p>
           <button type="button" @click="playInstruction()">
-<<<<<<< HEAD
-              <div class="button_text">
-                <img src="@/assets/icons/Sound icon.png" alt="" />
-                <span class="listen"
-                  ><span class="sr-only">Écoutez les</span>Consignes</span
-                >
-              </div>
-            </button>
-=======
             <div class="button_text">
               <img src="@/assets/icons/Sound_icon.svg" alt="" width="50" height="50" />
               <span class="listen"
-                ><span class="sr-only">Listen to the</span>Instructions</span
+                ><span class="sr-only">Écoutez les</span>Consignes</span
               >
             </div>
           </button>
->>>>>>> 285b109 (Changed the assets and UI)
 
           <img
             class="companion"
@@ -67,11 +47,7 @@
           <!-- <div class="draggable" v-for="t of words.target1" :key="t">
             {{ t }}
           </div> -->
-<<<<<<< HEAD
-          <button class="pill">Mots</button>
-=======
-          <button class="pill well-labels">Words</button>
->>>>>>> 285b109 (Changed the assets and UI)
+          <button class="pill well-labels">Mots</button>
         </div>
       </div>
       <div id="target3" class="basket_column">
@@ -80,11 +56,7 @@
           <!-- <div class="draggable" v-for="t of words.target3" :key="t">
             {{ t }}
           </div> -->
-<<<<<<< HEAD
-          <button class="pill">Syllabes</button>
-=======
-          <button class="pill well-labels">Syllables</button>
->>>>>>> 285b109 (Changed the assets and UI)
+          <button class="pill well-labels">Syllabes</button>
         </div>
       </div>
     </div>
@@ -122,15 +94,9 @@ const setup = (props) => {
     {
       name: "words",
       answer: [
-<<<<<<< HEAD
       [ "tôt", "temps", "fleur" ], 
       [ "air", "faim", "rat" ] ,
       ]
-=======
-        "lace",
-        "mice",
-        "lore",
->>>>>>> 285b109 (Changed the assets and UI)
         //   "theme",
         //   "few",
         //   "mad",
@@ -138,23 +104,13 @@ const setup = (props) => {
         //   "cup",
         //   "leave",
         //   "bat"
-<<<<<<< HEAD
-=======
-      ],
->>>>>>> 285b109 (Changed the assets and UI)
     },
     {
       name: "Syllables",
       answer: [
-<<<<<<< HEAD
       [ "tis", "fra", "gue" ],
       [ "com", "teur", "spé" ],
       ]
-=======
-        "glas",
-        "dai",
-        "mon",
->>>>>>> 285b109 (Changed the assets and UI)
         //   "pret",
         //   "fect",
         //   "glit",
@@ -162,41 +118,11 @@ const setup = (props) => {
         //   "ses",
         //   "sil",
         //   "gui"
-<<<<<<< HEAD
     }
   ]);
 
   const words = ref({
     origin: [...sets.value[setNumber.value]],
-=======
-      ],
-    },
-  ]);
-
-  const words = ref({
-    origin: [
-      "lace",
-      "mice",
-      "lore",
-      // "theme",
-      // "few",
-      // "mad",
-      // "cab",
-      // "cup",
-      // "leave",
-      // "bat",
-      "glas",
-      "dai",
-      "mon",
-      // "pret",
-      // "fect",
-      // "glit",
-      // "ther",
-      // "ses",
-      // "sil",
-      // "gui"
-    ],
->>>>>>> 285b109 (Changed the assets and UI)
     target1: [],
     target2: [],
     game2Solution,
@@ -231,13 +157,8 @@ const setup = (props) => {
       const total = count1 + count2;
       console.log("result", count1, count2);
       store.setGameResult("SYLLABLE_CLASSIFICATION", [
-<<<<<<< HEAD
         { words: count1 },
         { syllables: count2 },
-=======
-        { Words: count1 },
-        { Syllables: count2 },
->>>>>>> 285b109 (Changed the assets and UI)
       ]);
       return total > 0 ? total + 1 : total;
     }
@@ -265,19 +186,11 @@ const setup = (props) => {
     words.value.target2.push(text);
     checkSet();
   };
-<<<<<<< HEAD
   // const drop3 = ev => {
   //   const text = ev.dataTransfer.getData("text");
   //   spliceArray(text);
   //   words.value.target3.push(text);
   // };
-=======
-  const drop3 = (ev) => {
-    const text = ev.dataTransfer.getData("text");
-    spliceArray(text);
-    words.value.target3.push(text);
-  };
->>>>>>> 285b109 (Changed the assets and UI)
   const playInstruction = () => {
     play(well);
   };
@@ -311,13 +224,8 @@ export default defineComponent({
 </script>
 <style scoped>
 .game2 {
-<<<<<<< HEAD
   background: url("https://img.freepik.com/free-vector/summer-camp-with-bonfire-tent-van-backpack-chair-guitar_107791-5223.jpg?w=1200")
     no-repeat center center fixed;
-=======
-  background: url("~@/assets/backgrounds/visual-attention.jpg") no-repeat center
-    center fixed;
->>>>>>> 285b109 (Changed the assets and UI)
   background-color: antiquewhite;
   -webkit-background-size: cover;
   -moz-background-size: cover;

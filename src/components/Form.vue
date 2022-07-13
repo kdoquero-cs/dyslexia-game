@@ -9,7 +9,7 @@
       </div>
       <form action="">
         <div class="form">
-          div>
+          <div>
             <h2>Quel est votre {{ title }}?</h2>
           </div>
           <div class="input-container" v-if="!showAge">
@@ -31,6 +31,7 @@
               src="@/assets/voices/2B - niceToMeetYou.mp3"
               autoplay="true"
             ></audio>
+          </div>
           </div>
       </form>
       <div class="next-container">
