@@ -5,6 +5,7 @@
     <div class="instruction">
       <div class="panel">
         <div class="instructionsPanel">
+<<<<<<< HEAD
           <h1 class="h2">Word recognition</h1>
           <h2 class="h2">Waouh, look!</h2>
           <p>There are wells!</p>
@@ -16,6 +17,19 @@
               >
             </div>
           </button>
+=======
+          <h1 class="h2">Reconnaissance des mots </h1>
+          <h2 class="h2">Waouh, regarde!</h2>
+          <p>Il y a des puits !</p>
+            <button type="button" @click="playInstruction()">
+              <div class="button_text">
+                <img src="@/assets/icons/Sound icon.png" alt="" />
+                <span class="listen"
+                  ><span class="sr-only">Écoutez les</span>Instructions</span
+                >
+              </div>
+            </button>
+>>>>>>> 5f76f65 (tranduction test)
 
           <img
             class="companion"
