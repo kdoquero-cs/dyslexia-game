@@ -1,17 +1,27 @@
 <template>
   <section class="main-container">
     <aside class="sidebar">
-      <article :class="{content: true, hide: stepIndex === 2}">
+      <article :class="{ content: true, hide: stepIndex === 2 }">
         <p>{{ activeStep.text }}</p>
         <h4>{{ activeStep.bold }}</h4>
-        <button class="action" primary @click="incrementStep()">{{ activeStep.action }}</button>
+        <button class="action" primary @click="incrementStep()">
+          {{ activeStep.action }}
+        </button>
       </article>
       <img :class="companionClass" :src="companion.path" />
     </aside>
 
     <div class="jewels-container">
-      <div :class="getJewelClass(index)" v-for="(jewel, index) in new Array(4).fill(undefined)" :key="index">
-        <img :class="{ jewel: true, hidden: stepIndex < 1, yeet: stepIndex === 2 }" src="@/assets/jewel.png" alt="A jewel that looks like a shiny diamond!"/>
+      <div
+        :class="getJewelClass(index)"
+        v-for="(jewel, index) in new Array(4).fill(undefined)"
+        :key="index"
+      >
+        <img
+          :class="{ jewel: true, hidden: stepIndex < 1, yeet: stepIndex === 2 }"
+          src="@/assets/jewel.svg"
+          alt="A jewel that looks like a shiny diamond!"
+        />
       </div>
     </div>
 
@@ -20,15 +30,33 @@
 </template>
 
 <script>
-import { defineComponent, onMounted, ref, computed } from '@vue/composition-api';
+import {
+  defineComponent,
+  onMounted,
+  ref,
+  computed,
+} from "@vue/composition-api";
 import router from "@/router";
 import { useCompanion } from "../composables/useCompanion";
 
 function setup() {
   const companion = ref(useCompanion.getInstance().companion);
   const steps = ref([
+<<<<<<< HEAD
     { text: "Tu as les 4 diamants ! Excellent travail !", bold: "Maintenant, allons au portail !", action: "Allons - y" },
     { text: "",  bold: "Nous avons réussi ! C’était une sacrée aventure !", action: "Place les diamants" },
+=======
+    {
+      text: "You've got all 4 jewels! Great work!",
+      bold: "Now let's go to the portal!",
+      action: "Let's go!",
+    },
+    {
+      text: "",
+      bold: "We made it! That was quite the hike!",
+      action: "Place jewels",
+    },
+>>>>>>> 285b109 (Changed the assets and UI)
     { text: "", bold: "", action: "" },
   ]);
   const activeStep = ref(steps.value[0]);
@@ -47,10 +75,10 @@ function setup() {
 
   function getJewelClass(index) {
     return index % 7 === 0
-      ? { 'jewel-full-columns': true }
+      ? { "jewel-full-columns": true }
       : index % 7 < 3
-        ? { 'jewel-half-columns': true }
-        : { 'jewel-single-column': true };
+      ? { "jewel-half-columns": true }
+      : { "jewel-single-column": true };
   }
 
   return {
@@ -65,18 +93,18 @@ function setup() {
       if (stepIndex.value === 2) {
         setTimeout(() => {
           router.push({ path: "/end-game" });
-        }, 5000)
+        }, 5000);
       }
     },
     getJewelClass: (index) => {
       return index % 7 === 0
-        ? { 'jewel-full-columns': true }
+        ? { "jewel-full-columns": true }
         : index % 7 < 3
-          ? { 'jewel-half-columns': true }
-          : { 'jewel-single-column': true };
+        ? { "jewel-half-columns": true }
+        : { "jewel-single-column": true };
     },
     companionClass,
-  }
+  };
 }
 
 export default defineComponent({
@@ -89,10 +117,30 @@ export default defineComponent({
 .main-container {
   display: flex;
   padding: 4em 2em 4em 6em;
+<<<<<<< HEAD
   background-image: url('https://img.freepik.com/darmowe-wektory/magiczny-portal-na-gorskim-klifie-z-latajacymi-skalami-dookola_107791-4674.jpg?w=1200');
+=======
+  background-image: url("~@/assets/backgrounds/end-portal.jpg");
+>>>>>>> 285b109 (Changed the assets and UI)
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.action{
+  display: flex;
+  justify-content: flex-end;
+  border: 2px solid #000000;
+  height: 26px;
+  width: auto;
+  left: 0px;
+  top: 0px;
+  border-radius: 30px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: #b7d0f5;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 16px;
 }
 
 .sidebar {
@@ -107,7 +155,7 @@ export default defineComponent({
   padding: var(--nazka-rect-padding);
   background-color: var(--nazka-rect-color);
   border-radius: var(--nazka-rect-radius);
-  transition: opacity .2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
 }
 
 .content.hide {
@@ -124,7 +172,7 @@ export default defineComponent({
   left: -2em;
   width: 75%;
   user-select: none;
-  transition: transform .33s ease-in-out, opacity 1s ease-in-out;
+  transition: transform 0.33s ease-in-out, opacity 1s ease-in-out;
   pointer-events: none;
 }
 
@@ -146,13 +194,13 @@ export default defineComponent({
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: repeat(4, 25%);
-  gap: 0 .66em;
+  gap: 0 0.66em;
 }
 
 .jewel {
   width: 52px;
   height: 52px;
-  transition: opacity .66s ease-in-out, transform .66s ease-in-out;
+  transition: opacity 0.66s ease-in-out, transform 0.66s ease-in-out;
 }
 
 .jewel.hidden {
@@ -164,7 +212,7 @@ export default defineComponent({
   position: relative;
   opacity: 0;
   transform: translate(25vw, -20vw) rotate(60deg);
-  transition-delay: .2s, 0s;
+  transition-delay: 0.2s, 0s;
 }
 
 .jewel-full-columns {
@@ -174,7 +222,7 @@ export default defineComponent({
 
 .jewel-half-columns {
   position: relative;
-  grid-column: span 2 ;
+  grid-column: span 2;
 }
 
 .jewel-single-column {

@@ -13,15 +13,23 @@
           <p class="words2">
             {{ componentSettings.textTwo }}
           </p>
-
-          <div class="spelling">
-            <img
-              @click="playInstruction"
-              src="@/assets/icons/Hear instructions.png"
-              alt=""
-              srcset=""
-            />
-          </div>
+          <button type="button" class="button-play" @click="playInstruction">
+            <div class="button_text">
+              <img
+                src="@/assets/icons/Sound_icon.svg"
+                alt=""
+                srcset=""
+                width="30"
+                height="30"
+              />
+              <div>
+              <span class="listen">
+                <!-- <span class="sr-only">Listen to the</span> -->
+                Instructions
+              </span>
+              </div>
+            </div>
+          </button>
           <img
             class="avatar"
             v-if="companion"
@@ -36,8 +44,19 @@
               v-bind:class="[synthesisIsSpeaking ? 'playing' : '']"
               class="listen"
             >
+<<<<<<< HEAD
               <h2>Ecoutes</h2>
               <img src="@/assets/icons/Sound icon.svg" alt="Sound" srcset="" />
+=======
+              <h2>Listen</h2>
+              <img
+                src="@/assets/icons/Sound_icon.svg"
+                alt="Sound"
+                srcset=""
+                width="100"
+                height="100  "
+              />
+>>>>>>> 285b109 (Changed the assets and UI)
             </div>
             <div
               @click="record"
@@ -46,9 +65,11 @@
             >
               <h2>Parles</h2>
               <img
-                src="@/assets/icons/noun_micro_3396391 1.png"
+                src="@/assets/icons/noun_micro_3396391 1.svg"
                 alt="micro"
                 srcset=""
+                width="100"
+                height="100"
               />
             </div>
           </div>
@@ -179,14 +200,21 @@ export default defineComponent({
       startRecon.value = currentRecording;
     });
     watch(transcript, (currentTranscript) => {
+<<<<<<< HEAD
       console.log(currentTranscript, "word",currentWord.value);
+=======
+      console.log(currentTranscript);
+>>>>>>> 285b109 (Changed the assets and UI)
       if (
         currentTranscript &&
         currentWord.value &&
         currentTranscript.toLowerCase() &&
         currentTranscript.includes(currentWord.value.toLowerCase())
       ) {
+<<<<<<< HEAD
         ++correctCount.value;
+=======
+>>>>>>> 285b109 (Changed the assets and UI)
         result.value.push({
           word: currentWord.value,
           speech: transcript.value,
@@ -228,16 +256,17 @@ export default defineComponent({
   width: 200px;
   position: absolute;
   left: -1em;
-  top: 80%;
+  top: 280px;
+  
 }
 .spelling-box {
-  height: 328px;
-  width: 350px;
+  height: 428px;
+  width: 450px;
   margin: 30px;
   border-radius: 15px;
   background-color: #f9edee;
   position: relative;
-  padding: 40px;
+  padding: 10px;
 }
 .spelling-box .words2 {
   margin-top: 50px;
@@ -288,11 +317,24 @@ export default defineComponent({
   background-color: #c1c1c1;
   color: black;
 }
+.button-play {
+   border: 2px solid #f9edee;
+}
 .next-button {
   position: absolute;
   bottom: 80px;
   right: 26px;
   cursor: pointer;
+}
+
+.button_text {
+   width: 150px;
+   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  justify-content: space-between;
+  background-color: #f9edee;
+  border: #f9edee;
 }
 .display {
   display: flex;

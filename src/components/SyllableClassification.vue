@@ -1,6 +1,16 @@
 <template>
   <div class="game2">
+<<<<<<< HEAD
     <button class="pill next-button" :disabled="words.origin.length != 0" @click="goToGameList" >J'ai fini !</button>
+=======
+    <button
+      class="pill next-button"
+      :disabled="words.origin.length != 0"
+      @click="goToGameList"
+    >
+      I'm done!
+    </button>
+>>>>>>> 285b109 (Changed the assets and UI)
 
     <div class="instruction">
       <div class="panel">
@@ -9,6 +19,7 @@
           <h2 class="h2">Waouh, quel désordre !</h2>
           <p>Il y a des paniers !</p>
           <button type="button" @click="playInstruction()">
+<<<<<<< HEAD
               <div class="button_text">
                 <img src="@/assets/icons/Sound icon.png" alt="" />
                 <span class="listen"
@@ -16,12 +27,21 @@
                 >
               </div>
             </button>
+=======
+            <div class="button_text">
+              <img src="@/assets/icons/Sound_icon.svg" alt="" width="50" height="50" />
+              <span class="listen"
+                ><span class="sr-only">Listen to the</span>Instructions</span
+              >
+            </div>
+          </button>
+>>>>>>> 285b109 (Changed the assets and UI)
 
           <img
-              class="companion"
-              v-if="companion"
-              :src="companion.path"
-              :alt="companion.name"
+            class="companion"
+            v-if="companion"
+            :src="companion.path"
+            :alt="companion.name"
           />
         </div>
         <div class="game"></div>
@@ -47,7 +67,11 @@
           <!-- <div class="draggable" v-for="t of words.target1" :key="t">
             {{ t }}
           </div> -->
+<<<<<<< HEAD
           <button class="pill">Mots</button>
+=======
+          <button class="pill well-labels">Words</button>
+>>>>>>> 285b109 (Changed the assets and UI)
         </div>
       </div>
       <div id="target3" class="basket_column">
@@ -56,7 +80,11 @@
           <!-- <div class="draggable" v-for="t of words.target3" :key="t">
             {{ t }}
           </div> -->
+<<<<<<< HEAD
           <button class="pill">Syllabes</button>
+=======
+          <button class="pill well-labels">Syllables</button>
+>>>>>>> 285b109 (Changed the assets and UI)
         </div>
       </div>
     </div>
@@ -72,7 +100,7 @@ import { usePlayAudio } from "../composables/usePlayAudio";
 import { useGameState } from "../composables/useGameState";
 import store from "../store";
 
-const setup = props => {
+const setup = (props) => {
   const result = ref(null);
   const companion = ref(useCompanion.getInstance().companion);
   const { play } = usePlayAudio();
@@ -94,9 +122,15 @@ const setup = props => {
     {
       name: "words",
       answer: [
+<<<<<<< HEAD
       [ "tôt", "temps", "fleur" ], 
       [ "air", "faim", "rat" ] ,
       ]
+=======
+        "lace",
+        "mice",
+        "lore",
+>>>>>>> 285b109 (Changed the assets and UI)
         //   "theme",
         //   "few",
         //   "mad",
@@ -104,13 +138,23 @@ const setup = props => {
         //   "cup",
         //   "leave",
         //   "bat"
+<<<<<<< HEAD
+=======
+      ],
+>>>>>>> 285b109 (Changed the assets and UI)
     },
     {
       name: "Syllables",
       answer: [
+<<<<<<< HEAD
       [ "tis", "fra", "gue" ],
       [ "com", "teur", "spé" ],
       ]
+=======
+        "glas",
+        "dai",
+        "mon",
+>>>>>>> 285b109 (Changed the assets and UI)
         //   "pret",
         //   "fect",
         //   "glit",
@@ -118,14 +162,44 @@ const setup = props => {
         //   "ses",
         //   "sil",
         //   "gui"
+<<<<<<< HEAD
     }
   ]);
 
   const words = ref({
     origin: [...sets.value[setNumber.value]],
+=======
+      ],
+    },
+  ]);
+
+  const words = ref({
+    origin: [
+      "lace",
+      "mice",
+      "lore",
+      // "theme",
+      // "few",
+      // "mad",
+      // "cab",
+      // "cup",
+      // "leave",
+      // "bat",
+      "glas",
+      "dai",
+      "mon",
+      // "pret",
+      // "fect",
+      // "glit",
+      // "ther",
+      // "ses",
+      // "sil",
+      // "gui"
+    ],
+>>>>>>> 285b109 (Changed the assets and UI)
     target1: [],
     target2: [],
-    game2Solution
+    game2Solution,
   });
 
   const checkResult = (first, second) => {
@@ -138,8 +212,8 @@ const setup = props => {
 
     return count;
   };
-  const spliceArray = text => {
-    const index = words.value.origin.findIndex(o => o === text);
+  const spliceArray = (text) => {
+    const index = words.value.origin.findIndex((o) => o === text);
     words.value.origin.splice(index, 1);
     if (words.value.origin.length === 0) {
       const count1 = checkResult(
@@ -157,8 +231,13 @@ const setup = props => {
       const total = count1 + count2;
       console.log("result", count1, count2);
       store.setGameResult("SYLLABLE_CLASSIFICATION", [
+<<<<<<< HEAD
         { words: count1 },
         { syllables: count2 },
+=======
+        { Words: count1 },
+        { Syllables: count2 },
+>>>>>>> 285b109 (Changed the assets and UI)
       ]);
       return total > 0 ? total + 1 : total;
     }
@@ -174,23 +253,31 @@ const setup = props => {
   const drag = (ev, text) => {
     ev.dataTransfer.setData("text", text);
   };
-  const drop = ev => {
+  const drop = (ev) => {
     const text = ev.dataTransfer.getData("text");
     spliceArray(text);
     words.value.target1.push(text);
     checkSet();
   };
-  const drop2 = ev => {
+  const drop2 = (ev) => {
     const text = ev.dataTransfer.getData("text");
     spliceArray(text);
     words.value.target2.push(text);
     checkSet();
   };
+<<<<<<< HEAD
   // const drop3 = ev => {
   //   const text = ev.dataTransfer.getData("text");
   //   spliceArray(text);
   //   words.value.target3.push(text);
   // };
+=======
+  const drop3 = (ev) => {
+    const text = ev.dataTransfer.getData("text");
+    spliceArray(text);
+    words.value.target3.push(text);
+  };
+>>>>>>> 285b109 (Changed the assets and UI)
   const playInstruction = () => {
     play(well);
   };
@@ -199,7 +286,7 @@ const setup = props => {
   const goToGameList = () => {
     gameState.updateGame(2);
     router.push({ path: "/gamelist" });
-  }
+  };
 
   return {
     words,
@@ -219,13 +306,18 @@ const setup = props => {
 export default defineComponent({
   name: "SyllableClassification",
   props: {},
-  setup
+  setup,
 });
 </script>
 <style scoped>
 .game2 {
+<<<<<<< HEAD
   background: url("https://img.freepik.com/free-vector/summer-camp-with-bonfire-tent-van-backpack-chair-guitar_107791-5223.jpg?w=1200")
     no-repeat center center fixed;
+=======
+  background: url("~@/assets/backgrounds/visual-attention.jpg") no-repeat center
+    center fixed;
+>>>>>>> 285b109 (Changed the assets and UI)
   background-color: antiquewhite;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -297,6 +389,12 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
 }
+.draggable:hover {
+  background: #dce8fa;
+}
+.draggable:active {
+  background: #b7d0f5;
+}
 #target,
 #target2,
 #target3 {
@@ -311,11 +409,12 @@ export default defineComponent({
   margin-right: 40px;
 }
 #target2 {
-  margin: 0 40px 50px 0;
+  margin: 0 50px 80px 50px;
 }
 #target3 {
-  margin: 0 40px 80px 0;
+  margin: 0 40px 80px 50px;
 }
+
 
 .basket_container img {
   width: 250px;
@@ -325,17 +424,25 @@ export default defineComponent({
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: flex-end;
+  align-items: flex-start;
   position: absolute;
-  bottom: 90px;
+  bottom: 170px;
   left: 30%;
-  width: 850px;
 }
 
+.well-labels {
+  padding: 10px 10px 10px 10px;
+  font-size: 24px;
+  margin-top: -15px;
+  font-style: normal;
+  border-radius: 24px;
+  font-weight: 800;
+  pointer-events: none;
+}
 .basket_column {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .back-button {
@@ -350,7 +457,23 @@ export default defineComponent({
   bottom: 80px;
   right: 26px;
   cursor: pointer;
+  padding:24px 34px; 
+  background-color: #fafafa; 
+  border-radius: 30px;
+  font-weight: 900;
+  font-size: 24px;
 }
+.next-button:disabled{
+  background: #BDBCBC;
+  color: #000000;
+  cursor: auto;
+  
+}
+
+.next-button:enabled:hover{
+    background: #DCE8FA;
+}
+
 
 .draggable span {
   margin: 20px;

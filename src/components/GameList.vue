@@ -24,7 +24,7 @@
         <div class="game-item__success-wrapper">
           <div class="game-item__success">Bien joué !</div>
         </div>
-        <img src="@/assets/jewel.png" class="game-item__success-jewel" />
+        <img src="@/assets/jewel.svg" class="game-item__success-jewel" />
       </li>
 
       <router-link

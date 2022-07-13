@@ -43,6 +43,7 @@
                   :key="index"
                 >
                   <input
+                  class="answer-checkbox"
                     @click="setChoice(choice)"
                     :checked="currentValue.answer === choice"
                     type="radio"
@@ -59,7 +60,11 @@
                 v-if="count !== questionsCount - 1"
                 @click="next"
               >
+<<<<<<< HEAD
                 Question suiante
+=======
+                Next
+>>>>>>> 285b109 (Changed the assets and UI)
               </button>
             </div>
           </div>
@@ -268,14 +273,33 @@ export default defineComponent({
 input[type="radio"] {
   transform: scale(2.2);
   margin: 0 10px;
+ 
 }
+input[type="radio"] {
+	accent-color: #FF7B35;
+}
+
 label {
   margin: 0 10px;
 }
 .next-question {
   position: absolute;
-  top: 90%;
-  left: 75%;
+  bottom: 40px;
+  right: 26px;
+  cursor: pointer;
+  padding:9px 40px; 
+  background-color: #B7D0F5; 
+  border-radius: 30px;
+  font-weight: 900;
+  font-size: 24px;
+}
+.next-question:disabled{
+  background: #BDBCBC;
+  color: #666363;
+  cursor: auto;
+}
+.next-question:enabled:hover{
+    background: #DCE8FA;
 }
 h4 {
   text-align: start;

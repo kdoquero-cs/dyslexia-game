@@ -16,7 +16,12 @@
           <p>Consignes :</p>
           <button type="button" @click="playInstruction()">
             <div class="button_text">
-              <img src="@/assets/icons/Sound icon.png" alt="" />
+              <img
+                src="@/assets/icons/Sound_icon.svg"
+                alt=""
+                width="50"
+                height="50"
+              />
               <span class="listen"
                 ><span class="sr-only">Écoutes les</span>Consignes</span
               >
@@ -58,29 +63,41 @@
     <div class="basket_container">
       <div id="target" class="basket_column">
         <div @dragover.prevent @drop="drop">
-          <img src="@/assets/icons/well.png" alt="well" />
+          <img class="well-image" src="@/assets/icons/well.svg" alt="well" />
           <!-- <div class="draggable" v-for="t of words.target1" :key="t">
             {{ t }}
           </div> -->
+<<<<<<< HEAD
           <button class="pill">Mots Réguliers</button>
+=======
+          <button class="pill well-labels">General words</button>
+>>>>>>> 285b109 (Changed the assets and UI)
         </div>
       </div>
       <div id="target2" class="basket_column">
         <div @dragover.prevent @drop="drop2">
-          <img src="@/assets/icons/well.png" alt="well" />
+          <img class="well-image" src="@/assets/icons/well.svg" alt="well" />
           <!-- <div class="draggable" v-for="t of words.target2" :key="t">
             {{ t }}
           </div> -->
+<<<<<<< HEAD
           <button class="pill">Mots Irréguliers</button>
+=======
+          <button class="pill well-labels">Irregular words</button>
+>>>>>>> 285b109 (Changed the assets and UI)
         </div>
       </div>
       <div id="target3" class="basket_column">
         <div @dragover.prevent @drop="drop3">
-          <img src="@/assets/icons/well.png" alt="well" />
+          <img class="well-image" src="@/assets/icons/well.svg" alt="well" />
           <!-- <div class="draggable" v-for="t of words.target3" :key="t">
             {{ t }}
           </div> -->
+<<<<<<< HEAD
           <button class="pill">Mots qui n'existent pas</button>
+=======
+          <button class="pill well-labels">Words with no meaning</button>
+>>>>>>> 285b109 (Changed the assets and UI)
         </div>
       </div>
     </div>
@@ -188,7 +205,7 @@ const setup = (props) => {
     ev.dataTransfer.setData("text", text);
   };
   const checkSet = () => {
-    console.log(words.value,"words");
+    console.log(words.value, "words");
     if (words.value.origin.length === 0) {
       setNumber.value = ++setNumber.value;
       words.value.origin = sets.value[setNumber.value];
@@ -220,11 +237,19 @@ const setup = (props) => {
     play(wellExamples);
   };
 
+<<<<<<< HEAD
   // const isEndSet = computed(() => words.value.origin.length === 0);
   // const isEndGame = computed(
   //   () => isEndSet.value && sets.value.length === setNumber.value
   // );
   
+=======
+  const isEndSet = computed(() => words.value.origin.length === 0);
+  const isEndGame = computed(
+    () => isEndSet.value && sets.value.length === setNumber.value
+  );
+
+>>>>>>> 285b109 (Changed the assets and UI)
   const gameState = useGameState.getInstance();
   const goToGameList = () => {
     gameState.updateGame(1);
@@ -324,11 +349,17 @@ export default defineComponent({
   margin-right: 30px;
   width: 161px;
   height: 51px;
-  border-radius: 8px;
+  border-radius: 4px;
   background: #f9eded;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.draggable:hover {
+  background: #dce8fa;
+}
+.draggable:active {
+  background: #b7d0f5;
 }
 #target,
 #target2,
@@ -344,30 +375,35 @@ export default defineComponent({
   margin-right: 40px;
 }
 #target2 {
-  margin: 0 40px 50px 0;
+  margin: 0 50px 80px 50px;
 }
 #target3 {
-  margin: 0 40px 80px 0;
+  margin: 0 40px 80px 50px;
 }
 
 .basket_container img {
-  width: 250px;
+  width: 300px;
 }
 
 .basket_container {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: flex-end;
+  align-items: flex-start;
   position: absolute;
   bottom: 170px;
-  left: 30%;
+  /* left: 30%; */
+  /* flex-wrap: wrap; */
+  /* width: 50%; */
+  top: 32%;
+  left: 35%;
+  /* flex-wrap: wrap; */
 }
 
 .basket_column {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .back-button {
@@ -376,12 +412,39 @@ export default defineComponent({
   left: 26px;
   cursor: pointer;
 }
-
+.well-labels {
+  padding: 10px 10px 10px 10px;
+  font-size: 24px;
+  margin-top: -15px;
+  font-style: normal;
+  border-radius: 24px;
+  font-weight: 800;
+  pointer-events: none;
+}
 .next-button {
   position: absolute;
   bottom: 80px;
   right: 26px;
   cursor: pointer;
+  padding: 24px 34px;
+  background-color: #fafafa;
+  border-radius: 30px;
+  font-weight: 900;
+  font-size: 24px;
+  margin-bottom: -1.5em;
+}
+.next-button:disabled {
+  background: #bdbcbc;
+  color: #000000;
+  cursor: auto;
+}
+.next-button:enabled:hover {
+  background: #dce8fa;
+}
+.well-image {
+  margin-top: 3em;
+  width: 15vw;
+  height: 35vh;
 }
 
 .draggable span {
