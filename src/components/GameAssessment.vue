@@ -1,37 +1,38 @@
 <template>
 <div class="main-container">
 <h1 class="h1">
-	<span class="kidName">
+
+	<span> Bilan de depistage de </span><span class="mockup"> MOCKUP</span>
+		<span class="kidName">
 		<!-- here goes the variable for the kid's name -->
 		<span class="tempText">[child's name]</span>
 	</span>
-	<span>'s Game Playthrough Assessment</span><span class="mockup"> MOCKUP</span>
 </h1>
 <div id="banner" class="banner">
 	<div class="print">
-		<h2 class="h2">Your child's information</h2>
-		<button primary class="action" @click="print()">Print the report</button>
+		<h2 class="h2">Les informations de votre enfant </h2>
+		<button primary class="action" @click="print()">Imprimer le rapport</button>
 	</div>
 	<div>
 		<ul class="ul">
 			<li class="listitem">
-				<span class="kidDetail">Name :</span>
+				<span class="kidDetail">Prenom:</span>
 				<span>
 					<span class="tempText">[child's name]</span>
 					<!-- here goes the variable for the kid's name -->
 				</span>
 			</li>
 			<li class="listitem">
-				<span class="kidDetail">Age:</span>
+				<span class="kidDetail">Âge:</span>
 				<span>
 					<!-- here goes the variable for the kid's year -->
 					<span class="tempText">XX</span>
-					<span> years and </span>
+					<span> ans et  </span>
 				</span>
 				<span class="kidmonth">
 					<!-- here goes the variable for the kid's month -->
 					<span class="tempText">XX</span>
-					<span> month.</span>
+					<span> mois.</span>
 				</span>
       </li>
 		</ul>

@@ -3,9 +3,9 @@
     <div class="display">
       <div class="display">
         <div class="spelling-box">
-          <h1>Spelling</h1>
-          <p>Here, I'll say a few words.</p>
-          <p class="words2">Can you help me spell them?</p>
+          <h1>L'orthographe</h1>
+          <p>Ici, je vais dire quelques mots.</p>
+          <p class="words2">Pouvez-vous m'aider à les épeler ?</p>
 
           <div class="spelling">
             <img
@@ -25,11 +25,11 @@
         <div class="inputs-container">
           <div class="inputs">
             <div @click="play" class="listen">
-              <h2>Listen</h2>
+              <h2>Écoutez</h2>
               <img src="@/assets/icons/Sound icon.svg" alt="Sound" srcset="" />
             </div>
             <div @click="record" class="speak">
-              <h2>Speak</h2>
+              <h2>Parlez</h2>
               <img
                 src="@/assets/icons/noun_micro_3396391 1.png"
                 alt="micro"
@@ -37,12 +37,12 @@
               />
             </div>
           </div>
-          <button :disabled="!recordingState" class="next" @click="nextWord">Next Word</button>
+          <button :disabled="!recordingState" class="next" @click="nextWord">Mot suivant</button>
         </div>
       </div>
     </div>
 
-    <button class="pill next-button" @click="goToGameList">I'm done!</button>
+    <button class="pill next-button" @click="goToGameList">J'ai finis!</button>
   </section>
 </template>
 

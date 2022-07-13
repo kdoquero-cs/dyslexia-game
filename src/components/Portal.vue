@@ -27,8 +27,13 @@ import { useCompanion } from "../composables/useCompanion";
 function setup() {
   const companion = ref(useCompanion.getInstance().companion);
   const steps = ref([
+<<<<<<< HEAD
     { text: "You've got all 4 jewels! Great work!", bold: "Now let's go to the portal!", action: "Let's go!" },
     { text: "", bold: "We made it! That was quite the hike!", action: "Place jewels" },
+=======
+    { text: "Tu as les 7 diamants ! Excellent travail !", bold: "Maintenant, allons au portail !", action: "Allons - y" },
+    { text: "", bold: "Nous avons réussi ! C’était une sacrée aventure !", action: "Place les diamants" },
+>>>>>>> b973b10 (traduction 2)
     { text: "", bold: "", action: "" },
   ]);
   const activeStep = ref(steps.value[0]);

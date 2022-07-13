@@ -5,31 +5,17 @@
     <div class="instruction">
       <div class="panel">
         <div class="instructionsPanel">
-<<<<<<< HEAD
-          <h1 class="h2">Word recognition</h1>
-          <h2 class="h2">Waouh, look!</h2>
-          <p>There are wells!</p>
+          <h1 class="h2">Reconnaissance des mots</h1>
+          <h2 class="h2">Waouh, regarde!</h2>
+          <p>Il y a des puits !</p>
           <button type="button" @click="playInstruction()">
             <div class="button_text">
               <img src="@/assets/icons/Sound icon.png" alt="" />
               <span class="listen"
-                ><span class="sr-only">Listen to the</span>Instructions</span
+                ><span class="sr-only">Écoutez les</span>Instructions</span
               >
             </div>
           </button>
-=======
-          <h1 class="h2">Reconnaissance des mots </h1>
-          <h2 class="h2">Waouh, regarde!</h2>
-          <p>Il y a des puits !</p>
-            <button type="button" @click="playInstruction()">
-              <div class="button_text">
-                <img src="@/assets/icons/Sound icon.png" alt="" />
-                <span class="listen"
-                  ><span class="sr-only">Écoutez les</span>Instructions</span
-                >
-              </div>
-            </button>
->>>>>>> 5f76f65 (tranduction test)
 
           <img
             class="companion"
@@ -61,7 +47,7 @@
           <!-- <div class="draggable" v-for="t of words.target1" :key="t">
             {{ t }}
           </div> -->
-          <button class="pill">Mots regulier</button>
+          <button class="pill">General words</button>
         </div>
       </div>
       <div id="target2" class="basket_column">
@@ -70,7 +56,7 @@
           <!-- <div class="draggable" v-for="t of words.target2" :key="t">
             {{ t }}
           </div> -->
-          <button class="pill">Mots irregulier</button>
+          <button class="pill">Irregular words</button>
         </div>
       </div>
       <div id="target3" class="basket_column">
@@ -79,7 +65,7 @@
           <!-- <div class="draggable" v-for="t of words.target3" :key="t">
             {{ t }}
           </div> -->
-          <button class="pill">Mots sans signification</button>
+          <button class="pill">Words with no meaning</button>
         </div>
       </div>
     </div>

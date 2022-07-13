@@ -1,18 +1,22 @@
 <template>
   <div class="game2">
+<<<<<<< HEAD
     <button class="pill next-button" :disabled="words.origin.length != 0" v-if="words.origin.length === 0" @click="goToGameList" >I'm done!</button>
+=======
+    <button class="pill next-button" @click="goToGameList" >J'ai finis !</button>
+>>>>>>> b973b10 (traduction 2)
 
     <div class="instruction">
       <div class="panel">
         <div class="instructionsPanel">
-          <h1 class="h2">Syllable classification</h1>
-          <h2 class="h2">Waouh, what a mess!</h2>
-          <p>There are baskets!</p>
+          <h1 class="h2">Classification des syllabes</h1>
+          <h2 class="h2">Waouh, quel désordre !</h2>
+          <p>Il y a des paniers !</p>
           <button type="button" @click="playInstruction()">
               <div class="button_text">
                 <img src="@/assets/icons/Sound icon.png" alt="" />
                 <span class="listen"
-                  ><span class="sr-only">Listen to the</span>Instructions</span
+                  ><span class="sr-only">Écoutez les</span>Instructions</span
                 >
               </div>
             </button>
@@ -47,7 +51,7 @@
           <!-- <div class="draggable" v-for="t of words.target1" :key="t">
             {{ t }}
           </div> -->
-          <button class="pill">Words</button>
+          <button class="pill">Mots</button>
         </div>
       </div>
       <div id="target3" class="basket_column">
@@ -56,7 +60,7 @@
           <!-- <div class="draggable" v-for="t of words.target3" :key="t">
             {{ t }}
           </div> -->
-          <button class="pill">Syllables</button>
+          <button class="pill">Syllabes</button>
         </div>
       </div>
     </div>
