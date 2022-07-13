@@ -3,7 +3,6 @@
     <button
       class="pill next-button"
       :disabled="words.origin.length != 0"
-      v-if="isEndGame"
       @click="goToGameList"
     >
       J'ai fini !
@@ -14,11 +13,21 @@
           <h1 class="h2"> Reconnaissance des mots</h1>
           <h2 class="h2"> Waouh, regarde!</h2>
           <p> Il y a des puits !</p>
+          <p>Consignes :</p>
           <button type="button" @click="playInstruction()">
             <div class="button_text">
               <img src="@/assets/icons/Sound icon.png" alt="" />
               <span class="listen"
                 ><span class="sr-only">Écoutes les</span>Consignes</span
+              >
+            </div>
+          </button>
+          <p>Exemples :</p>
+          <button type="button" @click="playInstruction1()">
+            <div class="button_text">
+              <img src="@/assets/icons/Sound icon.png" alt="" />
+              <span class="listen"
+                ><span class="sr-only">Listen to the</span>Instructions</span
               >
             </div>
           </button>
@@ -53,7 +62,7 @@
           <!-- <div class="draggable" v-for="t of words.target1" :key="t">
             {{ t }}
           </div> -->
-          <button class="pill">Mots regulier</button>
+          <button class="pill">Mots Réguliers</button>
         </div>
       </div>
       <div id="target2" class="basket_column">
@@ -62,7 +71,7 @@
           <!-- <div class="draggable" v-for="t of words.target2" :key="t">
             {{ t }}
           </div> -->
-          <button class="pill">Mots irregulier</button>
+          <button class="pill">Mots Irréguliers</button>
         </div>
       </div>
       <div id="target3" class="basket_column">
@@ -71,7 +80,7 @@
           <!-- <div class="draggable" v-for="t of words.target3" :key="t">
             {{ t }}
           </div> -->
-          <button class="pill">Mots sans aucun sens</button>
+          <button class="pill">Mots qui n'existent pas</button>
         </div>
       </div>
     </div>
@@ -83,6 +92,7 @@
 import { computed, defineComponent, ref, watch } from "@vue/composition-api";
 import router from "@/router";
 import well from "@/assets/voices/Well.mp3";
+import wellExamples from "@/assets/voices/Well_examples.mp3";
 import store from "../store";
 import { useCompanion } from "../composables/useCompanion";
 import { usePlayAudio } from "../composables/usePlayAudio";
@@ -93,47 +103,39 @@ const setup = (props) => {
   const companion = ref(useCompanion.getInstance().companion);
   const setNumber = ref(0);
   const sets = ref([
-    ["badou",     
-      "monsieur",
-      "août",
-      "prairie",
-      "mouton"],
-    [
-       "papier",
-       "vitre", 
-       "loin", 
-      "jour",
-      "lirette",
-       "tarteau",
-       "frague",
-      "miro",
-      "oignon",
-      "poële", 
-      "tousser", 
-      "doute"
-    ],
+    ["prairie", "monsieur", "mouton", "lirette", "vitre", "badou"],
+    [ "tarteau", "papier", "oignon", "poële", "août", "frague"],
+    [], // FIXMEprairie	monsieur	badou
+      // "laugh",
+      // "lare",
+      // "way",
+      // "cough",
+      // "miro",
+      // "day",
+      // "doubt",
+      // "himmer",
   ]);
   const game1Solution = ref([
     {
-      name: "General word",
+      name: "Mots Réguliers",
       answer: [
-
         ["prairie", "mouton"],
-        ["papier", "paix", "loin", "jour"],
+        ["papier", "vitre"],
       ],
     },
     {
-      name: "Sight word",
+      name: "Mots Irréguliers",
       answer: [
-
         ["monsieur", "août"],
-        ["poële", "tousser", "doute","oignon"],
+        ["oignon", "poële"],
       ],
     },
     {
-      name: "Nonsense word",
-
-      answer: [["badou"], ["lirette", "tarteau","frague", "miro", "himmer"]],
+      name: "Mots qui n'existent pas",
+      answer: [
+        ["badou", "tarteau"],
+        ["lirette", "frague"]
+      ],
     },
   ]);
 
@@ -214,11 +216,14 @@ const setup = (props) => {
   const playInstruction = () => {
     play(well);
   };
+  const playInstruction1 = () => {
+    play(wellExamples);
+  };
 
-  const isEndSet = computed(() => words.value.origin.length === 0);
-  const isEndGame = computed(
-    () => isEndSet.value && sets.value.length === setNumber.value
-  );
+  // const isEndSet = computed(() => words.value.origin.length === 0);
+  // const isEndGame = computed(
+  //   () => isEndSet.value && sets.value.length === setNumber.value
+  // );
   
   const gameState = useGameState.getInstance();
   const goToGameList = () => {
@@ -238,8 +243,9 @@ const setup = (props) => {
     goToGameList,
     game1Solution,
     playInstruction,
+    playInstruction1,
     companion,
-    isEndGame,
+    // isEndGame,
   };
 };
 export default defineComponent({
@@ -267,7 +273,7 @@ export default defineComponent({
   position: absolute;
   top: 200px;
   width: 361px;
-  height: 382px;
+  height: 480px;
   background: #f9eded;
   border-radius: 8px;
 }

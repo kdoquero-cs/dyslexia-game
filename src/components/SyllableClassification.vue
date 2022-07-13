@@ -1,6 +1,6 @@
 <template>
   <div class="game2">
-    <button class="pill next-button" :disabled="words.origin.length != 0" v-if="words.origin.length === 0" @click="goToGameList" >J'ai finis !</button>
+    <button class="pill next-button" :disabled="words.origin.length != 0" @click="goToGameList" >J'ai fini !</button>
 
     <div class="instruction">
       <div class="panel">
@@ -64,7 +64,7 @@
   </div>
 </template>
 <script>
-import { defineComponent, ref } from "@vue/composition-api";
+import { computed, defineComponent, ref } from "@vue/composition-api";
 import router from "@/router";
 import well from "./../../static/voices/WhatAMess.mp3";
 import { useCompanion } from "../composables/useCompanion";
@@ -76,75 +76,53 @@ const setup = props => {
   const result = ref(null);
   const companion = ref(useCompanion.getInstance().companion);
   const { play } = usePlayAudio();
+  const setNumber = ref(0);
+  const sets = ref([
+    ["tôt", "fra", "gue", "faim", "fleur", "tis"],
+    ["gue", "rat", "com", "teur", "oignon", "spé"],
+    [],
+      // "laugh",
+      // "lare",
+      // "way",
+      // "cough",
+      // "miro",
+      // "day",
+      // "doubt",
+      // "himmer",
+  ]);
   const game2Solution = ref([
     {
-      name: "Game2",
+      name: "words",
       answer: [
-        "tôt"	 ,
-        "temps",
-        "fleur",
-        "air"	 ,
-        "faim" ,
-        "rat"	 ,
-        // "lace",
-        // "mice",
-        // "lore"
-        // "theme",
-        // "few",
-        // "mad",
-        // "cab",
-        // "cup",
-        // "leave",
-        // "bat"
+      [ "tôt", "temps", "fleur" ], 
+      [ "air", "faim", "rat" ] ,
       ]
+        //   "theme",
+        //   "few",
+        //   "mad",
+        //   "cab",
+        //   "cup",
+        //   "leave",
+        //   "bat"
     },
     {
       name: "Syllables",
       answer: [
-
-        "tis"	,
-        "fra"	,
-        "gue"	,
-        "com"	,
-        "teur",
-        "spé"	,
-        // "glas",
-        // "dai",
-        // "mon",
-        // "pret",
-        // "fect",
-        // "glit",
-        // "ther",
-        // "ses",
-        // "sil",
-        // "gui"
+      [ "tis", "fra", "gue" ],
+      [ "com", "teur", "spé" ],
       ]
+        //   "pret",
+        //   "fect",
+        //   "glit",
+        //   "ther",
+        //   "ses",
+        //   "sil",
+        //   "gui"
     }
   ]);
 
   const words = ref({
-    origin: [
-      "tôt"	 ,
-      "temps",
-      "fleur",
-      // "theme",
-      // "few",
-      // "mad",
-      // "cab",
-      // "cup",
-      // "leave",
-      // "bat",
-      "tis"	,
-      "fra"	,
-      "gue"	,
-      // "pret",
-      // "fect",
-      // "glit",
-      // "ther",
-      // "ses",
-      // "sil",
-      // "gui"
-    ],
+    origin: [...sets.value[setNumber.value]],
     target1: [],
     target2: [],
     game2Solution
@@ -165,11 +143,11 @@ const setup = props => {
     words.value.origin.splice(index, 1);
     if (words.value.origin.length === 0) {
       const count1 = checkResult(
-        words.value.game2Solution[0].answer,
+        words.value.game2Solution[0].answer[setNumber.value],
         words.value.target1
       );
       const count2 = checkResult(
-        words.value.game2Solution[1].answer,
+        words.value.game2Solution[1].answer[setNumber.value],
         words.value.target2
       );
       // const count3 = checkResult(
@@ -177,15 +155,22 @@ const setup = props => {
       //   words.value.target3
       // );
       const total = count1 + count2;
+      console.log("result", count1, count2);
       store.setGameResult("SYLLABLE_CLASSIFICATION", [
-        { Words: count1 },
-        { Syllables: count2 },
-
+        { words: count1 },
+        { syllables: count2 },
       ]);
-      return total;
+      return total > 0 ? total + 1 : total;
     }
   };
 
+  const checkSet = () => {
+    console.log(words.value,"words");
+    if (words.value.origin.length === 0) {
+      setNumber.value = ++setNumber.value;
+      words.value.origin = sets.value[setNumber.value];
+    }
+  };
   const drag = (ev, text) => {
     ev.dataTransfer.setData("text", text);
   };
@@ -193,17 +178,19 @@ const setup = props => {
     const text = ev.dataTransfer.getData("text");
     spliceArray(text);
     words.value.target1.push(text);
+    checkSet();
   };
   const drop2 = ev => {
     const text = ev.dataTransfer.getData("text");
     spliceArray(text);
     words.value.target2.push(text);
+    checkSet();
   };
-  const drop3 = ev => {
-    const text = ev.dataTransfer.getData("text");
-    spliceArray(text);
-    words.value.target3.push(text);
-  };
+  // const drop3 = ev => {
+  //   const text = ev.dataTransfer.getData("text");
+  //   spliceArray(text);
+  //   words.value.target3.push(text);
+  // };
   const playInstruction = () => {
     play(well);
   };
@@ -221,7 +208,6 @@ const setup = props => {
     drag,
     drop,
     drop2,
-    drop3,
     result,
     goToGameList,
     game2Solution,

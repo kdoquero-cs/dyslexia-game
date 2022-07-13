@@ -5,13 +5,23 @@
         <div class="spelling-box">
           <h1>Compréhension auditive</h1>
           <h2>Etape 1</h2>
-          <p>Écoutez mon histoire:</p>
-          <audio controls src="@/assets/voices/YoudLikeToKnowMoreAboutMe.mp3">
+          <p>Écoute la consigne :</p>
+          <audio controls src="@/assets/voices/auditive-comprehension-instructions.mp3">
             Votre navigateur ne prend pas en charge le
             <code>audio</code> element.
           </audio>
           <h2>Etape 2</h2>
-          <p>Ensuite, répondez à cinq questions :</p>
+          <p>Écoute mon histoire :</p>
+          <button type="button" v-on:click="playInstruction()">
+              <div class="button_text">
+                <img src="@/assets/icons/Sound icon.png" alt="" />
+                <span class="listen"
+                  ><span class="sr-only">Listen to the</span>Instructions</span
+                >
+              </div>
+            </button>
+          <h2>Etape 3</h2>
+          <p>Ensuite, réponde aux cinq questions :</p>
           <img
             class="avatar"
             v-if="companion"
@@ -57,11 +67,7 @@
       </div>
     </div>
 
-<<<<<<< HEAD
-    <button class="pill next-button" :disabled="questionCount == count +1" v-if="currentValue.answer.length > 0 && questionsCount == count +1" @click="goToGameList">J'ai fini !</button>
-=======
-    <button class="pill next-button" @click="goToGameList">J'ai fini !</button>
->>>>>>> b973b10f2194297758d212c93d49ecacda7aa7c7
+    <button class="pill next-button" :disabled="!(count === questionsCount -1 && currentValue.answer.length > 0)" @click="goToGameList">J'ai fini !</button>
   </section>
 </template>
 
@@ -69,7 +75,7 @@
 import { computed, defineComponent, ref, watch } from "@vue/composition-api";
 import router from "@/router";
 import { useCompanion } from "../composables/useCompanion";
-import SpellingExercise from "@/assets/voices/SpellingExercise.mp3";
+import Instructions from "@/assets/voices/YoudLikeToKnowMoreAboutMe.mp3"
 import { usePlayAudio } from "../composables/usePlayAudio";
 import { useGameState } from "../composables/useGameState";
 import store from "../store";
@@ -139,7 +145,7 @@ export default defineComponent({
     const companion = ref(companionFromHook);
 
     const playInstruction = () => {
-      play(SpellingExercise);
+      play(Instructions);
     };
     const setChoice = (choice) => {
       currentValue.value.answer = choice;
@@ -181,8 +187,8 @@ export default defineComponent({
   top: 81%;
 }
 .spelling-box {
-  height: 400px;
-  width: 400px;
+  height: 600px;
+  width: 500px;
   margin: 30px;
   border-radius: 15px;
   background-color: #f9edee;
