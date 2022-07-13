@@ -9,19 +9,19 @@
           <h2 class="h2">Waouh, quel désordre !</h2>
           <p>Il y a des paniers !</p>
           <button type="button" @click="playInstruction()">
-              <div class="button_text">
-                <img src="@/assets/icons/Sound icon.png" alt="" />
-                <span class="listen"
-                  ><span class="sr-only">Écoutez les</span>Consignes</span
-                >
-              </div>
-            </button>
+            <div class="button_text">
+              <img src="@/assets/icons/Sound_icon.svg" alt="" width="50" height="50" />
+              <span class="listen"
+                ><span class="sr-only">Écoutez les</span>Consignes</span
+              >
+            </div>
+          </button>
 
           <img
-              class="companion"
-              v-if="companion"
-              :src="companion.path"
-              :alt="companion.name"
+            class="companion"
+            v-if="companion"
+            :src="companion.path"
+            :alt="companion.name"
           />
         </div>
         <div class="game"></div>
@@ -47,7 +47,7 @@
           <!-- <div class="draggable" v-for="t of words.target1" :key="t">
             {{ t }}
           </div> -->
-          <button class="pill">Mots</button>
+          <button class="pill well-labels">Mots</button>
         </div>
       </div>
       <div id="target3" class="basket_column">
@@ -56,7 +56,7 @@
           <!-- <div class="draggable" v-for="t of words.target3" :key="t">
             {{ t }}
           </div> -->
-          <button class="pill">Syllabes</button>
+          <button class="pill well-labels">Syllabes</button>
         </div>
       </div>
     </div>
@@ -72,7 +72,7 @@ import { usePlayAudio } from "../composables/usePlayAudio";
 import { useGameState } from "../composables/useGameState";
 import store from "../store";
 
-const setup = props => {
+const setup = (props) => {
   const result = ref(null);
   const companion = ref(useCompanion.getInstance().companion);
   const { play } = usePlayAudio();
@@ -125,7 +125,7 @@ const setup = props => {
     origin: [...sets.value[setNumber.value]],
     target1: [],
     target2: [],
-    game2Solution
+    game2Solution,
   });
 
   const checkResult = (first, second) => {
@@ -138,8 +138,8 @@ const setup = props => {
 
     return count;
   };
-  const spliceArray = text => {
-    const index = words.value.origin.findIndex(o => o === text);
+  const spliceArray = (text) => {
+    const index = words.value.origin.findIndex((o) => o === text);
     words.value.origin.splice(index, 1);
     if (words.value.origin.length === 0) {
       const count1 = checkResult(
@@ -174,13 +174,13 @@ const setup = props => {
   const drag = (ev, text) => {
     ev.dataTransfer.setData("text", text);
   };
-  const drop = ev => {
+  const drop = (ev) => {
     const text = ev.dataTransfer.getData("text");
     spliceArray(text);
     words.value.target1.push(text);
     checkSet();
   };
-  const drop2 = ev => {
+  const drop2 = (ev) => {
     const text = ev.dataTransfer.getData("text");
     spliceArray(text);
     words.value.target2.push(text);
@@ -199,7 +199,7 @@ const setup = props => {
   const goToGameList = () => {
     gameState.updateGame(2);
     router.push({ path: "/gamelist" });
-  }
+  };
 
   return {
     words,
@@ -219,7 +219,7 @@ const setup = props => {
 export default defineComponent({
   name: "SyllableClassification",
   props: {},
-  setup
+  setup,
 });
 </script>
 <style scoped>
@@ -297,6 +297,12 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
 }
+.draggable:hover {
+  background: #dce8fa;
+}
+.draggable:active {
+  background: #b7d0f5;
+}
 #target,
 #target2,
 #target3 {
@@ -311,11 +317,12 @@ export default defineComponent({
   margin-right: 40px;
 }
 #target2 {
-  margin: 0 40px 50px 0;
+  margin: 0 50px 80px 50px;
 }
 #target3 {
-  margin: 0 40px 80px 0;
+  margin: 0 40px 80px 50px;
 }
+
 
 .basket_container img {
   width: 250px;
@@ -325,17 +332,25 @@ export default defineComponent({
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: flex-end;
+  align-items: flex-start;
   position: absolute;
-  bottom: 90px;
+  bottom: 170px;
   left: 30%;
-  width: 850px;
 }
 
+.well-labels {
+  padding: 10px 10px 10px 10px;
+  font-size: 24px;
+  margin-top: -15px;
+  font-style: normal;
+  border-radius: 24px;
+  font-weight: 800;
+  pointer-events: none;
+}
 .basket_column {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .back-button {
@@ -350,7 +365,23 @@ export default defineComponent({
   bottom: 80px;
   right: 26px;
   cursor: pointer;
+  padding:24px 34px; 
+  background-color: #fafafa; 
+  border-radius: 30px;
+  font-weight: 900;
+  font-size: 24px;
 }
+.next-button:disabled{
+  background: #BDBCBC;
+  color: #000000;
+  cursor: auto;
+  
+}
+
+.next-button:enabled:hover{
+    background: #DCE8FA;
+}
+
 
 .draggable span {
   margin: 20px;

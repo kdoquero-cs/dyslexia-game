@@ -12,14 +12,22 @@
           </audio>
           <h2>Etape 2</h2>
           <p>Écoute mon histoire :</p>
-          <button type="button" v-on:click="playInstruction()">
-              <div class="button_text">
-                <img src="@/assets/icons/Sound icon.png" alt="" />
-                <span class="listen"
-                  ><span class="sr-only">Listen to the</span>Instructions</span
-                >
+          <button type="button" class="button-play" @click="playInstruction()">
+            <div class="button_text">
+              <img
+                src="@/assets/icons/Sound_icon.svg"
+                alt=""
+                width="30"
+                height="30"
+              />
+              <div>
+              <span class="listen">
+                Instructions
+              </span>
               </div>
-            </button>
+            </div>
+          </button>
+
           <h2>Etape 3</h2>
           <p>Ensuite, réponde aux cinq questions :</p>
           <img
@@ -43,6 +51,7 @@
                   :key="index"
                 >
                   <input
+                  class="answer-checkbox"
                     @click="setChoice(choice)"
                     :checked="currentValue.answer === choice"
                     type="radio"
@@ -239,6 +248,7 @@ export default defineComponent({
   bottom: 80px;
   right: 26px;
   cursor: pointer;
+  
 }
 .display {
   display: flex;
@@ -268,15 +278,47 @@ export default defineComponent({
 input[type="radio"] {
   transform: scale(2.2);
   margin: 0 10px;
+ 
 }
+input[type="radio"] {
+	accent-color: #FF7B35;
+}
+
 label {
   margin: 0 10px;
 }
 .next-question {
   position: absolute;
-  top: 90%;
-  left: 75%;
+  bottom: 40px;
+  right: 26px;
+  cursor: pointer;
+  padding:9px 40px; 
+  background-color: #B7D0F5; 
+  border-radius: 30px;
+  font-weight: 900;
+  font-size: 24px;
 }
+.next-question:disabled{
+  background: #BDBCBC;
+  color: #666363;
+  cursor: auto;
+}
+.button-play {
+   border: 2px solid #f9edee;
+}
+.button_text {
+   width: 150px;
+   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  justify-content: space-between;
+  background-color: #f9edee;
+  border: #f9edee;
+}
+.next-question:enabled:hover{
+    background: #DCE8FA;
+}
+
 h4 {
   text-align: start;
 }

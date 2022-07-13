@@ -1,17 +1,27 @@
 <template>
   <section class="main-container">
     <aside class="sidebar">
-      <article :class="{content: true, hide: stepIndex === 2}">
+      <article :class="{ content: true, hide: stepIndex === 2 }">
         <p>{{ activeStep.text }}</p>
         <h4>{{ activeStep.bold }}</h4>
-        <button class="action" primary @click="incrementStep()">{{ activeStep.action }}</button>
+        <button class="action" primary @click="incrementStep()">
+          {{ activeStep.action }}
+        </button>
       </article>
       <img :class="companionClass" :src="companion.path" />
     </aside>
 
     <div class="jewels-container">
-      <div :class="getJewelClass(index)" v-for="(jewel, index) in new Array(4).fill(undefined)" :key="index">
-        <img :class="{ jewel: true, hidden: stepIndex < 1, yeet: stepIndex === 2 }" src="@/assets/jewel.png" alt="A jewel that looks like a shiny diamond!"/>
+      <div
+        :class="getJewelClass(index)"
+        v-for="(jewel, index) in new Array(4).fill(undefined)"
+        :key="index"
+      >
+        <img
+          :class="{ jewel: true, hidden: stepIndex < 1, yeet: stepIndex === 2 }"
+          src="@/assets/jewel.svg"
+          alt="A jewel that looks like a shiny diamond!"
+        />
       </div>
     </div>
 
@@ -20,7 +30,12 @@
 </template>
 
 <script>
-import { defineComponent, onMounted, ref, computed } from '@vue/composition-api';
+import {
+  defineComponent,
+  onMounted,
+  ref,
+  computed,
+} from "@vue/composition-api";
 import router from "@/router";
 import { useCompanion } from "../composables/useCompanion";
 
@@ -47,10 +62,10 @@ function setup() {
 
   function getJewelClass(index) {
     return index % 7 === 0
-      ? { 'jewel-full-columns': true }
+      ? { "jewel-full-columns": true }
       : index % 7 < 3
-        ? { 'jewel-half-columns': true }
-        : { 'jewel-single-column': true };
+      ? { "jewel-half-columns": true }
+      : { "jewel-single-column": true };
   }
 
   return {
@@ -65,18 +80,18 @@ function setup() {
       if (stepIndex.value === 2) {
         setTimeout(() => {
           router.push({ path: "/end-game" });
-        }, 5000)
+        }, 5000);
       }
     },
     getJewelClass: (index) => {
       return index % 7 === 0
-        ? { 'jewel-full-columns': true }
+        ? { "jewel-full-columns": true }
         : index % 7 < 3
-          ? { 'jewel-half-columns': true }
-          : { 'jewel-single-column': true };
+        ? { "jewel-half-columns": true }
+        : { "jewel-single-column": true };
     },
     companionClass,
-  }
+  };
 }
 
 export default defineComponent({
@@ -95,6 +110,22 @@ export default defineComponent({
   background-position: center;
 }
 
+.action{
+  display: flex;
+  justify-content: flex-end;
+  border: 2px solid #000000;
+  height: 26px;
+  width: auto;
+  left: 0px;
+  top: 0px;
+  border-radius: 30px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: #b7d0f5;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 16px;
+}
+
 .sidebar {
   position: relative;
   width: 25%;
@@ -107,7 +138,7 @@ export default defineComponent({
   padding: var(--nazka-rect-padding);
   background-color: var(--nazka-rect-color);
   border-radius: var(--nazka-rect-radius);
-  transition: opacity .2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
 }
 
 .content.hide {
@@ -124,7 +155,7 @@ export default defineComponent({
   left: -2em;
   width: 75%;
   user-select: none;
-  transition: transform .33s ease-in-out, opacity 1s ease-in-out;
+  transition: transform 0.33s ease-in-out, opacity 1s ease-in-out;
   pointer-events: none;
 }
 
@@ -146,13 +177,13 @@ export default defineComponent({
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: repeat(4, 25%);
-  gap: 0 .66em;
+  gap: 0 0.66em;
 }
 
 .jewel {
   width: 52px;
   height: 52px;
-  transition: opacity .66s ease-in-out, transform .66s ease-in-out;
+  transition: opacity 0.66s ease-in-out, transform 0.66s ease-in-out;
 }
 
 .jewel.hidden {
@@ -164,7 +195,7 @@ export default defineComponent({
   position: relative;
   opacity: 0;
   transform: translate(25vw, -20vw) rotate(60deg);
-  transition-delay: .2s, 0s;
+  transition-delay: 0.2s, 0s;
 }
 
 .jewel-full-columns {
@@ -174,7 +205,7 @@ export default defineComponent({
 
 .jewel-half-columns {
   position: relative;
-  grid-column: span 2 ;
+  grid-column: span 2;
 }
 
 .jewel-single-column {
