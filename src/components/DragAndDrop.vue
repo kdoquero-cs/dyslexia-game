@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Draggable Elements</h1>
+    <h1>Éléments mobiles</h1>
     <div
       class="draggable"
       :draggable="true"
@@ -13,7 +13,7 @@
     </div>
     <div class="basket_container">
       <div class="basket_column">
-        <h2>Target1</h2>
+        <h2>Cible1</h2>
         <div id="target" @dragover.prevent @drop="drop">
           <div class="draggable" v-for="t of target1" :key="t">
             {{ t }}
@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class="basket_column">
-        <h2>Target2</h2>
+        <h2>Cible2</h2>
         <div id="target2" @dragover.prevent @drop="drop2">
           <div class="draggable" v-for="t of target2" :key="t">
             {{ t }}
@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="basket_column">
-        <h2>Target3</h2>
+        <h2>Cible3</h2>
         <div id="target3" @dragover.prevent @drop="drop3">
           <div class="draggable" v-for="t of target3" :key="t">
             {{ t }}

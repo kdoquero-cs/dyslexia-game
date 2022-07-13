@@ -4,21 +4,21 @@
       <img v-if="companion" :src="companion.path" :alt="companion.name" />
     </div>
     <div class="form-container" >
-      <h1>Hello! I'm Nazka!</h1>
+      <h1> Bonjour ! Je suis Nazka !</h1>
       <form action="">
         <div class="form">
-            <h2>What is your {{ title }}?</h2>
+            <h2>Quel est votre {{ title }}?</h2>
           <div class="input-container" v-if="!showAge">
-            <label for="name">Name</label>
+            <label for="name">Prenom</label>
             <input type="text" @input="inputName"/>
           </div>
           <div class="inputs-container" v-if="showAge">
             <div class="input-container" >
-              <label for="years" class="form-label">Years</label>
+              <label for="years" class="form-label">Annee</label>
               <input type="number" name="years" @input="inputYears" />
             </div>
             <div class="input-container">
-              <label for="months" class="form-label">Months</label>
+              <label for="months" class="form-label">Mois</label>
               <input type="number" name="months" @input="inputMonths" />
             </div>
 
@@ -27,7 +27,7 @@
         </div>
       </form>
       <div class="next-container">
-          <button @click="toggleShowAge" primary>Next</button>
+          <button @click="toggleShowAge" primary>Suivant</button>
       </div>
     </div>
 
@@ -53,7 +53,7 @@ export default defineComponent({
     animatedBackground.play();
 
     const showAge = ref(false);
-    const title = computed(() => (showAge.value ? "age" : "name"));
+    const title = computed(() => (showAge.value ? "age" : "Prenom"));
     const allowGoNext = computed(()=> showAge.value && store.user.value.name && store.user.value.years && store.user.value.months);
     const inputName = (event) => {
       store.setName(event.target.value);

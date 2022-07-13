@@ -2,7 +2,7 @@
   <div class="main-container">
     <fieldset class="main-form">
       <legend>
-        <h1 class="main-title">Before anything, choose your companion</h1>
+        <h1 class="main-title">Avant toute chose, choisissez votre compagnon</h1>
       </legend>
 
       <div class="companion-wrapper">
@@ -27,7 +27,7 @@
         </label>
       </div>
 
-      <button class="next" @click="goToForm">Next</button>
+      <button class="next" @click="goToForm">Suivant</button>
     </fieldset>
 
     <audio src="@/assets/music/MainMenu.mp4" autoplay="true"></audio>
