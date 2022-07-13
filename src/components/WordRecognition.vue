@@ -11,9 +11,9 @@
     <div class="instruction">
       <div class="panel">
         <div class="instructionsPanel">
-          <h1 class="h2"> Reconnaissance des mots</h1>
-          <h2 class="h2"> Waouh, regarde!</h2>
-          <p> Il y a des puits !</p>
+          <h1 class="h2">Reconnaissance des mots</h1>
+          <h2 class="h2">Waouh, regarde!</h2>
+          <p>Il y a des puits !</p>
           <button type="button" @click="playInstruction()">
             <div class="button_text">
               <img src="@/assets/icons/Sound icon.png" alt="" />
@@ -93,31 +93,26 @@ const setup = (props) => {
   const companion = ref(useCompanion.getInstance().companion);
   const setNumber = ref(0);
   const sets = ref([
-    ["badou",     
-      "monsieur",
-      "août",
-      "prairie",
-      "mouton"],
+    ["badou", "monsieur", "août", "prairie", "mouton"],
     [
-       "papier",
-       "vitre", 
-       "loin", 
+      "papier",
+      "vitre",
+      "loin",
       "jour",
       "lirette",
-       "tarteau",
-       "frague",
+      "tarteau",
+      "frague",
       "miro",
       "oignon",
-      "poële", 
-      "tousser", 
-      "doute"
+      "poële",
+      "tousser",
+      "doute",
     ],
   ]);
   const game1Solution = ref([
     {
       name: "General word",
       answer: [
-
         ["prairie", "mouton"],
         ["papier", "paix", "loin", "jour"],
       ],
@@ -125,15 +120,14 @@ const setup = (props) => {
     {
       name: "Sight word",
       answer: [
-
         ["monsieur", "août"],
-        ["poële", "tousser", "doute","oignon"],
+        ["poële", "tousser", "doute", "oignon"],
       ],
     },
     {
       name: "Nonsense word",
 
-      answer: [["badou"], ["lirette", "tarteau","frague", "miro", "himmer"]],
+      answer: [["badou"], ["lirette", "tarteau", "frague", "miro", "himmer"]],
     },
   ]);
 
@@ -172,11 +166,11 @@ const setup = (props) => {
       );
       const total = count1 + count2 + count3;
       console.log("result", count1, count2, count3);
-      store.setGameResult("WORD_RECOGNITION", [
-        { GeneralWords: count1 },
-        { IrregularWords: count2 },
-        { WordsWithNoMeaning: count3 },
-      ]);
+      store.setGameResult("WORD_RECOGNITION", {
+        GeneralWords: count1,
+        IrregularWords: count2,
+        WordsWithNoMeaning: count3,
+      });
 
       return total > 0 ? total + 1 : total;
     }
@@ -186,7 +180,7 @@ const setup = (props) => {
     ev.dataTransfer.setData("text", text);
   };
   const checkSet = () => {
-    console.log(words.value,"words");
+    console.log(words.value, "words");
     if (words.value.origin.length === 0) {
       setNumber.value = ++setNumber.value;
       words.value.origin = sets.value[setNumber.value];
@@ -219,7 +213,7 @@ const setup = (props) => {
   const isEndGame = computed(
     () => isEndSet.value && sets.value.length === setNumber.value
   );
-  
+
   const gameState = useGameState.getInstance();
   const goToGameList = () => {
     gameState.updateGame(1);
@@ -251,8 +245,8 @@ export default defineComponent({
 
 <style scoped>
 .game1 {
-  background: url("https://img.freepik.com/vrije-vector/nachtbos-met-kampvuurrivier-en-bergen_107791-6993.jpg?w=1200") no-repeat center
-    center fixed;
+  background: url("https://img.freepik.com/vrije-vector/nachtbos-met-kampvuurrivier-en-bergen_107791-6993.jpg?w=1200")
+    no-repeat center center fixed;
   background-color: antiquewhite;
   -webkit-background-size: cover;
   -moz-background-size: cover;
