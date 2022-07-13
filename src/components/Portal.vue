@@ -27,13 +27,8 @@ import { useCompanion } from "../composables/useCompanion";
 function setup() {
   const companion = ref(useCompanion.getInstance().companion);
   const steps = ref([
-<<<<<<< HEAD
     { text: "Tu as les 4 diamants ! Excellent travail !", bold: "Maintenant, allons au portail !", action: "Allons - y" },
     { text: "",  bold: "Nous avons réussi ! C’était une sacrée aventure !", action: "Place les diamants" },
-=======
-    { text: "Tu as les 7 diamants ! Excellent travail !", bold: "Maintenant, allons au portail !", action: "Allons - y" },
-    { text: "", bold: "Nous avons réussi ! C’était une sacrée aventure !", action: "Place les diamants" },
->>>>>>> b973b10f2194297758d212c93d49ecacda7aa7c7
     { text: "", bold: "", action: "" },
   ]);
   const activeStep = ref(steps.value[0]);
@@ -94,7 +89,7 @@ export default defineComponent({
 .main-container {
   display: flex;
   padding: 4em 2em 4em 6em;
-  background-image: url('~@/assets/backgrounds/end-portal.jpg');
+  background-image: url('https://img.freepik.com/darmowe-wektory/magiczny-portal-na-gorskim-klifie-z-latajacymi-skalami-dookola_107791-4674.jpg?w=1200');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

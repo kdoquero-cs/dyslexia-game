@@ -238,7 +238,7 @@ export default defineComponent({
 </script>
 <style scoped>
 .game2 {
-  background: url("~@/assets/backgrounds/visual-attention.jpg")
+  background: url("https://img.freepik.com/free-vector/summer-camp-with-bonfire-tent-van-backpack-chair-guitar_107791-5223.jpg?w=1200")
     no-repeat center center fixed;
   background-color: antiquewhite;
   -webkit-background-size: cover;

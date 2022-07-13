@@ -99,15 +99,15 @@ const setup = (props) => {
       "prairie",
       "mouton"],
     [
-       "papier"
+       "papier",
        "vitre", 
        "loin", 
       "jour",
       "lirette",
-       "tarteau"
+       "tarteau",
        "frague",
       "miro",
-      "oignon"
+      "oignon",
       "poële", 
       "tousser", 
       "doute"
@@ -251,7 +251,7 @@ export default defineComponent({
 
 <style scoped>
 .game1 {
-  background: url("~@/assets/backgrounds/word-recognition.jpg") no-repeat center
+  background: url("https://img.freepik.com/vrije-vector/nachtbos-met-kampvuurrivier-en-bergen_107791-6993.jpg?w=1200") no-repeat center
     center fixed;
   background-color: antiquewhite;
   -webkit-background-size: cover;

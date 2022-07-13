@@ -34,7 +34,7 @@
       >
         <li
           :class="{ 'game-item': true, 'game-item--locked': !allCompleted }"
-          :style="`background-image: url(${require('@/assets/backgrounds/end-portal.jpg')})`"
+          :style="`background-image: url('https://img.freepik.com/darmowe-wektory/magiczny-portal-na-gorskim-klifie-z-latajacymi-skalami-dookola_107791-4674.jpg?w=1200')`"
         >
           <span class="play-btn" v-if="allCompleted">
           </span>
@@ -72,7 +72,7 @@ function setup(props) {
     {
       id: 1,
       name: "Words recognition",
-      style: `grid-row: row-1 / span 1; grid-column: col-2 / span 2; background-image: url(${require("@/assets/backgrounds/word-recognition.jpg")});`,
+      style: `grid-row: row-1 / span 1; grid-column: col-2 / span 2; background-image: url("https://img.freepik.com/vrije-vector/nachtbos-met-kampvuurrivier-en-bergen_107791-6993.jpg?w=1200");`,
       path: "word-recognition",
     },
     // {
@@ -85,21 +85,21 @@ function setup(props) {
       id: 2,
       // id: 3,
       name: "Syllable recognition",
-      style: `grid-row: row-1 / span 1; grid-column: col-4  / span 2; background-image: url(${require("@/assets/backgrounds/syllable-classification.jpg")});`,
+      style: `grid-row: row-1 / span 1; grid-column: col-4  / span 2; background-image: url("https://img.freepik.com/free-vector/summer-camp-with-bonfire-tent-van-backpack-chair-guitar_107791-5223.jpg?w=1200");`,
       path: "/syllable-classification",
     },
     {
       // id: 4,
       id: 3,
       name: "Auditory comprehension",
-      style: `grid-row: row-2 / span 1; grid-column: col-2 / span 2; background-image: url(${require("@/assets/backgrounds/auditory-comprehension.jpg")});`,
+      style: `grid-row: row-2 / span 1; grid-column: col-2 / span 2; background-image: url("https://img.freepik.com/free-vector/landscape-with-cascade-waterfall-in-forest_107791-7143.jpg?w=1200");`,
       path: "/auditive-comprehension",
     },
     {
       id: 4,
       // id: 5,
       name: "Oral spelling",
-      style: `grid-row: row-2 / span 1; grid-column: col-4 / span 2; background-image: url(${require("@/assets/backgrounds/oral-spelling.png")});`,
+      style: `grid-row: row-2 / span 1; grid-column: col-4 / span 2; background-image: url("https://img.freepik.com/free-vector/golf-course-with-green-grass-pond-sunset_107791-6976.jpg?w=1200");`,
       path: "/oral-spelling",
     },
     // {
@@ -175,7 +175,7 @@ export default defineComponent({
 .main-container {
   display: flex;
   padding: 4em 2em 4em 6em;
-  background-image: url("~@/assets/backgrounds/game-selection.jpg");
+  background-image: url("https://img.freepik.com/darmowe-wektory/zachod-slonca-lub-wschod-slonca-na-plazy-tropikalny-krajobraz_107791-1775.jpg?w=1200");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
