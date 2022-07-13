@@ -27,10 +27,11 @@ export function useSpeechSynthesis() {
   getVoices();
 
   function playOnWord(word) {
+    console.log(word);
     if (word && (typeof word === 'string' || word instanceof String)) {
       utterrance.value = new SpeechSynthesisUtterance(word);
       utterrance.value.voice = voice.value;
-      utterrance.value.lang = "en-US";
+      utterrance.value.lang = "fr-Fr";
       window.speechSynthesis.speak(utterrance.value);
       isSpeaking.value = true;
       handlers();

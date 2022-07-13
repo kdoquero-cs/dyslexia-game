@@ -2,11 +2,11 @@
   <section class="main-container">
     <aside class="sidebar">
       <article class="content">
-        <h1 class="title">Thank you so much for helping me get home to my family and friends.</h1>
-        <p>I really enjoyed our adventure. Please take care and be good!</p>
-        <p>Note: There are some information for your parents, let them know about it!</p>
+        <h1 class="title">Merci beaucoup de m'avoir aidé à rentrer chez moi auprès de ma famille et de mes amis.</h1>
+        <p>J'ai vraiment apprécié notre aventure. Prenez soin de vous et soyez sages !</p>
+        <p>Note : Il y a quelques informations pour vos parents, faites-leur savoir !</p>
 
-        <button class="action" primary @click="seeReport()">Parents information</button>
+        <button class="action" primary @click="seeReport()">Informations pour les parents</button>
       </article>
       <img class="companion" :src="companion.path" />
     </aside>
@@ -15,7 +15,7 @@
       <img v-for="(companion, index) in notCompanions" :src="companion.path" :alt="companion.name" :key="index" :class="`not-companion offset-${index}`"/>
 
       <div class="jewels-container">
-        <div :class="getJewelClass(index)" v-for="(jewel, index) in new Array(7).fill(undefined)" :key="index">
+        <div :class="getJewelClass(index)" v-for="(jewel, index) in new Array(4).fill(undefined)" :key="index">
           <img class="jewel" src="@/assets/jewel.png" alt="A jewel that looks like a shiny diamond!"/>
         </div>
       </div>
@@ -64,7 +64,7 @@ export default defineComponent({
 .main-container {
   display: flex;
   padding: 4em 2em 4em 6em;
-  background-image: url('~@/assets/backgrounds/oral-spelling.png');
+  background-image: url('~https://img.freepik.com/free-vector/golf-course-with-green-grass-pond-sunset_107791-6976.jpg?w=1200');
   background-size: 150%;
   background-repeat: no-repeat;
   background-position: 50% 100%;
@@ -145,6 +145,6 @@ export default defineComponent({
 
 .jewel-single-column {
   position: relative;
-  grid-column: span 1;
+  grid-column: span 4;
 }
 </style>

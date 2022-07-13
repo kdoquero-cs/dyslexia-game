@@ -1,21 +1,27 @@
 <template>
   <div class="game1">
-    <button class="pill next-button" @click="goToGameList">I'm done!</button>
-
+    <button
+      class="pill next-button"
+      :disabled="words.origin.length != 0"
+      v-if="isEndGame"
+      @click="goToGameList"
+    >
+      J'ai fini !
+    </button>
     <div class="instruction">
       <div class="panel">
         <div class="instructionsPanel">
-          <h1 class="h2">Word recognition</h1>
-          <h2 class="h2">Waouh, look!</h2>
-          <p>There are wells!</p>
-            <button type="button" @click="playInstruction()">
-              <div class="button_text">
-                <img src="@/assets/icons/Sound icon.png" alt="" />
-                <span class="listen"
-                  ><span class="sr-only">Listen to the</span>Instructions</span
-                >
-              </div>
-            </button>
+          <h1 class="h2"> Reconnaissance des mots</h1>
+          <h2 class="h2"> Waouh, regarde!</h2>
+          <p> Il y a des puits !</p>
+          <button type="button" @click="playInstruction()">
+            <div class="button_text">
+              <img src="@/assets/icons/Sound icon.png" alt="" />
+              <span class="listen"
+                ><span class="sr-only">Écoutes les</span>Consignes</span
+              >
+            </div>
+          </button>
 
           <img
             class="companion"
@@ -47,7 +53,7 @@
           <!-- <div class="draggable" v-for="t of words.target1" :key="t">
             {{ t }}
           </div> -->
-          <button class="pill">General words</button>
+          <button class="pill">Mots regulier</button>
         </div>
       </div>
       <div id="target2" class="basket_column">
@@ -56,7 +62,7 @@
           <!-- <div class="draggable" v-for="t of words.target2" :key="t">
             {{ t }}
           </div> -->
-          <button class="pill">Irregular words</button>
+          <button class="pill">Mots irregulier</button>
         </div>
       </div>
       <div id="target3" class="basket_column">
@@ -65,7 +71,7 @@
           <!-- <div class="draggable" v-for="t of words.target3" :key="t">
             {{ t }}
           </div> -->
-          <button class="pill">Words with no meaning</button>
+          <button class="pill">Mots sans aucun sens</button>
         </div>
       </div>
     </div>
@@ -74,71 +80,69 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "@vue/composition-api";
+import { computed, defineComponent, ref, watch } from "@vue/composition-api";
 import router from "@/router";
 import well from "@/assets/voices/Well.mp3";
+import store from "../store";
 import { useCompanion } from "../composables/useCompanion";
 import { usePlayAudio } from "../composables/usePlayAudio";
 import { useGameState } from "../composables/useGameState";
-const setup = props => {
+
+const setup = (props) => {
   const result = ref(null);
   const companion = ref(useCompanion.getInstance().companion);
-
+  const setNumber = ref(0);
+  const sets = ref([
+    ["badou",     
+      "monsieur",
+      "août",
+      "prairie",
+      "mouton"],
+    [
+       "papier",
+       "vitre", 
+       "loin", 
+      "jour",
+      "lirette",
+       "tarteau",
+       "frague",
+      "miro",
+      "oignon",
+      "poële", 
+      "tousser", 
+      "doute"
+    ],
+  ]);
   const game1Solution = ref([
     {
       name: "General word",
       answer: [
-        "maze",
-        "trial"
-        //   "cream"
-        // "peace", "way", "day"
-      ]
+
+        ["prairie", "mouton"],
+        ["papier", "paix", "loin", "jour"],
+      ],
     },
     {
       name: "Sight word",
       answer: [
-        "niece",
-        "through"
-        //   "eyes"
-        //  "laugh", "cough", "doubt"
-      ]
+
+        ["monsieur", "août"],
+        ["poële", "tousser", "doute","oignon"],
+      ],
     },
     {
       name: "Nonsense word",
-      answer: [
-        "flaos"
-        //   "qarmel",
-        //   "faw"
-        // "lare", "miro", "himmer"
-      ]
-    }
+
+      answer: [["badou"], ["lirette", "tarteau","frague", "miro", "himmer"]],
+    },
   ]);
 
   const words = ref({
-    origin: [
-      "maze",
-      "niece",
-      "flaos",
-      "trial",
-      "through"
-      // "qarmel",
-      // "cream",
-      // "eyes",
-      // "faw"
-      // "peace",
-      // "laugh",
-      // "lare",
-      // "way",
-      // "cough",
-      // "miro",
-      // "day",
-      // "doubt",
-      // "himmer"
-    ],
+    origin: [...sets.value[setNumber.value]],
     target1: [],
     target2: [],
     target3: [],
-    game1Solution
+    game1Solution,
   });
   const checkResult = (first, second) => {
     const count = first.reduce((acc, val) => {
@@ -150,55 +154,77 @@ const setup = props => {
 
     return count;
   };
-  const spliceArray = text => {
-    const index = words.value.origin.findIndex(o => o === text);
+  const spliceArray = (text) => {
+    const index = words.value.origin.findIndex((o) => o === text);
     words.value.origin.splice(index, 1);
     if (words.value.origin.length === 0) {
       const count1 = checkResult(
-        words.value.game1Solution[0].answer,
+        words.value.game1Solution[0].answer[setNumber.value],
         words.value.target1
       );
       const count2 = checkResult(
-        words.value.game1Solution[1].answer,
+        words.value.game1Solution[1].answer[setNumber.value],
         words.value.target2
       );
       const count3 = checkResult(
-        words.value.game1Solution[2].answer,
+        words.value.game1Solution[2].answer[setNumber.value],
         words.value.target3
       );
       const total = count1 + count2 + count3;
-      return total;
+      console.log("result", count1, count2, count3);
+      store.setGameResult("WORD_RECOGNITION", [
+        { GeneralWords: count1 },
+        { IrregularWords: count2 },
+        { WordsWithNoMeaning: count3 },
+      ]);
+
+      return total > 0 ? total + 1 : total;
     }
   };
 
   const drag = (ev, text) => {
     ev.dataTransfer.setData("text", text);
   };
-  const drop = ev => {
+  const checkSet = () => {
+    console.log(words.value,"words");
+    if (words.value.origin.length === 0) {
+      setNumber.value = ++setNumber.value;
+      words.value.origin = sets.value[setNumber.value];
+    }
+  };
+  const drop = (ev) => {
     const text = ev.dataTransfer.getData("text");
     spliceArray(text);
     words.value.target1.push(text);
+    checkSet();
   };
-  const drop2 = ev => {
+  const drop2 = (ev) => {
     const text = ev.dataTransfer.getData("text");
     spliceArray(text);
     words.value.target2.push(text);
+    checkSet();
   };
-  const drop3 = ev => {
+  const drop3 = (ev) => {
     const text = ev.dataTransfer.getData("text");
     spliceArray(text);
     words.value.target3.push(text);
+    checkSet();
   };
   const { play } = usePlayAudio();
   const playInstruction = () => {
     play(well);
   };
 
+  const isEndSet = computed(() => words.value.origin.length === 0);
+  const isEndGame = computed(
+    () => isEndSet.value && sets.value.length === setNumber.value
+  );
+  
   const gameState = useGameState.getInstance();
   const goToGameList = () => {
     gameState.updateGame(1);
     router.push({ path: "/gamelist" });
-  }
+  };
 
   return {
     words,
@@ -213,19 +239,20 @@ const setup = props => {
     game1Solution,
     playInstruction,
     companion,
+    isEndGame,
   };
 };
 export default defineComponent({
   name: "WordRecognition",
   props: {},
-  setup
+  setup,
 });
 </script>
 
 <style scoped>
 .game1 {
-  background: url("~@/assets/backgrounds/word-recognition.jpg") no-repeat
-    center center fixed;
+  background: url("https://img.freepik.com/vrije-vector/nachtbos-met-kampvuurrivier-en-bergen_107791-6993.jpg?w=1200") no-repeat center
+    center fixed;
   background-color: antiquewhite;
   -webkit-background-size: cover;
   -moz-background-size: cover;

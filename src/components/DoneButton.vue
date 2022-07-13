@@ -1,5 +1,5 @@
 <template>
-  <button class="pill next-button" :disabled="disabled" @click="goToGameList">I'm done!</button>
+  <button class="pill next-button" :disabled="disabled" @click="goToGameList">J'ai fini</button>
 </template>
 
 <script>

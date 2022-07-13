@@ -10,7 +10,7 @@
     </aside>
 
     <div class="jewels-container">
-      <div :class="getJewelClass(index)" v-for="(jewel, index) in new Array(7).fill(undefined)" :key="index">
+      <div :class="getJewelClass(index)" v-for="(jewel, index) in new Array(4).fill(undefined)" :key="index">
         <img :class="{ jewel: true, hidden: stepIndex < 1, yeet: stepIndex === 2 }" src="@/assets/jewel.png" alt="A jewel that looks like a shiny diamond!"/>
       </div>
     </div>
@@ -27,8 +27,8 @@ import { useCompanion } from "../composables/useCompanion";
 function setup() {
   const companion = ref(useCompanion.getInstance().companion);
   const steps = ref([
-    { text: "You've got all 7 jewels! Great work!", bold: "Now let's go to the portal!", action: "Let's go!" },
-    { text: "", bold: "We made it! That was quite the hike!", action: "Place jewels" },
+    { text: "Tu as les 4 diamants ! Excellent travail !", bold: "Maintenant, allons au portail !", action: "Allons - y" },
+    { text: "",  bold: "Nous avons réussi ! C’était une sacrée aventure !", action: "Place les diamants" },
     { text: "", bold: "", action: "" },
   ]);
   const activeStep = ref(steps.value[0]);
@@ -89,7 +89,7 @@ export default defineComponent({
 .main-container {
   display: flex;
   padding: 4em 2em 4em 6em;
-  background-image: url('~@/assets/backgrounds/end-portal.jpg');
+  background-image: url('https://img.freepik.com/darmowe-wektory/magiczny-portal-na-gorskim-klifie-z-latajacymi-skalami-dookola_107791-4674.jpg?w=1200');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -174,11 +174,11 @@ export default defineComponent({
 
 .jewel-half-columns {
   position: relative;
-  grid-column: span 2;
+  grid-column: span 2 ;
 }
 
 .jewel-single-column {
   position: relative;
-  grid-column: span 1;
+  grid-column: span 4;
 }
 </style>

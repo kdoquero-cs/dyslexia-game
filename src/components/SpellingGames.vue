@@ -36,7 +36,7 @@
               v-bind:class="[synthesisIsSpeaking ? 'playing' : '']"
               class="listen"
             >
-              <h2>Listen</h2>
+              <h2>Ecoutes</h2>
               <img src="@/assets/icons/Sound icon.svg" alt="Sound" srcset="" />
             </div>
             <div
@@ -44,7 +44,7 @@
               v-bind:class="[isRecording ? 'recording' : '']"
               class="speak"
             >
-              <h2>Speak</h2>
+              <h2>Parles</h2>
               <img
                 src="@/assets/icons/noun_micro_3396391 1.png"
                 alt="micro"
@@ -52,14 +52,14 @@
               />
             </div>
           </div>
-          <button :disabled="!recordingState" class="next" @click="nextWord">
-            Next
+          <button :disabled="!recordingState" v-if="!completed" class="next" @click="nextWord">
+           Suivant
           </button>
         </div>
       </div>
     </div>
 
-    <done-button :disabled="!completed" :id="6"></done-button>
+    <done-button :disabled="!completed" :id="4"></done-button>
   </section>
 </template>
 
@@ -70,11 +70,18 @@ import { useSpeechRecognition } from "../composables/useSpeechRecon";
 import router from "@/router";
 import { useCompanion } from "../composables/useCompanion";
 import OpenChest from "@/assets/voices/OpenChest.mp3";
-import MemorySpanBG from "@/assets/backgrounds/memory-span.jpg";
-import OralSpellingBG from "@/assets/backgrounds/oral-spelling.png";
+import Boite from "@/assets/spelling-game/boite.mp3";
+import Crayon from "@/assets/spelling-game/crayon.mp3";
+import Femme from "@/assets/spelling-game/femme.mp3";
+import Maison from "@/assets/spelling-game/maison.mp3";
+import Porte from "@/assets/spelling-game/porte.mp3";
+import Table from "@/assets/spelling-game/table.mp3";
+
 import { usePlayAudio } from "../composables/usePlayAudio";
 import { useGameState } from "../composables/useGameState";
 import DoneButton from "./DoneButton.vue";
+import store from "../store";
+
 export default defineComponent({
   components: { DoneButton },
   props: {
@@ -96,31 +103,27 @@ export default defineComponent({
       switch (root.$route.name) {
         case "OralSpelling":
           values.value = [
-            "Word",
-            "Cow",
-            "Dog",
-            "paper",
-            "have",
-            "like",
-            "home",
-            "dad",
-            "little",
-            "goat",
-            "this",
+            { text: "boîte", voice: Boite },
+            { text: "crayon", voice: Crayon },
+            { text: "femme", voice: Femme },
+            { text: "maison", voice: Maison },
+            { text: "porte", voice: Porte },
           ];
           return {
-            title: "Oral spelling",
-            background: OralSpellingBG,
-            textOne: "Here, I'll say a few words.",
-            textTwo: "Can you help me spell them?",
+            title: "Expression orale",
+            background:
+              "https://img.freepik.com/free-vector/golf-course-with-green-grass-pond-sunset_107791-6976.jpg?w=1200",
+            textOne: "Ici, je vais dire quelques mots.",
+            textTwo: "Peux-tu m'aider à les épeler ?",
           };
-        case "MemorySpan":
+        case "Mémoire":
           values.value = ["1", "1 3", "4 3 5", "3 2 1 5", "3 4 1 6 2"];
           return {
             title: "Memory span",
-            background: MemorySpanBG,
-            textOne: "We need to open this chest.",
-            textTwo: "I'll tell you the code, remember it and repeat after me.",
+            background:
+              "https://img.freepik.com/premium-vector/forest-pond-nature-landscape-calm-lake-river-flow-green-trees-rocks-early-pink-morning-wild-beautiful-scenery-view-summer-wood-sunrise-cartoon-background-vector-illustration_107791-7555.jpg?w=1200",
+            textOne: "Il faut qu'on ouvre ce coffre.",
+            textTwo: "Je vais te dire le code, mémorises-le et répètes après moi.",
           };
       }
     });
@@ -130,24 +133,29 @@ export default defineComponent({
     const companion = ref(companionFromHook);
 
     const count = ref(0);
+    const correctCount = ref(0);
     const result = ref([]);
     const score = ref(0);
     const completed = computed(() => count.value === values.value.length);
     const gameState = useGameState.getInstance();
     const goToGameList = () => {
-      gameState.updateGame(6);
+      gameState.updateGame(4);
       router.push({ path: "/gamelist" });
     };
 
-    const currentWord = computed(() => values.value[count.value]);
+    const currentWord = computed(() => values.value[count.value].text);
+    const currentSpelling = computed(() => values.value[count.value].voice);
+
 
     const { playOnWord, isSpeaking: synthesisIsSpeaking } =
       useSpeechSynthesis();
     const { isRecording, transcript, confidence } =
       useSpeechRecognition(startRecon);
+
     const play = () => {
-      playOnWord(currentWord.value);
+      playAudio(currentSpelling.value);
     };
+
     const compare = () => {
       console.log("compare", "ok");
     };
@@ -158,6 +166,7 @@ export default defineComponent({
     };
     const nextWord = () => {
       recordingState.value = false;
+      console.log(completed.value,"completed");
       if (!completed.value) {
         count.value = ++count.value;
       }
@@ -170,18 +179,22 @@ export default defineComponent({
       startRecon.value = currentRecording;
     });
     watch(transcript, (currentTranscript) => {
+      console.log(currentTranscript, "word",currentWord.value);
       if (
         currentTranscript &&
         currentWord.value &&
         currentTranscript.toLowerCase() &&
         currentTranscript.includes(currentWord.value.toLowerCase())
       ) {
+        ++correctCount.value;
         result.value.push({
           word: currentWord.value,
           speech: transcript.value,
         });
-        ++score.value;
       }
+      score.value = (correctCount.value * 100) / values.value.length;
+      
+      store.setGameResult("ORAL_SPELLING", score.value);
     });
     return {
       play,

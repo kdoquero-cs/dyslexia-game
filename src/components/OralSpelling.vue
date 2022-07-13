@@ -3,9 +3,9 @@
     <div class="display">
       <div class="display">
         <div class="spelling-box">
-          <h1>Spelling</h1>
-          <p>Here, I'll say a few words.</p>
-          <p class="words2">Can you help me spell them?</p>
+          <h1> L'orthographe</h1>
+          <p> Ici, je vais dire quelques mots.</p>
+          <p class="words2">Pouvez-vous m'aider à les épeler ?</p>
 
           <div class="spelling">
             <img
@@ -25,11 +25,11 @@
         <div class="inputs-container">
           <div class="inputs">
             <div @click="play" class="listen">
-              <h2>Listen</h2>
+              <h2>Écoutez</h2>
               <img src="@/assets/icons/Sound icon.svg" alt="Sound" srcset="" />
             </div>
             <div @click="record" class="speak">
-              <h2>Speak</h2>
+              <h2>Parlez</h2>
               <img
                 src="@/assets/icons/noun_micro_3396391 1.png"
                 alt="micro"
@@ -37,12 +37,12 @@
               />
             </div>
           </div>
-          <button :disabled="!recordingState" class="next" @click="nextWord">Next Word</button>
+          <button :disabled="!recordingState" class="next" @click="nextWord">Mot suivant</button>
         </div>
       </div>
     </div>
 
-    <button class="pill next-button" @click="goToGameList">I'm done!</button>
+    <button class="pill next-button" @click="goToGameList">J'ai finis!</button>
   </section>
 </template>
 
@@ -55,6 +55,7 @@ import { useCompanion } from "../composables/useCompanion";
 import SpellingExercise from "@/assets/voices/SpellingExercise.mp3";
 import { usePlayAudio } from "../composables/usePlayAudio";
 import { useGameState } from "../composables/useGameState";
+import store from "../store";
 export default defineComponent({
   props: {},
   setup() {
@@ -65,17 +66,12 @@ export default defineComponent({
       companionHook.companion.value || companionHook.companionList[0];
     const companion = ref(companionFromHook);
     const values = ref([
-      "Word",
-      "Cow",
-      "Dog",
-      "paper",
-      "have",
-      "like",
-      "home",
-      "dad",
-      "little",
-      "goat",
-      "this",
+      "boite",
+      "crayon",
+      "femme",
+      "maison",
+      "porte",
+      "table",
     ]);
     const count = ref(0);
     const result = ref([]);
@@ -83,15 +79,14 @@ export default defineComponent({
     const recordingState = ref(false);
     const gameState = useGameState.getInstance();
     const goToGameList = () => {
-      gameState.updateGame(5);
+      gameState.updateGame(4); //FIXME: hard coded to 5, because we had 7 games.
       router.push({ path: "/gamelist" });
     }
 
     const currentWord = computed(() => values.value[count.value]);
 
     const { playOnWord } = useSpeechSynthesis();
-    const { isRecording, transcript, confidence } =
-      useSpeechRecognition(startRecon);
+    const { isRecording, transcript, confidence } = useSpeechRecognition(startRecon);
     const play = () => {
       playOnWord(currentWord.value);
     };
@@ -124,7 +119,9 @@ export default defineComponent({
           word: currentWord.value,
           speech: transcript.value,
         });
-        ++score.value;
+        
+        score.value = score.value + (10 / values.value) /100;
+        store.setGameResult("ORAL_SPELLING",score.value);
       }
     });
     return {
@@ -145,7 +142,7 @@ export default defineComponent({
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .container {
-  background: url("~@/assets/backgrounds/oral-spelling.png") no-repeat;
+  background: url("https://img.freepik.com/free-vector/golf-course-with-green-grass-pond-sunset_107791-6976.jpg?w=1200") no-repeat;
   background-size: cover;
   background-position: center;
   display: flex;

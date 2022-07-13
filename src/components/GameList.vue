@@ -3,10 +3,10 @@
     <aside class="sidebar">
       <article class="content">
         <p>
-          There is a door that can take me home but it needs 7 jewels to open.
-          To get these jewels, we need to solve a few puzzles.
+          Il y a une porte qui peut me ramener chez moi mais il faut 7 joyaux pour l'ouvrir.
+          Pour obtenir ces bijoux, nous devons résoudre quelques énigmes.
         </p>
-        <h2>Do you want to play with me?</h2>
+        <h2>Tu veux jouer avec moi ?</h2>
       </article>
       <img class="companion" :src="companion.path" />
     </aside>
@@ -22,7 +22,7 @@
         </span>
 
         <div class="game-item__success-wrapper">
-          <div class="game-item__success">Well done!</div>
+          <div class="game-item__success">Bien joué !</div>
         </div>
         <img src="@/assets/jewel.png" class="game-item__success-jewel" />
       </li>
@@ -30,11 +30,11 @@
       <router-link
         to="/portal"
         class="link"
-        style="grid-row: row-3 / span 1; grid-column: col-5 / span 2"
+        style="grid-row: row-3 / span 1; grid-column: col-3 / span 2"
       >
         <li
           :class="{ 'game-item': true, 'game-item--locked': !allCompleted }"
-          :style="`background-image: url(${require('@/assets/backgrounds/end-portal.jpg')})`"
+          :style="`background-image: url('https://img.freepik.com/darmowe-wektory/magiczny-portal-na-gorskim-klifie-z-latajacymi-skalami-dookola_107791-4674.jpg?w=1200')`"
         >
           <span class="play-btn" v-if="allCompleted">
           </span>
@@ -72,45 +72,48 @@ function setup(props) {
     {
       id: 1,
       name: "Words recognition",
-      style: `grid-row: row-1 / span 1; grid-column: col-1 / span 2; background-image: url(${require("@/assets/backgrounds/word-recognition.jpg")});`,
+      style: `grid-row: row-1 / span 1; grid-column: col-2 / span 2; background-image: url("https://img.freepik.com/vrije-vector/nachtbos-met-kampvuurrivier-en-bergen_107791-6993.jpg?w=1200");`,
       path: "word-recognition",
     },
+    // {
+    //   id: 2,
+    //   name: "Visual attention",
+    //   style: `grid-row: row-1 / span 1; grid-column: col-3 / span 2; background-image: url(${require("@/assets/backgrounds/visual-attention")});`,
+    //   path: "",
+    // },
     {
       id: 2,
-      name: "Visual attention",
-      style: `grid-row: row-1 / span 1; grid-column: col-3 / span 2; background-image: url(${require("@/assets/backgrounds/syllable-classification.jpg")});`,
-      path: "",
-    },
-    {
-      id: 3,
+      // id: 3,
       name: "Syllable recognition",
-      style: `grid-row: row-1 / span 1; grid-column: col-5 / span 2; background-image: url(${require("@/assets/backgrounds/visual-attention.jpg")});`,
+      style: `grid-row: row-1 / span 1; grid-column: col-4  / span 2; background-image: url("https://img.freepik.com/free-vector/summer-camp-with-bonfire-tent-van-backpack-chair-guitar_107791-5223.jpg?w=1200");`,
       path: "/syllable-classification",
     },
     {
-      id: 4,
+      // id: 4,
+      id: 3,
       name: "Auditory comprehension",
-      style: `grid-row: row-2 / span 1; grid-column: col-2 / span 2; background-image: url(${require("@/assets/backgrounds/auditory-comprehension.jpg")});`,
+      style: `grid-row: row-2 / span 1; grid-column: col-2 / span 2; background-image: url("https://img.freepik.com/free-vector/landscape-with-cascade-waterfall-in-forest_107791-7143.jpg?w=1200");`,
       path: "/auditive-comprehension",
     },
     {
-      id: 5,
+      id: 4,
+      // id: 5,
       name: "Oral spelling",
-      style: `grid-row: row-2 / span 1; grid-column: col-4 / span 2; background-image: url(${require("@/assets/backgrounds/oral-spelling.png")});`,
+      style: `grid-row: row-2 / span 1; grid-column: col-4 / span 2; background-image: url("https://img.freepik.com/free-vector/golf-course-with-green-grass-pond-sunset_107791-6976.jpg?w=1200");`,
       path: "/oral-spelling",
     },
-    {
-      id: 6,
-      name: "Memory span",
-      style: `grid-row: row-3 / span 1; grid-column: col-1 / span 2; background-image: url(${require("@/assets/backgrounds/memory-span.jpg")});`,
-      path: "/memory-span",
-    },
-    {
-      id: 7,
-      name: "Writing",
-      style: `grid-row: row-3 / span 1; grid-column: col-3 / span 2; background-image: url(${require("@/assets/backgrounds/test-7.jpg")});`,
-      path: "",
-    },
+    // {
+    //   id: 6,
+    //   name: "Memory span",
+    //   style: `grid-row: row-3 / span 1; grid-column: col-1 / span 2; background-image: url(${require("@/assets/backgrounds/memory-span.jpg")});`,
+    //   path: "/memory-span",
+    // },
+    // {
+    //   id: 7,
+    //   name: "Writing",
+    //   style: `grid-row: row-3 / span 1; grid-column: col-3 / span 2; background-image: url(${require("@/assets/backgrounds/test-7.jpg")});`,
+    //   path: "",
+    // },
   ]);
   const gameList = ref([]);
   const allCompleted = gameState.allCompleted();
@@ -128,12 +131,12 @@ function setup(props) {
 
   function goToGame(game) {
     switch(game.id) {
-      case 2:
-        modal2.value.open();
-        break;
-      case 7:
-        modal7.value.open();
-        break;
+      // case 2:
+      //   modal2.value.open();
+      //   break;
+      // case 7:
+      //   modal7.value.open();
+      //   break;
       default:
         router.push({ path: game.path });
         break;
@@ -172,7 +175,7 @@ export default defineComponent({
 .main-container {
   display: flex;
   padding: 4em 2em 4em 6em;
-  background-image: url("~@/assets/backgrounds/game-selection.jpg");
+  background-image: url("https://img.freepik.com/darmowe-wektory/zachod-slonca-lub-wschod-slonca-na-plazy-tropikalny-krajobraz_107791-1775.jpg?w=1200");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -204,9 +207,9 @@ export default defineComponent({
 
 .game-list {
   display: grid;
-  grid-template-columns: [col-1] 12.5% [col-2] 12.5% [col-3] 12.5% [col-4] 12.5% [col-5] 12.5% [col-6] 12.5%;
+  grid-template-columns: [col-1] 6.0% [col-2] 12.5% [col-3] 12.5% [col-4] 12.5% [col-5] 12.5% [col-6] 12.5%;
   grid-template-rows: [row-1] 1fr [row-2] 1fr [row-3] 1fr;
-  gap: 2em;
+  gap: 6em;
   width: 75%;
   margin: 0;
   padding-left: 3em;

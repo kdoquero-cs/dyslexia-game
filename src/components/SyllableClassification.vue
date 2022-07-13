@@ -1,18 +1,18 @@
 <template>
   <div class="game2">
-    <button class="pill next-button" @click="goToGameList" >I'm done!</button>
+    <button class="pill next-button" :disabled="words.origin.length != 0" v-if="words.origin.length === 0" @click="goToGameList" >J'ai finis !</button>
 
     <div class="instruction">
       <div class="panel">
         <div class="instructionsPanel">
-          <h1 class="h2">Syllable classification</h1>
-          <h2 class="h2">Waouh, what a mess!</h2>
-          <p>There are baskets!</p>
+          <h1 class="h2">Classification des syllabes</h1>
+          <h2 class="h2">Waouh, quel désordre !</h2>
+          <p>Il y a des paniers !</p>
           <button type="button" @click="playInstruction()">
               <div class="button_text">
                 <img src="@/assets/icons/Sound icon.png" alt="" />
                 <span class="listen"
-                  ><span class="sr-only">Listen to the</span>Instructions</span
+                  ><span class="sr-only">Écoutez les</span>Consignes</span
                 >
               </div>
             </button>
@@ -47,7 +47,7 @@
           <!-- <div class="draggable" v-for="t of words.target1" :key="t">
             {{ t }}
           </div> -->
-          <button class="pill">Words</button>
+          <button class="pill">Mots</button>
         </div>
       </div>
       <div id="target3" class="basket_column">
@@ -56,7 +56,7 @@
           <!-- <div class="draggable" v-for="t of words.target3" :key="t">
             {{ t }}
           </div> -->
-          <button class="pill">Syllables</button>
+          <button class="pill">Syllabes</button>
         </div>
       </div>
     </div>
@@ -70,6 +70,8 @@ import well from "./../../static/voices/WhatAMess.mp3";
 import { useCompanion } from "../composables/useCompanion";
 import { usePlayAudio } from "../composables/usePlayAudio";
 import { useGameState } from "../composables/useGameState";
+import store from "../store";
+
 const setup = props => {
   const result = ref(null);
   const companion = ref(useCompanion.getInstance().companion);
@@ -78,40 +80,53 @@ const setup = props => {
     {
       name: "Game2",
       answer: [
-        "lace",
-        "mice",
-        "lore"
-        //   "theme",
-        //   "few",
-        //   "mad",
-        //   "cab",
-        //   "cup",
-        //   "leave",
-        //   "bat"
+        "tôt"	 ,
+        "temps",
+        "fleur",
+        "air"	 ,
+        "faim" ,
+        "rat"	 ,
+        // "lace",
+        // "mice",
+        // "lore"
+        // "theme",
+        // "few",
+        // "mad",
+        // "cab",
+        // "cup",
+        // "leave",
+        // "bat"
       ]
     },
     {
       name: "Syllables",
       answer: [
-        "glas",
-        "dai",
-        "mon"
-        //   "pret",
-        //   "fect",
-        //   "glit",
-        //   "ther",
-        //   "ses",
-        //   "sil",
-        //   "gui"
+
+        "tis"	,
+        "fra"	,
+        "gue"	,
+        "com"	,
+        "teur",
+        "spé"	,
+        // "glas",
+        // "dai",
+        // "mon",
+        // "pret",
+        // "fect",
+        // "glit",
+        // "ther",
+        // "ses",
+        // "sil",
+        // "gui"
       ]
     }
   ]);
 
   const words = ref({
     origin: [
-      "lace",
-      "mice",
-      "lore",
+      "tôt"	 ,
+      "temps",
+      "fleur",
       // "theme",
       // "few",
       // "mad",
@@ -119,9 +134,9 @@ const setup = props => {
       // "cup",
       // "leave",
       // "bat",
-      "glas",
-      "dai",
-      "mon"
+      "tis"	,
+      "fra"	,
+      "gue"	,
       // "pret",
       // "fect",
       // "glit",
@@ -162,6 +177,11 @@ const setup = props => {
       //   words.value.target3
       // );
       const total = count1 + count2;
+      store.setGameResult("SYLLABLE_CLASSIFICATION", [
+        { Words: count1 },
+        { Syllables: count2 },
+
+      ]);
       return total;
     }
   };
@@ -190,7 +210,7 @@ const setup = props => {
 
   const gameState = useGameState.getInstance();
   const goToGameList = () => {
-    gameState.updateGame(3);
+    gameState.updateGame(2);
     router.push({ path: "/gamelist" });
   }
 
@@ -218,7 +238,7 @@ export default defineComponent({
 </script>
 <style scoped>
 .game2 {
-  background: url("~@/assets/backgrounds/visual-attention.jpg")
+  background: url("https://img.freepik.com/free-vector/summer-camp-with-bonfire-tent-van-backpack-chair-guitar_107791-5223.jpg?w=1200")
     no-repeat center center fixed;
   background-color: antiquewhite;
   -webkit-background-size: cover;
