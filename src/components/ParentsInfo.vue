@@ -64,7 +64,7 @@
 <script>
 import { defineComponent } from "@vue/composition-api";
 import router from "@/router";
-
+import store from "../store";
 export default defineComponent({
   name: "ParentsInfo",
   setup() {
@@ -74,6 +74,7 @@ export default defineComponent({
     const goToReport = () => {
       router.push({ path: "/game-assessment" });
     };
+    console.log(store.gamesResults.value,"value");
     return {
       goToReadingProfile,
       goToReport

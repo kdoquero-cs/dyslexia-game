@@ -70,6 +70,8 @@ import well from "./../../static/voices/WhatAMess.mp3";
 import { useCompanion } from "../composables/useCompanion";
 import { usePlayAudio } from "../composables/usePlayAudio";
 import { useGameState } from "../composables/useGameState";
+import store from "../store";
+
 const setup = props => {
   const result = ref(null);
   const companion = ref(useCompanion.getInstance().companion);
@@ -162,6 +164,11 @@ const setup = props => {
       //   words.value.target3
       // );
       const total = count1 + count2;
+      store.setGameResult("SYLLABLE_CLASSIFICATION", [
+        { Words: count1 },
+        { Syllables: count2 },
+
+      ]);
       return total;
     }
   };

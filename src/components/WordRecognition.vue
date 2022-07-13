@@ -8,14 +8,14 @@
           <h1 class="h2">Word recognition</h1>
           <h2 class="h2">Waouh, look!</h2>
           <p>There are wells!</p>
-            <button type="button" @click="playInstruction()">
-              <div class="button_text">
-                <img src="@/assets/icons/Sound icon.png" alt="" />
-                <span class="listen"
-                  ><span class="sr-only">Listen to the</span>Instructions</span
-                >
-              </div>
-            </button>
+          <button type="button" @click="playInstruction()">
+            <div class="button_text">
+              <img src="@/assets/icons/Sound icon.png" alt="" />
+              <span class="listen"
+                ><span class="sr-only">Listen to the</span>Instructions</span
+              >
+            </div>
+          </button>
 
           <img
             class="companion"
@@ -77,10 +77,12 @@
 import { defineComponent, ref } from "@vue/composition-api";
 import router from "@/router";
 import well from "@/assets/voices/Well.mp3";
+import store from "../store";
 import { useCompanion } from "../composables/useCompanion";
 import { usePlayAudio } from "../composables/usePlayAudio";
 import { useGameState } from "../composables/useGameState";
-const setup = props => {
+
+const setup = (props) => {
   const result = ref(null);
   const companion = ref(useCompanion.getInstance().companion);
 
@@ -89,29 +91,29 @@ const setup = props => {
       name: "General word",
       answer: [
         "maze",
-        "trial"
+        "trial",
         //   "cream"
         // "peace", "way", "day"
-      ]
+      ],
     },
     {
       name: "Sight word",
       answer: [
         "niece",
-        "through"
+        "through",
         //   "eyes"
         //  "laugh", "cough", "doubt"
-      ]
+      ],
     },
     {
       name: "Nonsense word",
       answer: [
-        "flaos"
+        "flaos",
         //   "qarmel",
         //   "faw"
         // "lare", "miro", "himmer"
-      ]
-    }
+      ],
+    },
   ]);
 
   const words = ref({
@@ -120,7 +122,7 @@ const setup = props => {
       "niece",
       "flaos",
       "trial",
-      "through"
+      "through",
       // "qarmel",
       // "cream",
       // "eyes",
@@ -138,7 +140,7 @@ const setup = props => {
     target1: [],
     target2: [],
     target3: [],
-    game1Solution
+    game1Solution,
   });
   const checkResult = (first, second) => {
     const count = first.reduce((acc, val) => {
@@ -150,8 +152,8 @@ const setup = props => {
 
     return count;
   };
-  const spliceArray = text => {
-    const index = words.value.origin.findIndex(o => o === text);
+  const spliceArray = (text) => {
+    const index = words.value.origin.findIndex((o) => o === text);
     words.value.origin.splice(index, 1);
     if (words.value.origin.length === 0) {
       const count1 = checkResult(
@@ -167,24 +169,30 @@ const setup = props => {
         words.value.target3
       );
       const total = count1 + count2 + count3;
-      return total;
+      store.setGameResult("WORD_RECOGNITION", [
+        { GeneralWords: count1 },
+        { IrregularWords: count2 },
+        { WordsWithNoMeaning: count3 },
+      ]);
+    
+      return total > 0 ? total + 1 : total;
     }
   };
 
   const drag = (ev, text) => {
     ev.dataTransfer.setData("text", text);
   };
-  const drop = ev => {
+  const drop = (ev) => {
     const text = ev.dataTransfer.getData("text");
     spliceArray(text);
     words.value.target1.push(text);
   };
-  const drop2 = ev => {
+  const drop2 = (ev) => {
     const text = ev.dataTransfer.getData("text");
     spliceArray(text);
     words.value.target2.push(text);
   };
-  const drop3 = ev => {
+  const drop3 = (ev) => {
     const text = ev.dataTransfer.getData("text");
     spliceArray(text);
     words.value.target3.push(text);
@@ -198,7 +206,7 @@ const setup = props => {
   const goToGameList = () => {
     gameState.updateGame(1);
     router.push({ path: "/gamelist" });
-  }
+  };
 
   return {
     words,
@@ -218,14 +226,14 @@ const setup = props => {
 export default defineComponent({
   name: "WordRecognition",
   props: {},
-  setup
+  setup,
 });
 </script>
 
 <style scoped>
 .game1 {
-  background: url("~@/assets/backgrounds/word-recognition.jpg") no-repeat
-    center center fixed;
+  background: url("~@/assets/backgrounds/word-recognition.jpg") no-repeat center
+    center fixed;
   background-color: antiquewhite;
   -webkit-background-size: cover;
   -moz-background-size: cover;
