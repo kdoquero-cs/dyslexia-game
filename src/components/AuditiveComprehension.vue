@@ -127,7 +127,7 @@ export default defineComponent({
      console.log( values.value.map(val => val.isCorrect).filter(Boolean).length,"every");
       gameState.updateGame(3);
       const total = (values.value.map(val => val.isCorrect).filter(Boolean).length / values.value.length) *100;
-      store.setGameResult("Auditive_Comprehension",total);
+      store.setGameResult("AUDITIVE_COMPREHENSION",total);
       router.push({ path: "/gamelist" });
     };
     const companionHook = useCompanion.getInstance();
