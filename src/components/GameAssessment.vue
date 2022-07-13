@@ -133,19 +133,19 @@
                                 <th scope="row" class="rowHeader">Score</th>
                                 <td class="row result">
                                     <span class="result">
-                                        <span class="tempText">XX</span>
+                                        <span class="tempText">{{gameResults.WORD_RECOGNITION ? gameResults.WORD_RECOGNITION.GeneralWords : 0}}</span>
                                         <!-- here goes the variable for the kid's Regular word error percentage -->
                                     </span>
                                 </td>
                                 <td class="row result">
                                     <span class="result">
-                                        <span class="tempText">XX</span>
+                                        <span class="tempText">{{gameResults.WORD_RECOGNITION ? gameResults.WORD_RECOGNITION.IrregularWords : 0}}</span>
                                         <!-- here goes the variable for the kid's Irregular word error percentage -->
                                     </span>
                                 </td>
                                 <td class="row result">
                                     <span class="result">
-                                        <span class="tempText">XX</span>
+                                        <span class="tempText">{{gameResults.WORD_RECOGNITION.WordsWithNoMeaning || 0}}</span>
                                         <!-- here goes the variable for the kid's Logatoma error percentage -->
                                     </span>
                                 </td>
@@ -198,12 +198,13 @@
                     </table>
                 </div>
                 <p id="wordsTask"><span class="task">Interpretation :</span>
-                    Les résultats obtenus par votre enfant indiquent des performances inférieures pour certaines ou
+                    <p v-if="gameResults.WORD_RECOGNITION.GeneralWords < norms.WordRecognition.GeneralWords || gameResults.WORD_RECOGNITION.IrregularWords < norms.WordRecognition.IrregularWords || gameResults.WORD_RECOGNITION.WordsWithNoMeaning < norms.WordRecognition.WordsWithNoMeaning">Les résultats obtenus par votre enfant indiquent des performances inférieures pour certaines ou
                     toutes les compétences évaluées à celles attendues pour un enfant de son âge pour ce type
-                    d’exercice. <br>
-                    Les résultats obtenus par votre enfant indiquent des performances en cohérence avec celles attendues
+                    d’exercice.</p>
+                    <p v-else >Les résultats obtenus par votre enfant indiquent des performances en cohérence avec celles attendues
                     pour un enfant de son âge pour ce type d’exercice.
-                </p>
+					</p>
+    
                 <div class="print">
                     <h3 class="h3">2. Tâche de reconnaissance de syllabes :</h3>
                 </div>
@@ -233,13 +234,13 @@
                                 <th scope="row" class="rowHeader">Score</th>
                                 <td class="row result">
                                     <span class="result">
-                                        <span class="tempText">XX</span>
+                                        <span class="tempText">{{gameResults.SYLLABLE_CLASSIFICATION.Words|| 0}}</span>
                                         <!-- here goes the variable for the kid's Regular word error percentage -->
                                     </span>
                                 </td>
                                 <td class="row result">
                                     <span class="result">
-                                        <span class="tempText">XX</span>
+                                        <span class="tempText">{{gameResults.SYLLABLE_CLASSIFICATION.Syllables|| 0}}</span>
                                         <!-- here goes the variable for the kid's Irregular word error percentage -->
                                     </span>
                                 </td>
@@ -280,12 +281,12 @@
                     </table>
                 </div>
                 <p id="wordsTask"><span class="task">Interpretation :</span>
-                    Les résultats obtenus par votre enfant indiquent des performances inférieures pour certaines ou
+                    <p v-if="gameResults.SYLLABLE_CLASSIFICATION < norms.SyllableRecognition">Les résultats obtenus par votre enfant indiquent des performances inférieures pour certaines ou
                     toutes les compétences évaluées à celles attendues pour un enfant de son âge pour ce type
-                    d’exercice. <br>
-                    Les résultats obtenus par votre enfant indiquent des performances en cohérence avec celles attendues
-                    pour un enfant de son âge pour ce type d’exercice.
-                </p>
+                    d’exercice.</p>
+                    <p v-else>Les résultats obtenus par votre enfant indiquent des performances en cohérence avec celles attendues
+                    pour un enfant de son âge pour ce type d’exercice.</p> 
+        
                 <div class="print">
                     <h3 class="h3">3. Tâche de compréhension auditivo-verbale :</h3>
                 </div>
@@ -301,18 +302,17 @@
                     <h4 class="h4">Résultats :</h4>
                 </div>
                 <div> <ul>
-                    <li> Score : XX </li>
+                    <li> Score : {{gameResults.AUDITIVE_COMPREHENSION || 0}} </li>
                     <li> Moyenne : 90 </li>
                     <li> Ecart-type : 10 </li>
                     </ul>
                 </div>
                 <p id="wordsTask"><span class="task">Interpretation :</span>
-                    Les résultats obtenus par votre enfant indiquent des performances inférieures pour certaines ou
+                   <p v-if="gameResults.AUDITIVE_COMPREHENSION < norms.Comprehension.Mean" >  Les résultats obtenus par votre enfant indiquent des performances inférieures pour certaines ou
                     toutes les compétences évaluées à celles attendues pour un enfant de son âge pour ce type
-                    d’exercice. <br>
-                    Les résultats obtenus par votre enfant indiquent des performances en cohérence avec celles attendues
-                    pour un enfant de son âge pour ce type d’exercice.
-                </p>
+                    d’exercice.</p>
+                    <p v-else>Les résultats obtenus par votre enfant indiquent des performances en cohérence avec celles attendues
+                    pour un enfant de son âge pour ce type d’exercice.</p> 
                 <div class="print">
                     <h3 class="h3">4. Tâche de mots épelés à reconstituer :</h3>
                 </div>
@@ -330,18 +330,17 @@
                 </div>
                 <div>
                     <ul>
-                        <li> Score : XX </li>
+                        <li> Score : {{gameResults.ORAL_SPELLING || 0}} </li>
                         <li> Moyenne : 90 </li>
                         <li> Ecart-type : 10 </li>
                     </ul>
                 </div>
                 <p id="wordsTask"><span class="task">Interpretation :</span>
-                    Les résultats obtenus par votre enfant indiquent des performances inférieures pour certaines ou
+                    <p v-if="gameResults.ORAL_SPELLING < norms.Spelling.Mean"> Les résultats obtenus par votre enfant indiquent des performances inférieures pour certaines ou
                     toutes les compétences évaluées à celles attendues pour un enfant de son âge pour ce type
-                    d’exercice. <br>
-                    Les résultats obtenus par votre enfant indiquent des performances en cohérence avec celles attendues
-                    pour un enfant de son âge pour ce type d’exercice.
-                </p>
+                    d’exercice.</p>
+                    <p v-else> Les résultats obtenus par votre enfant indiquent des performances en cohérence avec celles attendues
+                    pour un enfant de son âge pour ce type d’exercice.</p>
                 <div class="print">
                     <h3 class="h3">Conclusion générale</h3>
                 </div>
@@ -386,7 +385,6 @@
                 <li>Évaluer à l’oral autant que possible.</li>
                 <li>Créer autant que possible un environnement bienveillant.</li>
             </ul>
-            </p>
             <div class="print">
                 <h3 class="h3">Idées de jeux à proposer</h3>
             </div>
@@ -423,18 +421,22 @@
 import { computed } from "@vue/composition-api";
 import SpellingGames from "./SpellingGames.vue";
 import store from "../store";
-import norms from "../assets/norms/default-norms.json";
+import json from "../assets/norms/default-norms.json";
+
 export default {
   components: { SpellingGames },
   name: "GameAssessment",
   setup: function () {
+    console.log(norms, "kevin");
     const user = computed(() => store.user.value);
     const gameResults = computed(() => store.gamesResults.value);
-  
+    const norms = computed(()=> json);
+    console.log(norms.value,gameResults.value,"efefee");
     return {
       print: () => window.print(),
       user,
       gameResults,
+      norms,
     };
   },
 };

@@ -3,7 +3,6 @@
     <button
       class="pill next-button"
       :disabled="words.origin.length != 0"
-      v-if="isEndGame"
       @click="goToGameList"
     >
       J'ai fini !
@@ -14,11 +13,26 @@
           <h1 class="h2"> Reconnaissance des mots</h1>
           <h2 class="h2"> Waouh, regarde!</h2>
           <p> Il y a des puits !</p>
+          <p>Consignes :</p>
           <button type="button" @click="playInstruction()">
             <div class="button_text">
-              <img src="@/assets/icons/Sound icon.png" alt="" />
+              <img
+                src="@/assets/icons/Sound_icon.svg"
+                alt=""
+                width="50"
+                height="50"
+              />
               <span class="listen"
                 ><span class="sr-only">Écoutes les</span>Consignes</span
+              >
+            </div>
+          </button>
+          <p>Exemples :</p>
+          <button type="button" @click="playInstruction1()">
+            <div class="button_text">
+              <img src="@/assets/icons/Sound_icon.svg" alt="" width="50" height="50"/>
+              <span class="listen"
+                ><span class="sr-only">Listen to the</span>Instructions</span
               >
             </div>
           </button>
@@ -49,29 +63,29 @@
     <div class="basket_container">
       <div id="target" class="basket_column">
         <div @dragover.prevent @drop="drop">
-          <img src="@/assets/icons/well.png" alt="well" />
+          <img class="well-image" src="@/assets/icons/well.svg" alt="well" />
           <!-- <div class="draggable" v-for="t of words.target1" :key="t">
             {{ t }}
           </div> -->
-          <button class="pill">Mots regulier</button>
+          <button class="pill well-labels">Mots Réguliers</button>
         </div>
       </div>
       <div id="target2" class="basket_column">
         <div @dragover.prevent @drop="drop2">
-          <img src="@/assets/icons/well.png" alt="well" />
+          <img class="well-image" src="@/assets/icons/well.svg" alt="well" />
           <!-- <div class="draggable" v-for="t of words.target2" :key="t">
             {{ t }}
           </div> -->
-          <button class="pill">Mots irregulier</button>
+          <button class="pill well-labels">Mots Irréguliers</button>
         </div>
       </div>
       <div id="target3" class="basket_column">
         <div @dragover.prevent @drop="drop3">
-          <img src="@/assets/icons/well.png" alt="well" />
+          <img class="well-image" src="@/assets/icons/well.svg" alt="well" />
           <!-- <div class="draggable" v-for="t of words.target3" :key="t">
             {{ t }}
           </div> -->
-          <button class="pill">Mots sans aucun sens</button>
+          <button class="pill well-labels">Mots qui n'existent pas</button>
         </div>
       </div>
     </div>
@@ -83,6 +97,7 @@
 import { computed, defineComponent, ref, watch } from "@vue/composition-api";
 import router from "@/router";
 import well from "@/assets/voices/Well.mp3";
+import wellExamples from "@/assets/voices/Well_examples.mp3";
 import store from "../store";
 import { useCompanion } from "../composables/useCompanion";
 import { usePlayAudio } from "../composables/usePlayAudio";
@@ -93,47 +108,39 @@ const setup = (props) => {
   const companion = ref(useCompanion.getInstance().companion);
   const setNumber = ref(0);
   const sets = ref([
-    ["badou",     
-      "monsieur",
-      "août",
-      "prairie",
-      "mouton"],
-    [
-       "papier",
-       "vitre", 
-       "loin", 
-      "jour",
-      "lirette",
-       "tarteau",
-       "frague",
-      "miro",
-      "oignon",
-      "poële", 
-      "tousser", 
-      "doute"
-    ],
+    ["prairie", "monsieur", "mouton", "lirette", "vitre", "badou"],
+    [ "tarteau", "papier", "oignon", "poële", "août", "frague"],
+    [], // FIXMEprairie	monsieur	badou
+      // "laugh",
+      // "lare",
+      // "way",
+      // "cough",
+      // "miro",
+      // "day",
+      // "doubt",
+      // "himmer",
   ]);
   const game1Solution = ref([
     {
-      name: "General word",
+      name: "Mots Réguliers",
       answer: [
-
         ["prairie", "mouton"],
-        ["papier", "paix", "loin", "jour"],
+        ["papier", "vitre"],
       ],
     },
     {
-      name: "Sight word",
+      name: "Mots Irréguliers",
       answer: [
-
         ["monsieur", "août"],
-        ["poële", "tousser", "doute","oignon"],
+        ["oignon", "poële"],
       ],
     },
     {
-      name: "Nonsense word",
-
-      answer: [["badou"], ["lirette", "tarteau","frague", "miro", "himmer"]],
+      name: "Mots qui n'existent pas",
+      answer: [
+        ["badou", "tarteau"],
+        ["lirette", "frague"]
+      ],
     },
   ]);
 
@@ -172,11 +179,11 @@ const setup = (props) => {
       );
       const total = count1 + count2 + count3;
       console.log("result", count1, count2, count3);
-      store.setGameResult("WORD_RECOGNITION", [
-        { GeneralWords: count1 },
-        { IrregularWords: count2 },
-        { WordsWithNoMeaning: count3 },
-      ]);
+      store.setGameResult("WORD_RECOGNITION", {
+        GeneralWords: count1,
+        IrregularWords: count2,
+        WordsWithNoMeaning: count3,
+      });
 
       return total > 0 ? total + 1 : total;
     }
@@ -186,7 +193,7 @@ const setup = (props) => {
     ev.dataTransfer.setData("text", text);
   };
   const checkSet = () => {
-    console.log(words.value,"words");
+    console.log(words.value, "words");
     if (words.value.origin.length === 0) {
       setNumber.value = ++setNumber.value;
       words.value.origin = sets.value[setNumber.value];
@@ -214,11 +221,14 @@ const setup = (props) => {
   const playInstruction = () => {
     play(well);
   };
+  const playInstruction1 = () => {
+    play(wellExamples);
+  };
 
-  const isEndSet = computed(() => words.value.origin.length === 0);
-  const isEndGame = computed(
-    () => isEndSet.value && sets.value.length === setNumber.value
-  );
+  // const isEndSet = computed(() => words.value.origin.length === 0);
+  // const isEndGame = computed(
+  //   () => isEndSet.value && sets.value.length === setNumber.value
+  // );
   
   const gameState = useGameState.getInstance();
   const goToGameList = () => {
@@ -238,8 +248,9 @@ const setup = (props) => {
     goToGameList,
     game1Solution,
     playInstruction,
+    playInstruction1,
     companion,
-    isEndGame,
+    // isEndGame,
   };
 };
 export default defineComponent({
@@ -251,8 +262,8 @@ export default defineComponent({
 
 <style scoped>
 .game1 {
-  background: url("https://img.freepik.com/vrije-vector/nachtbos-met-kampvuurrivier-en-bergen_107791-6993.jpg?w=1200") no-repeat center
-    center fixed;
+  background: url("https://img.freepik.com/vrije-vector/nachtbos-met-kampvuurrivier-en-bergen_107791-6993.jpg?w=1200")
+    no-repeat center center fixed;
   background-color: antiquewhite;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -265,11 +276,12 @@ export default defineComponent({
 .instruction {
   left: 40px;
   position: absolute;
-  top: 200px;
-  width: 361px;
-  height: 382px;
+  top: 100px;
+  width: 400px;
+  height: 480px;
   background: #f9eded;
   border-radius: 8px;
+  padding: 0px 0px 0px 25px;
 }
 
 .instructionsPanel {
@@ -318,11 +330,17 @@ export default defineComponent({
   margin-right: 30px;
   width: 161px;
   height: 51px;
-  border-radius: 8px;
+  border-radius: 4px;
   background: #f9eded;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.draggable:hover {
+  background: #dce8fa;
+}
+.draggable:active {
+  background: #b7d0f5;
 }
 #target,
 #target2,
@@ -338,30 +356,35 @@ export default defineComponent({
   margin-right: 40px;
 }
 #target2 {
-  margin: 0 40px 50px 0;
+  margin: 0 50px 80px 50px;
 }
 #target3 {
-  margin: 0 40px 80px 0;
+  margin: 0 40px 80px 50px;
 }
 
 .basket_container img {
-  width: 250px;
+  width: 300px;
 }
 
 .basket_container {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: flex-end;
+  align-items: flex-start;
   position: absolute;
   bottom: 170px;
-  left: 30%;
+  /* left: 30%; */
+  /* flex-wrap: wrap; */
+  /* width: 50%; */
+  top: 32%;
+  left: 35%;
+  /* flex-wrap: wrap; */
 }
 
 .basket_column {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .back-button {
@@ -370,12 +393,39 @@ export default defineComponent({
   left: 26px;
   cursor: pointer;
 }
-
+.well-labels {
+  padding: 10px 10px 10px 10px;
+  font-size: 24px;
+  margin-top: -15px;
+  font-style: normal;
+  border-radius: 24px;
+  font-weight: 800;
+  pointer-events: none;
+}
 .next-button {
   position: absolute;
   bottom: 80px;
   right: 26px;
   cursor: pointer;
+  padding: 24px 34px;
+  background-color: #fafafa;
+  border-radius: 30px;
+  font-weight: 900;
+  font-size: 24px;
+  margin-bottom: -1.5em;
+}
+.next-button:disabled {
+  background: #bdbcbc;
+  color: #000000;
+  cursor: auto;
+}
+.next-button:enabled:hover {
+  background: #dce8fa;
+}
+.well-image {
+  margin-top: 3em;
+  width: 15vw;
+  height: 35vh;
 }
 
 .draggable span {

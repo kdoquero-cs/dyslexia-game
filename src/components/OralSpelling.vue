@@ -31,7 +31,7 @@
             <div @click="record" class="speak">
               <h2>Parlez</h2>
               <img
-                src="@/assets/icons/noun_micro_3396391 1.png"
+                src="@/assets/icons/noun_micro_3396391 1.svg"
                 alt="micro"
                 srcset=""
               />

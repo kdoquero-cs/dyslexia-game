@@ -3,10 +3,10 @@
     <h1 class="title">Bienvenue dans l'aventure de Nazka</h1>
 
     <router-link to="/companion" class="link">
-      <button >Appuyer sur start</button>
+      <button class="start-button" >Appuyer sur start</button>
     </router-link>
 
-    <audio src="@/assets/music/MainMenu.mp4" autoplay="true"></audio>
+    <!-- <audio src="@/assets/music/MainMenu.mp3" autoplay="true"></audio> -->
   </section>
 </template>
 
@@ -48,5 +48,10 @@ export default defineComponent({});
   right: 2em;
   color: var(--colors-text-white-base);
   cursor: pointer;
+}
+.start-button {
+ padding:20px 30px;
+ border-radius: 30px; 
+ background-color: #B7D0F5 ; 
 }
 </style>

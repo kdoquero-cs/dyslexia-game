@@ -1,5 +1,5 @@
 import { computed, ref } from "@vue/composition-api";
-
+import norms from "./assets/norms/default-norms.json";
 const state = ref({
     User: {
         name: "",
@@ -7,7 +7,19 @@ const state = ref({
         months: 0
     },
     visitedMainMenu: false,
-    gamesResults: {}
+    gamesResults: {
+        WORD_RECOGNITION : {
+        GeneralWords: 0,
+        IrregularWords: 0,
+        WordsWithNoMeaning: 0,
+       },
+       AUDITIVE_COMPREHENSION: 0,
+       SYLLABLE_CLASSIFICATION : {
+           Words:0,
+           Syllables:0
+       },
+       ORAL_SPELLING: 0
+    }
 });
 
 function setName(name) {
