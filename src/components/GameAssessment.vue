@@ -427,11 +427,10 @@ export default {
   components: { SpellingGames },
   name: "GameAssessment",
   setup: function () {
-    console.log(norms, "kevin");
+
     const user = computed(() => store.user.value);
     const gameResults = computed(() => store.gamesResults.value);
     const norms = computed(()=> json);
-    console.log(norms.value,gameResults.value,"efefee");
     return {
       print: () => window.print(),
       user,

@@ -27,7 +27,6 @@ export function useSpeechSynthesis() {
   getVoices();
 
   function playOnWord(word) {
-    console.log(word);
     if (word && (typeof word === 'string' || word instanceof String)) {
       utterrance.value = new SpeechSynthesisUtterance(word);
       utterrance.value.voice = voice.value;
