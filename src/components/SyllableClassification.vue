@@ -80,31 +80,44 @@ const setup = props => {
     {
       name: "Game2",
       answer: [
-        "lace",
-        "mice",
-        "lore"
-        //   "theme",
-        //   "few",
-        //   "mad",
-        //   "cab",
-        //   "cup",
-        //   "leave",
-        //   "bat"
+        "tôt"	 ,
+        "temps",
+        "fleur",
+        "air"	 ,
+        "faim" ,
+        "rat"	 ,
+        // "lace",
+        // "mice",
+        // "lore"
+        // "theme",
+        // "few",
+        // "mad",
+        // "cab",
+        // "cup",
+        // "leave",
+        // "bat"
       ]
     },
     {
       name: "Syllables",
       answer: [
-        "glas",
-        "dai",
-        "mon"
-        //   "pret",
-        //   "fect",
-        //   "glit",
-        //   "ther",
-        //   "ses",
-        //   "sil",
-        //   "gui"
+
+        "tis"	,
+        "fra"	,
+        "gue"	,
+        "com"	,
+        "teur",
+        "spé"	,
+        // "glas",
+        // "dai",
+        // "mon",
+        // "pret",
+        // "fect",
+        // "glit",
+        // "ther",
+        // "ses",
+        // "sil",
+        // "gui"
       ]
     }
   ]);

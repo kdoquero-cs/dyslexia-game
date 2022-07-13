@@ -3,13 +3,8 @@
     <aside class="sidebar">
       <article class="content">
         <p>
-<<<<<<< HEAD
-          There is a door that can take me home but it needs 4 jewels to open.
-          To get these jewels, we need to solve a few puzzles.
-=======
           Il y a une porte qui peut me ramener chez moi mais il faut 7 joyaux pour l'ouvrir.
           Pour obtenir ces bijoux, nous devons résoudre quelques énigmes.
->>>>>>> 22fbcda (Traduction)
         </p>
         <h2>Tu veux jouer avec moi ?</h2>
       </article>

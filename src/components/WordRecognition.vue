@@ -5,14 +5,14 @@
     <div class="instruction">
       <div class="panel">
         <div class="instructionsPanel">
-          <h1 class="h2">Reconnaissance des mots</h1>
-          <h2 class="h2">Waouh, regarde!</h2>
-          <p>Il y a des puits !</p>
+          <h1 class="h2"> Reconnaissance des mots</h1>
+          <h2 class="h2"> Waouh, regarde!</h2>
+          <p> Il y a des puits !</p>
           <button type="button" @click="playInstruction()">
             <div class="button_text">
               <img src="@/assets/icons/Sound icon.png" alt="" />
               <span class="listen"
-                ><span class="sr-only">Écoutez les</span>Instructions</span
+                ><span class="sr-only">Écoutes les</span>Instructions</span
               >
             </div>
           </button>
@@ -47,7 +47,7 @@
           <!-- <div class="draggable" v-for="t of words.target1" :key="t">
             {{ t }}
           </div> -->
-          <button class="pill">General words</button>
+          <button class="pill">Les mots regulier</button>
         </div>
       </div>
       <div id="target2" class="basket_column">
@@ -56,7 +56,7 @@
           <!-- <div class="draggable" v-for="t of words.target2" :key="t">
             {{ t }}
           </div> -->
-          <button class="pill">Irregular words</button>
+          <button class="pill">Les mots irrégulier</button>
         </div>
       </div>
       <div id="target3" class="basket_column">
@@ -65,7 +65,7 @@
           <!-- <div class="draggable" v-for="t of words.target3" :key="t">
             {{ t }}
           </div> -->
-          <button class="pill">Words with no meaning</button>
+          <button class="pill">Les mots sans aucun sens</button>
         </div>
       </div>
     </div>
@@ -90,39 +90,57 @@ const setup = (props) => {
     {
       name: "General word",
       answer: [
-        "maze",
-        "trial",
-        //   "cream"
-        // "peace", "way", "day"
+        "prairie",
+        "mouton",
+        //   "papier"
+        // "vitre", "loin", "jour"
       ],
     },
     {
       name: "Sight word",
       answer: [
-        "niece",
-        "through",
-        //   "eyes"
-        //  "laugh", "cough", "doubt"
+        "monsieur",
+        "août",
+        // "oignon"
+        // "poële", "tousser", "doute"
       ],
     },
     {
       name: "Nonsense word",
       answer: [
-        "flaos",
-        //   "qarmel",
-        //   "faw"
-        // "lare", "miro", "himmer"
+        "badou",
+        // "lirette",
+        // "tarteau"
+        // "frague", "miro"
       ],
     },
   ]);
 
   const words = ref({
     origin: [
-      "maze",
-      "niece",
-      "flaos",
-      "trial",
-      "through",
+      "badou",     
+      "monsieur",
+      "août",
+      "prairie",
+      "mouton",
+      // "papier"
+      // "vitre", 
+      // "loin", 
+      // "jour",
+      // "lirette",
+      // "tarteau"
+      // "frague",
+      // "miro",
+      // "oignon"
+      // "poële", 
+      //"tousser", 
+      //"doute"   
+
+      //"maze",
+      //"niece",
+      //"flaos",
+      //"trial",
+      //"through",
       // "qarmel",
       // "cream",
       // "eyes",
@@ -136,6 +154,8 @@ const setup = (props) => {
       // "day",
       // "doubt",
       // "himmer"
+        
+
     ],
     target1: [],
     target2: [],
