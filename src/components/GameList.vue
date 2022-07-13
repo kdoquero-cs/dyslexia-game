@@ -3,7 +3,7 @@
     <aside class="sidebar">
       <article class="content">
         <p>
-          Il y a une porte qui peut me ramener chez moi mais il faut 7 joyaux pour l'ouvrir.
+          Il y a une porte qui peut me ramener chez moi mais il faut 4 joyaux pour l'ouvrir.
           Pour obtenir ces bijoux, nous devons résoudre quelques énigmes.
         </p>
         <h2>Tu veux jouer avec moi ?</h2>
