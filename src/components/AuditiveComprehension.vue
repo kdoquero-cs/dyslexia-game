@@ -3,15 +3,15 @@
     <div class="display">
       <div class="display">
         <div class="spelling-box">
-          <h1>Auditive comprehension</h1>
-          <h2>Step 1</h2>
-          <p>Listen to my story:</p>
+          <h1>Compréhension auditive</h1>
+          <h2>Etape 1</h2>
+          <p>Écoutez mon histoire:</p>
           <audio controls src="@/assets/voices/YoudLikeToKnowMoreAboutMe.mp3">
-            Your browser does not support the
+            Votre navigateur ne prend pas en charge le
             <code>audio</code> element.
           </audio>
-          <h2>Step 2</h2>
-          <p>Next, answer five questions:</p>
+          <h2>Etape 2</h2>
+          <p>Ensuite, répondez à cinq questions :</p>
           <img
             class="avatar"
             v-if="companion"
@@ -49,7 +49,7 @@
                 v-if="count !== questionsCount - 1"
                 @click="next"
               >
-                Next question
+                Question suiante
               </button>
             </div>
           </div>
@@ -57,7 +57,11 @@
       </div>
     </div>
 
-    <button class="pill next-button" :disabled="questionCount == count +1" v-if="currentValue.answer.length > 0 && questionsCount == count +1" @click="goToGameList">I'm done!</button>
+<<<<<<< HEAD
+    <button class="pill next-button" :disabled="questionCount == count +1" v-if="currentValue.answer.length > 0 && questionsCount == count +1" @click="goToGameList">J'ai fini !</button>
+=======
+    <button class="pill next-button" @click="goToGameList">J'ai fini !</button>
+>>>>>>> b973b10f2194297758d212c93d49ecacda7aa7c7
   </section>
 </template>
 
@@ -79,40 +83,40 @@ export default defineComponent({
     const values = ref([
       {
         id: 0,
-        question: "What is Nazka's favourite food?",
+        question: "Quel est l'aliment préféré de Nazka ?",
         answer: "",
-        choices: ["Carrot cake", "Lasagna", "Fruit"],
-        response: "Carrot cake",
+        choices: ["Gâteau aux carottes", "Lasagnes", "Fruits"],
+        response: "Gâteau aux carottes",
         isCorrect: false,
       },
       {
         id: 1,
-        question: "Does every animal talk in Nazka's world ?",
+        question: "Est-ce que tous les animaux parlent dans le monde de Nazka ?",
         answer: "",
-        choices: ["Yes", "No"],
-        response: "Yes",
+        choices: ["Oui", "Non"],
+        response: "Oui",
         isCorrect: false,
       },
       {
         id: 2,
         question:
-          "Is it true that the more trees we have, the cleaner the air is?",
+          "Est-il vrai que plus il y a d'arbres, plus l'air est pur ?",
         answer: "",
-        choices: ["Yes", "No"],
-        response: "Yes",
+        choices: ["Oui", "Non"],
+        response: "Oui",
         isCorrect: false,
       },
       {
         id: 3,
-        question: "Who is samantha ?",
+        question: "Qui est samantha ?",
         answer: "",
-        choices: ["My best friend", "My cousin", "My enemy"],
-        response: "My best friend",
+        choices: [" Ma meilleure amie ", " Ma cousinne ", " Mon ennemie"],
+        response: " Ma meilleure amie ",
         isCorrect: false,
       },
       {
         id: 4,
-        question: "How many siblings does Naska have ?",
+        question: "Combien de frères et sœurs a Naska ?",
         answer: "",
         choices: ["2", "3", "4"],
         response: "3",

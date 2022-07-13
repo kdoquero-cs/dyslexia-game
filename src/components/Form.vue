@@ -4,22 +4,24 @@
       <img v-if="companion" :src="companion.path" :alt="companion.name" />
     </div>
     <div class="form-container" >
-      <h1>Hello! I'm Nazka!</h1>
+      <h1> Bonjour ! Je suis Nazka !</h1>
       <form action="">
         <div class="form">
-            <h2>What is your {{ title }}?</h2>
+            <h2>Quel est votre {{ title }}?</h2>
           <div class="input-container" v-if="!showAge">
-            <label for="name">Name</label>
+            <label for="name">Prenom</label>
             <input type="text" @input="inputName"/>
           </div>
           <div class="inputs-container" v-if="showAge">
             <div class="input-container" >
-              <label for="years" class="form-label">Years</label>
+
+              <label for="years" class="form-label">Ans</label>
               <input class="number-input" type="number" min="0" max="110" name="years" @input="inputYears" />
             </div>
             <div class="input-container">
-              <label for="months" class="form-label">Months</label>
+              <label for="months" class="form-label">Mois</label>
               <input class="number-input" type="number" min="0" max="12" name="months" @input="inputMonths" />
+
             </div>
 
             <audio src="@/assets/voices/2B - niceToMeetYou.mp3" autoplay="true"></audio>
@@ -27,7 +29,7 @@
         </div>
       </form>
       <div class="next-container">
-          <button :disabled="showAge && !isValid" @click="toggleShowAge" primary>Next</button>
+          <button :disabled="showAge && !isValid" @click="toggleShowAge" primary>Suivant</button>
       </div>
     </div>
 
@@ -53,7 +55,7 @@ export default defineComponent({
     animatedBackground.play();
    const isValid = computed(()=> store.user.value.name !== "" && store.user.value.years !== 0 && store.user.value.months !== 0);
     const showAge = ref(false);
-    const title = computed(() => (showAge.value ? "age" : "name"));
+    const title = computed(() => (showAge.value ? "age" : "Prenom"));
     const inputName = (event) => {
       store.setName(event.target.value);
     };

@@ -6,20 +6,19 @@
       v-if="isEndGame"
       @click="goToGameList"
     >
-      I'm done!
+      J'ai fini !
     </button>
-
     <div class="instruction">
       <div class="panel">
         <div class="instructionsPanel">
-          <h1 class="h2">Word recognition</h1>
-          <h2 class="h2">Waouh, look!</h2>
-          <p>There are wells!</p>
+          <h1 class="h2"> Reconnaissance des mots</h1>
+          <h2 class="h2"> Waouh, regarde!</h2>
+          <p> Il y a des puits !</p>
           <button type="button" @click="playInstruction()">
             <div class="button_text">
               <img src="@/assets/icons/Sound icon.png" alt="" />
               <span class="listen"
-                ><span class="sr-only">Listen to the</span>Instructions</span
+                ><span class="sr-only">Écoutes les</span>Consignes</span
               >
             </div>
           </button>
@@ -54,7 +53,7 @@
           <!-- <div class="draggable" v-for="t of words.target1" :key="t">
             {{ t }}
           </div> -->
-          <button class="pill">General words</button>
+          <button class="pill">Mots regulier</button>
         </div>
       </div>
       <div id="target2" class="basket_column">
@@ -63,7 +62,7 @@
           <!-- <div class="draggable" v-for="t of words.target2" :key="t">
             {{ t }}
           </div> -->
-          <button class="pill">Irregular words</button>
+          <button class="pill">Mots irregulier</button>
         </div>
       </div>
       <div id="target3" class="basket_column">
@@ -72,7 +71,7 @@
           <!-- <div class="draggable" v-for="t of words.target3" :key="t">
             {{ t }}
           </div> -->
-          <button class="pill">Words with no meaning</button>
+          <button class="pill">Mots sans aucun sens</button>
         </div>
       </div>
     </div>
@@ -94,41 +93,47 @@ const setup = (props) => {
   const companion = ref(useCompanion.getInstance().companion);
   const setNumber = ref(0);
   const sets = ref([
-    ["maze", "niece", "flaos", "trial", "through"],
+    ["badou",     
+      "monsieur",
+      "août",
+      "prairie",
+      "mouton"],
     [
-      "qarmel",
-      "cream",
-      "eyes",
-      "faw",
-      "peace",
-      "laugh",
-      "lare",
-      "way",
-      "cough",
+       "papier",
+       "vitre", 
+       "loin", 
+      "jour",
+      "lirette",
+       "tarteau",
+       "frague",
       "miro",
-      "day",
-      "doubt",
-      "himmer",
+      "oignon",
+      "poële", 
+      "tousser", 
+      "doute"
     ],
   ]);
   const game1Solution = ref([
     {
       name: "General word",
       answer: [
-        ["maze", "trial"],
-        ["cream", "peace", "way", "day"],
+
+        ["prairie", "mouton"],
+        ["papier", "paix", "loin", "jour"],
       ],
     },
     {
       name: "Sight word",
       answer: [
-        ["niece", "through"],
-        ["eyes", "laugh", "cough", "doubt"],
+
+        ["monsieur", "août"],
+        ["poële", "tousser", "doute","oignon"],
       ],
     },
     {
       name: "Nonsense word",
-      answer: [["flaos"], ["qarmel", "faw", "lare", "miro", "himmer"]],
+
+      answer: [["badou"], ["lirette", "tarteau","frague", "miro", "himmer"]],
     },
   ]);
 
