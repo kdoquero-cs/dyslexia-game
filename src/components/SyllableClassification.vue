@@ -1,10 +1,6 @@
 <template>
   <div class="game2">
-<<<<<<< HEAD
     <button class="pill next-button" :disabled="words.origin.length != 0" v-if="words.origin.length === 0" @click="goToGameList" >J'ai finis !</button>
-=======
-    <button class="pill next-button" @click="goToGameList" >J'ai finis !</button>
->>>>>>> b973b10f2194297758d212c93d49ecacda7aa7c7
 
     <div class="instruction">
       <div class="panel">
@@ -16,11 +12,7 @@
               <div class="button_text">
                 <img src="@/assets/icons/Sound icon.png" alt="" />
                 <span class="listen"
-<<<<<<< HEAD
                   ><span class="sr-only">Écoutez les</span>Consignes</span
-=======
-                  ><span class="sr-only">Écoutez les</span>Instructions</span
->>>>>>> b973b10f2194297758d212c93d49ecacda7aa7c7
                 >
               </div>
             </button>

@@ -10,7 +10,6 @@
           pour eux, même si nous avons fait en sorte de le rendre aussi ludique que possible.
           </p>
           <p>
-<<<<<<< HEAD
             Ce jeu nous a permis de distinguer les principales difficultés que votre enfant peut rencontrer
             en lecture.
           </p>
@@ -19,16 +18,6 @@
             Nous avons créé un 
           <router-link to="/game-assessment" class="link">rapport détaillé</router-link>
             reprenant les resultats du jeu.
-=======
-            Ce jeu nous a permis de distinguer les principales difficultés que votre enfant peut
-            dans la lecture.
-          </p>
-          <br />
-          <p>
-            Nous avons réuni un
-          <router-link to="/game-assessment" class="link">rapport détaillé</router-link>
-            des informations que nous pourrions recueillir de ce jeu.
->>>>>>> b973b10f2194297758d212c93d49ecacda7aa7c7
           </p>
           <button class="next" @click="goToReport" primary
             >Rapport détaillé (mockup)</button
