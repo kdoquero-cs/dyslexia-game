@@ -1,6 +1,13 @@
 <template>
   <div class="game1">
-    <button class="pill next-button" :disabled="words.origin.length != 0" v-if="words.origin.length === 0" @click="goToGameList">I'm done!</button>
+    <button
+      class="pill next-button"
+      :disabled="words.origin.length != 0"
+      v-if="isEndGame"
+      @click="goToGameList"
+    >
+      I'm done!
+    </button>
 
     <div class="instruction">
       <div class="panel">
@@ -74,7 +81,7 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "@vue/composition-api";
+import { computed, defineComponent, ref, watch } from "@vue/composition-api";
 import router from "@/router";
 import well from "@/assets/voices/Well.mp3";
 import store from "../store";
@@ -85,58 +92,48 @@ import { useGameState } from "../composables/useGameState";
 const setup = (props) => {
   const result = ref(null);
   const companion = ref(useCompanion.getInstance().companion);
-
+  const setNumber = ref(0);
+  const sets = ref([
+    ["maze", "niece", "flaos", "trial", "through"],
+    [
+      "qarmel",
+      "cream",
+      "eyes",
+      "faw",
+      "peace",
+      "laugh",
+      "lare",
+      "way",
+      "cough",
+      "miro",
+      "day",
+      "doubt",
+      "himmer",
+    ],
+  ]);
   const game1Solution = ref([
     {
       name: "General word",
       answer: [
-        "maze",
-        "trial",
-        //   "cream"
-        // "peace", "way", "day"
+        ["maze", "trial"],
+        ["cream", "peace", "way", "day"],
       ],
     },
     {
       name: "Sight word",
       answer: [
-        "niece",
-        "through",
-        //   "eyes"
-        //  "laugh", "cough", "doubt"
+        ["niece", "through"],
+        ["eyes", "laugh", "cough", "doubt"],
       ],
     },
     {
       name: "Nonsense word",
-      answer: [
-        "flaos",
-        //   "qarmel",
-        //   "faw"
-        // "lare", "miro", "himmer"
-      ],
+      answer: [["flaos"], ["qarmel", "faw", "lare", "miro", "himmer"]],
     },
   ]);
 
   const words = ref({
-    origin: [
-      "maze",
-      "niece",
-      "flaos",
-      "trial",
-      "through",
-      // "qarmel",
-      // "cream",
-      // "eyes",
-      // "faw"
-      // "peace",
-      // "laugh",
-      // "lare",
-      // "way",
-      // "cough",
-      // "miro",
-      // "day",
-      // "doubt",
-      // "himmer"
-    ],
+    origin: [...sets.value[setNumber.value]],
     target1: [],
     target2: [],
     target3: [],
@@ -157,24 +154,25 @@ const setup = (props) => {
     words.value.origin.splice(index, 1);
     if (words.value.origin.length === 0) {
       const count1 = checkResult(
-        words.value.game1Solution[0].answer,
+        words.value.game1Solution[0].answer[setNumber.value],
         words.value.target1
       );
       const count2 = checkResult(
-        words.value.game1Solution[1].answer,
+        words.value.game1Solution[1].answer[setNumber.value],
         words.value.target2
       );
       const count3 = checkResult(
-        words.value.game1Solution[2].answer,
+        words.value.game1Solution[2].answer[setNumber.value],
         words.value.target3
       );
       const total = count1 + count2 + count3;
+      console.log("result", count1, count2, count3);
       store.setGameResult("WORD_RECOGNITION", [
         { GeneralWords: count1 },
         { IrregularWords: count2 },
         { WordsWithNoMeaning: count3 },
       ]);
-    
+
       return total > 0 ? total + 1 : total;
     }
   };
@@ -182,26 +180,41 @@ const setup = (props) => {
   const drag = (ev, text) => {
     ev.dataTransfer.setData("text", text);
   };
+  const checkSet = () => {
+    console.log(words.value,"words");
+    if (words.value.origin.length === 0) {
+      setNumber.value = ++setNumber.value;
+      words.value.origin = sets.value[setNumber.value];
+    }
+  };
   const drop = (ev) => {
     const text = ev.dataTransfer.getData("text");
     spliceArray(text);
     words.value.target1.push(text);
+    checkSet();
   };
   const drop2 = (ev) => {
     const text = ev.dataTransfer.getData("text");
     spliceArray(text);
     words.value.target2.push(text);
+    checkSet();
   };
   const drop3 = (ev) => {
     const text = ev.dataTransfer.getData("text");
     spliceArray(text);
     words.value.target3.push(text);
+    checkSet();
   };
   const { play } = usePlayAudio();
   const playInstruction = () => {
     play(well);
   };
 
+  const isEndSet = computed(() => words.value.origin.length === 0);
+  const isEndGame = computed(
+    () => isEndSet.value && sets.value.length === setNumber.value
+  );
+  
   const gameState = useGameState.getInstance();
   const goToGameList = () => {
     gameState.updateGame(1);
@@ -221,6 +234,7 @@ const setup = (props) => {
     game1Solution,
     playInstruction,
     companion,
+    isEndGame,
   };
 };
 export default defineComponent({
