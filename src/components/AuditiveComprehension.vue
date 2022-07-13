@@ -57,7 +57,7 @@
       </div>
     </div>
 
-    <button class="pill next-button" @click="goToGameList">I'm done!</button>
+    <button class="pill next-button" :disabled="questionCount == count +1" v-if="currentValue.answer.length > 0 && questionsCount == count +1" @click="goToGameList">I'm done!</button>
   </section>
 </template>
 
@@ -125,7 +125,7 @@ export default defineComponent({
     const goToGameList = () => {
       console.log(values.value,"currentValue");
      console.log( values.value.map(val => val.isCorrect).filter(Boolean).length,"every");
-      gameState.updateGame(4);
+      gameState.updateGame(3);
       const total = (values.value.map(val => val.isCorrect).filter(Boolean).length / values.value.length) *100;
       store.setGameResult("Auditive_Comprehension",total);
       router.push({ path: "/gamelist" });

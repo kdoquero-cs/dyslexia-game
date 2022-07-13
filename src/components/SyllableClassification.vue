@@ -1,6 +1,6 @@
 <template>
   <div class="game2">
-    <button class="pill next-button" @click="goToGameList" >I'm done!</button>
+    <button class="pill next-button" :disabled="words.origin.length != 0" v-if="words.origin.length === 0" @click="goToGameList" >I'm done!</button>
 
     <div class="instruction">
       <div class="panel">
@@ -197,7 +197,7 @@ const setup = props => {
 
   const gameState = useGameState.getInstance();
   const goToGameList = () => {
-    gameState.updateGame(3);
+    gameState.updateGame(2);
     router.push({ path: "/gamelist" });
   }
 

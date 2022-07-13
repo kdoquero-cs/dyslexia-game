@@ -1,6 +1,6 @@
 <template>
   <div class="game1">
-    <button class="pill next-button" @click="goToGameList">I'm done!</button>
+    <button class="pill next-button" :disabled="words.origin.length != 0" v-if="words.origin.length === 0" @click="goToGameList">I'm done!</button>
 
     <div class="instruction">
       <div class="panel">
