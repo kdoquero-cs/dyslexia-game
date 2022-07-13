@@ -14,7 +14,11 @@
           </div>
           <div class="inputs-container" v-if="showAge">
             <div class="input-container" >
+<<<<<<< HEAD
               <label for="years" class="form-label">Année</label>
+=======
+              <label for="years" class="form-label">Ans</label>
+>>>>>>> b973b10f2194297758d212c93d49ecacda7aa7c7
               <input type="number" name="years" @input="inputYears" />
             </div>
             <div class="input-container">

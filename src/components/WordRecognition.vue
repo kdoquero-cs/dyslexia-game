@@ -1,6 +1,6 @@
 <template>
   <div class="game1">
-    <button class="pill next-button" :disabled="words.origin.length != 0" v-if="words.origin.length === 0" @click="goToGameList">I'm done!</button>
+    <button class="pill next-button" :disabled="words.origin.length != 0" v-if="words.origin.length === 0" @click="goToGameList">J'ai fini !</button>
 
     <div class="instruction">
       <div class="panel">
@@ -47,7 +47,7 @@
           <!-- <div class="draggable" v-for="t of words.target1" :key="t">
             {{ t }}
           </div> -->
-          <button class="pill">Les mots regulier</button>
+          <button class="pill">Mots regulier</button>
         </div>
       </div>
       <div id="target2" class="basket_column">
@@ -56,7 +56,7 @@
           <!-- <div class="draggable" v-for="t of words.target2" :key="t">
             {{ t }}
           </div> -->
-          <button class="pill">Les mots irrégulier</button>
+          <button class="pill">Mots irregulier</button>
         </div>
       </div>
       <div id="target3" class="basket_column">
@@ -65,7 +65,7 @@
           <!-- <div class="draggable" v-for="t of words.target3" :key="t">
             {{ t }}
           </div> -->
-          <button class="pill">Les mots sans aucun sens</button>
+          <button class="pill">Mots sans aucun sens</button>
         </div>
       </div>
     </div>

@@ -57,7 +57,11 @@
       </div>
     </div>
 
+<<<<<<< HEAD
     <button class="pill next-button" :disabled="questionCount == count +1" v-if="currentValue.answer.length > 0 && questionsCount == count +1" @click="goToGameList">J'ai fini !</button>
+=======
+    <button class="pill next-button" @click="goToGameList">J'ai fini !</button>
+>>>>>>> b973b10f2194297758d212c93d49ecacda7aa7c7
   </section>
 </template>
 
