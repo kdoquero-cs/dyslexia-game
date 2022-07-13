@@ -179,11 +179,11 @@ const setup = (props) => {
       );
       const total = count1 + count2 + count3;
       console.log("result", count1, count2, count3);
-      store.setGameResult("WORD_RECOGNITION", [
-        { GeneralWords: count1 },
-        { IrregularWords: count2 },
-        { WordsWithNoMeaning: count3 },
-      ]);
+      store.setGameResult("WORD_RECOGNITION", {
+        GeneralWords: count1,
+        IrregularWords: count2,
+        WordsWithNoMeaning: count3,
+      });
 
       return total > 0 ? total + 1 : total;
     }
@@ -262,8 +262,8 @@ export default defineComponent({
 
 <style scoped>
 .game1 {
-  background: url("https://img.freepik.com/vrije-vector/nachtbos-met-kampvuurrivier-en-bergen_107791-6993.jpg?w=1200") no-repeat center
-    center fixed;
+  background: url("https://img.freepik.com/vrije-vector/nachtbos-met-kampvuurrivier-en-bergen_107791-6993.jpg?w=1200")
+    no-repeat center center fixed;
   background-color: antiquewhite;
   -webkit-background-size: cover;
   -moz-background-size: cover;

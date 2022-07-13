@@ -1,32 +1,17 @@
 {
     "WordRecognition": {
-        "Mean": {
-            "GeneralWords": 3,
-            "IrregularWords": 3,
-            "WordsWithNoMeaning": 3.5
-        },
-        "StandardDeviation": {
-            "GeneralWords": 1,
-            "IrregularWords": 1,
-            "WordsWithNoMeaning": 0.5
-        }
+        "GeneralWords": 2,
+        "IrregularWords": 2,
+        "WordsWithNoMeaning": 3
     },
     "SyllableRecognition": {
-        "Mean": {
-            "Words": 5.5,
-            "Syllables": 5.5
-        },
-        "StandardDeviation": {
-            "Words": 0.5,
-            "Syllables": 0.5
-        }
+        "Words": 5,
+        "Syllables": 5
     },
     "Comprehension": {
-        "Mean": 90,
-        "StandardDeviation": 10
+        "Mean": 80
     },
     "Spelling": {
-        "Mean": 90,
-        "StandardDeviation": 10
+        "Mean": 80
     }
 }

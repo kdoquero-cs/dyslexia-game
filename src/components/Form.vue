@@ -19,7 +19,7 @@
           </div>
           <div  class="inputs-container" v-if="showAge">
             <div class="input-container" >
-              <label for="years" class="form-label">Ans</label>
+              <label for="years" class="form-label">Année</label>
               <input  placeholder="28" class="age-input" type="number" min="0" max="110" name="years" @input="inputYears" />
             </div>
             <div class="input-container">
@@ -63,14 +63,8 @@ export default defineComponent({
     animatedBackground.play();
    const isValid = computed(()=> store.user.value.name !== "" && store.user.value.years !== 0 && store.user.value.months !== 0);
     const showAge = ref(false);
-    const title = computed(() => (showAge.value ? "age" : "Prenom"));
-    const allowGoNext = computed(
-      () =>
-        showAge.value &&
-        store.user.value.name &&
-        store.user.value.years &&
-        store.user.value.months
-    );
+    const title = computed(() => (showAge.value ? "Àge" : "Prenom"));
+  
     const inputName = (event) => {
       store.setName(event.target.value);
     };
