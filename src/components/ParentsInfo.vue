@@ -74,7 +74,6 @@ export default defineComponent({
     const goToReport = () => {
       router.push({ path: "/game-assessment" });
     };
-    console.log(store.gamesResults.value,"value");
     return {
       goToReadingProfile,
       goToReport

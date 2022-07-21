@@ -91,7 +91,6 @@ export default defineComponent({
       playOnWord(currentWord.value);
     };
     const compare = () => {
-      console.log("compare", "ok");
     };
     const record = () => {
       recordingState.value = true;
@@ -107,7 +106,6 @@ export default defineComponent({
     };
 
     watch(isRecording, (currentRecording) => {
-      console.log(currentRecording);
       startRecon.value = currentRecording;
     });
     watch(transcript, (currentTranscript) => {
