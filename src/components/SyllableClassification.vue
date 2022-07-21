@@ -155,7 +155,6 @@ const setup = (props) => {
       //   words.value.target3
       // );
       const total = count1 + count2;
-      console.log("result", count1, count2);
       store.setGameResult("SYLLABLE_CLASSIFICATION", [
         { words: count1 },
         { syllables: count2 },
@@ -165,7 +164,6 @@ const setup = (props) => {
   };
 
   const checkSet = () => {
-    console.log(words.value,"words");
     if (words.value.origin.length === 0) {
       setNumber.value = ++setNumber.value;
       words.value.origin = sets.value[setNumber.value];

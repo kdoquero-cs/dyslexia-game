@@ -173,7 +173,6 @@ export default defineComponent({
     };
 
     const compare = () => {
-      console.log("compare", "ok");
     };
     const record = () => {
       recordingState.value = true;
@@ -182,7 +181,6 @@ export default defineComponent({
     };
     const nextWord = () => {
       recordingState.value = false;
-      console.log(completed.value,"completed");
       if (!completed.value) {
         count.value = ++count.value;
       }
@@ -195,7 +193,6 @@ export default defineComponent({
       startRecon.value = currentRecording;
     });
     watch(transcript, (currentTranscript) => {
-      console.log(currentTranscript, "word",currentWord.value);
       if (
         currentTranscript &&
         currentWord.value &&

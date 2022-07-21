@@ -178,7 +178,6 @@ const setup = (props) => {
         words.value.target3
       );
       const total = count1 + count2 + count3;
-      console.log("result", count1, count2, count3);
       store.setGameResult("WORD_RECOGNITION", {
         GeneralWords: count1,
         IrregularWords: count2,
@@ -193,7 +192,6 @@ const setup = (props) => {
     ev.dataTransfer.setData("text", text);
   };
   const checkSet = () => {
-    console.log(words.value, "words");
     if (words.value.origin.length === 0) {
       setNumber.value = ++setNumber.value;
       words.value.origin = sets.value[setNumber.value];

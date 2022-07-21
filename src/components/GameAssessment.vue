@@ -15,7 +15,7 @@
                     <li class="listitem">
                         <span class="kidDetail">Nom :</span>
                         <span>
-                            <span class="tempText">{{ user.name}}</span>
+                            <span class="tempText">{{ user.name }}</span>
                             <!-- here goes the variable for the kid's name -->
                         </span>
                     </li>
@@ -155,19 +155,19 @@
                                 </th>
                                 <td class="row">
                                     <span class="result">
-                                        3
+                                        0
                                         <!-- here goes the variable for the Regular word norm rate -->
                                     </span>
                                 </td>
                                 <td class="row">
                                     <span class="result">
-                                        3
+                                        0
                                         <!-- here goes the variable for the Irregular word norm rate -->
                                     </span>
                                 </td>
                                 <td class="row">
                                     <span class="result">
-                                        3.5
+                                        0
                                         <!-- here goes the variable for the Logatoma norm rate -->
                                     </span>
                                 </td>
@@ -177,19 +177,19 @@
                                 </th>
                                 <td class="row">
                                     <span class="result">
-                                        1
+                                        0
                                         <!-- here goes the variable for the Regular word Standard error rate -->
                                     </span>
                                 </td>
                                 <td class="row">
                                     <span class="result">
-                                        1
+                                        0
                                         <!-- here goes the variable for the Regular word Standard error rate -->
                                     </span>
                                 </td>
                                 <td class="row">
                                     <span class="result">
-                                        0.5
+                                        0
                                         <!-- here goes the variable for the Regular word Standard error rate -->
                                     </span>
                                 </td>
@@ -250,13 +250,13 @@
                                 </th>
                                 <td class="row">
                                     <span class="result">
-                                        5.5
+                                        0
                                         <!-- here goes the variable for the word norm rate -->
                                     </span>
                                 </td>
                                 <td class="row">
                                     <span class="result">
-                                        5.5
+                                        0
                                         <!-- here goes the variable for the syllabes norm rate -->
                                     </span>
                                 </td>
@@ -266,13 +266,13 @@
                                 </th>
                                 <td class="row">
                                     <span class="result">
-                                        0.5
+                                        0
                                         <!-- here goes the variable for the word Standard error rate -->
                                     </span>
                                 </td>
                                 <td class="row">
                                     <span class="result">
-                                        0.5
+                                        0
                                         <!-- here goes the variable for the Syllabes Standard error rate -->
                                     </span>
                                 </td>
@@ -303,8 +303,8 @@
                 </div>
                 <div> <ul>
                     <li> Score : {{gameResults.AUDITIVE_COMPREHENSION || 0}} </li>
-                    <li> Moyenne : 90 </li>
-                    <li> Ecart-type : 10 </li>
+                    <li> Moyenne : 0 </li>
+                    <li> Ecart-type : 0 </li>
                     </ul>
                 </div>
                 <p id="wordsTask"><span class="task">Interpretation :</span>
@@ -331,8 +331,8 @@
                 <div>
                     <ul>
                         <li> Score : {{gameResults.ORAL_SPELLING || 0}} </li>
-                        <li> Moyenne : 90 </li>
-                        <li> Ecart-type : 10 </li>
+                        <li> Moyenne : 0 </li>
+                        <li> Ecart-type : 0 </li>
                     </ul>
                 </div>
                 <p id="wordsTask"><span class="task">Interpretation :</span>
@@ -427,11 +427,11 @@ export default {
   components: { SpellingGames },
   name: "GameAssessment",
   setup: function () {
-    console.log(norms, "kevin");
+
     const user = computed(() => store.user.value);
     const gameResults = computed(() => store.gamesResults.value);
+    //the norms from the default norm isn't real life norm, this will need to be reviewed & improved
     const norms = computed(()=> json);
-    console.log(norms.value,gameResults.value,"efefee");
     return {
       print: () => window.print(),
       user,
