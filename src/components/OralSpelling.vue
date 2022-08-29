@@ -140,7 +140,7 @@ export default defineComponent({
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .container {
-  background: url("https://img.freepik.com/free-vector/golf-course-with-green-grass-pond-sunset_107791-6976.jpg?w=1200") no-repeat;
+  background: url("@/assets/backgrounds/imgOK_river-nature") no-repeat;
   background-size: cover;
   background-position: center;
   display: flex;
