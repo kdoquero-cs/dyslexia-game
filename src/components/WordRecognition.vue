@@ -260,7 +260,7 @@ export default defineComponent({
 
 <style scoped>
 .game1 {
-  background: url("https://img.freepik.com/vrije-vector/nachtbos-met-kampvuurrivier-en-bergen_107791-6993.jpg?w=1200")
+  background: url("~@/assets/backgrounds/OK_Plage.png")
     no-repeat center center fixed;
   background-color: antiquewhite;
   -webkit-background-size: cover;

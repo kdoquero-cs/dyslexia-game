@@ -82,7 +82,7 @@ export default defineComponent({
 .main-container {
   display: flex;
   padding: 4em 2em 4em 6em;
-  background-image: url('~https://img.freepik.com/free-vector/golf-course-with-green-grass-pond-sunset_107791-6976.jpg?w=1200');
+  background-image: url('~@/assets/backgrounds/OK_Prairie.png');
   background-size: 150%;
   background-repeat: no-repeat;
   background-position: 50% 100%;

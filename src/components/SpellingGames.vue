@@ -97,6 +97,8 @@ import { usePlayAudio } from "../composables/usePlayAudio";
 import { useGameState } from "../composables/useGameState";
 import DoneButton from "./DoneButton.vue";
 import store from "../store";
+import OralSpellingBG from "@/assets/backgrounds/OK_Cactus.png";
+import MemorySpan from "@/assets/backgrounds/OK_Plage.png";
 
 export default defineComponent({
   components: { DoneButton },
@@ -127,8 +129,7 @@ export default defineComponent({
           ];
           return {
             title: "Expression orale",
-            background:
-              "https://img.freepik.com/free-vector/golf-course-with-green-grass-pond-sunset_107791-6976.jpg?w=1200",
+            background: OralSpellingBG,
             textOne: "Ici, je vais dire quelques mots.",
             textTwo: "Peux-tu m'aider à les épeler ?",
           };
@@ -136,8 +137,7 @@ export default defineComponent({
           values.value = ["1", "1 3", "4 3 5", "3 2 1 5", "3 4 1 6 2"];
           return {
             title: "Memory span",
-            background:
-              "https://img.freepik.com/premium-vector/forest-pond-nature-landscape-calm-lake-river-flow-green-trees-rocks-early-pink-morning-wild-beautiful-scenery-view-summer-wood-sunrise-cartoon-background-vector-illustration_107791-7555.jpg?w=1200",
+            background: MemorySpan,
             textOne: "Il faut qu'on ouvre ce coffre.",
             textTwo: "Je vais te dire le code, mémorises-le et répètes après moi.",
           };
